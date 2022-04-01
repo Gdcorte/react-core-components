@@ -9,7 +9,9 @@
   "author": "Gustavo <gustavodacorte@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "dependencies": {
+    "styled-components": "^5.3.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@rollup/plugin-commonjs": "^21.0.3",
@@ -22,6 +24,7 @@
     "@storybook/react": "^6.5.0-alpha.51",
     "@storybook/testing-library": "^0.0.9",
     "@types/react": "^17.0.43",
+    "@types/styled-components": "^5.1.24",
     "babel-loader": "^8.2.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
