@@ -19,5 +19,6 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-  }
+  },
+  "include": ["styled.d.ts", "**/*.ts", "**/*.tsx"],
 }
