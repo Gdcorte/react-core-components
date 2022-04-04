@@ -1,3 +1,5 @@
+import {BaseAlerts} from '../../themes'
+
 export interface ButtonColorInterface {
     background: string,
     color: string,
@@ -23,35 +25,35 @@ export const ButtonSecondaryColor: ButtonColorInterface = {
 }
 
 export const ButtonSuccessColor: ButtonColorInterface = {
-    background: "#4ce1b6",
-    color: "#363537",
-    actionableColor: "#262626",
-    selected: "#4ce1b6",
-    focused: "#4ce1b6",
+    background: BaseAlerts.success.main,
+    color: BaseAlerts.success.contrast,
+    actionableColor: BaseAlerts.success.main,
+    selected: BaseAlerts.success.main,
+    focused: BaseAlerts.success.main,
 }
 
 export const ButtonInfoColor: ButtonColorInterface = {
-    background: "#70bbfd",
-    color: "#fefefe",
-    actionableColor: "#262626",
-    selected: "#70bbfd",
-    focused: "#70bbfd",
+    background: BaseAlerts.info.main,
+    color: BaseAlerts.info.contrast,
+    actionableColor: BaseAlerts.info.main,
+    selected: BaseAlerts.info.main,
+    focused: BaseAlerts.info.main,
 }
 
 export const ButtonWarningColor: ButtonColorInterface = {
-    background: "#f6da6e",
-    color: "#363537",
-    actionableColor: "#262626",
-    selected: "#f6da6e",
-    focused: "#f6da6e",
+    background: BaseAlerts.warning.main,
+    color: BaseAlerts.warning.contrast,
+    actionableColor: BaseAlerts.warning.main,
+    selected: BaseAlerts.warning.main,
+    focused: BaseAlerts.warning.main,
 }
 
 export const ButtonDangerColor: ButtonColorInterface = {
-    background: "#ff4861",
-    color: "#fefefe",
-    actionableColor: "#262626",
-    selected: "#ff4861",
-    focused: "#ff4861",
+    background: BaseAlerts.danger.main,
+    color: BaseAlerts.danger.contrast,
+    actionableColor: BaseAlerts.danger.main,
+    selected: BaseAlerts.danger.main,
+    focused: BaseAlerts.danger.main,
 }
 
 interface ButtonColorMapInterface {

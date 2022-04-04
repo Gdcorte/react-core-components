@@ -35,7 +35,7 @@ export const ButtonStyled = styled.button<{
 
 
     :hover,
-    :focus{
+    :focus{ 
         background-color: ${({colors, inverse}) => inverse ? colors.background : 'transparent'};
         color: ${({colors, inverse}) => inverse ? colors.color : colors.actionableColor};
         border: medium double ${({colors, inverse}) => inverse ? 'transparent' : colors.background};

@@ -3,7 +3,6 @@ import { ButtonColorInterface, buttonColorMap, ButtonDefaultColor } from "./defa
 import { ButtonStyled } from "./style";
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
-  label: string;
   colors?: ButtonColorInterface,
   variant?: "primary"|"secondary"|"info"|"success"|"warning"|"danger",
   inverse?: boolean,
@@ -13,7 +12,6 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({
-  label,
   colors,
   variant,
   inverse,
@@ -23,6 +21,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   onClick,
   disabled,
   className,
+  children,
 }) => {
 
   const getColorPallete = () =>{
@@ -44,7 +43,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
       edgeSize={edgeSize}
       fontSize={fontSize}
     >
-      {label}
+      {children}
     </ButtonStyled>
   );
 };
