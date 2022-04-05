@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLProps } from "react";
+import { FunctionComponent, HTMLProps } from "react";
 import { ButtonColorInterface, buttonColorMap, ButtonDefaultColor } from "./defaultColors";
 import { ButtonStyled } from "./style";
 

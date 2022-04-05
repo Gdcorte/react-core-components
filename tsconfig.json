@@ -9,7 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "jsx": "react", 
+    "jsx": "react-jsx", 
     "declaration": true,
     "declarationDir": "types",
     "sourceMap": true,
