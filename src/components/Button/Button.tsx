@@ -6,7 +6,7 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   colors?: ButtonColorInterface,
   variant?: "primary"|"secondary"|"info"|"success"|"warning"|"danger",
   inverse?: boolean,
-  edges?: "oval"|"round"|"pill",
+  edges?: "oval"|"round"|"pill"|"rectangle",
   edgeSize?: string,
   fontSize?: string,
 }

@@ -28,7 +28,7 @@ export const ButtonStyled = styled.button<{
                     width: ${edgeSize || '80px'};
                     height: ${edgeSize || '80px'};
                 `;
-            default:
+            default: // Defaults to 'rectangle'
                 return 'border-radius: 5px;';
         }
     }}

@@ -1,26 +1,21 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button } from './Button';
+import { PasswordInput } from './';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Button',
-  component: Button,
+  title: 'Components/Input',
+  component: PasswordInput,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof PasswordInput>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof PasswordInput> = (args) => <PasswordInput {...args} />;
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-export const ButtonSimple = Template.bind({});
-ButtonSimple.args = {
-  children:  'Button',
-  variant: 'primary',
-  inverse: false,
-  disabled: false,
-  edges: 'rectangle',
+export const Password = Template.bind({});
+Password.args = {
+
 };

@@ -4,13 +4,11 @@ import type { AlertInterface } from './alerts'
 export type { ColorInterface, AlertInterface}
 
 export interface CommonThemeInterface extends AlertInterface {
-    backgroundLightest: string,
-    backgroundLighter: string,
-    backgroundLight: string,
+    backgroundShade3: string,
+    backgroundShade2: string,
+    backgroundShade1: string,
+    backgroundShade0: string,
     background:string,
-    backgroundDark: string,
-    backgroundDarker: string,
-    backgroundDarkest: string,
     text:string,
     type?: string,
 }
@@ -34,8 +32,14 @@ export interface PaletteInterface extends BaseThemeColorsInterface {
 
 export interface ThemeMapInterface {
     [themeName: string]: ExpandedThemeInterface,
-    darkgreen: ExpandedThemeInterface
-    // lightgreen: ThemeInterface
+    lightgreen: ExpandedThemeInterface,
+    lightpink: ExpandedThemeInterface, 
+    lightblue: ExpandedThemeInterface, 
+    lightyellow: ExpandedThemeInterface,
+    darkgreen: ExpandedThemeInterface,
+    darkpink: ExpandedThemeInterface,
+    darkblue: ExpandedThemeInterface,
+    darkyellow: ExpandedThemeInterface
 }
 
 export interface MergedInterface {

@@ -4,13 +4,11 @@ import {BaseAlerts} from '../alerts'
 
 const Common:CommonThemeInterface = {
     ...BaseAlerts,
-    backgroundLightest: '#808080',
-    backgroundLighter: '#595959',
-    backgroundLight: '#474747',
+    backgroundShade3: '#808080',
+    backgroundShade2: '#595959',
+    backgroundShade1: '#474747',
+    backgroundShade0: '#060606',
     background: '#2a2a2a',
-    backgroundDark: '#060606',
-    backgroundDarker: '#060606',
-    backgroundDarkest: '#060606',
     text: '#fefefe',
     type: 'Dark',
 }

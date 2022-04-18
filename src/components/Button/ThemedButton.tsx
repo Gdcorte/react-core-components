@@ -59,7 +59,7 @@ export const ThemedButton: FunctionComponent<ButtonProps> = ({
         }
 
         return buttonColors
-    }, [theme.primary])
+    }, [theme.primary, variant])
 
     return (
     <Button

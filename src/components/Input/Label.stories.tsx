@@ -1,26 +1,23 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button } from './Button';
+import { LabelInput, SimpleInput } from './';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Button',
-  component: Button,
+  title: 'Components/Input',
+  component: LabelInput,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+      bold: {control: 'boolean', defaultValue: false},
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof LabelInput>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof LabelInput> = (args) => <LabelInput {...args} ><SimpleInput /></LabelInput>;
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-export const ButtonSimple = Template.bind({});
-ButtonSimple.args = {
-  children:  'Button',
-  variant: 'primary',
-  inverse: false,
-  disabled: false,
-  edges: 'rectangle',
+export const Label = Template.bind({});
+Label.args = {
+    label:'Input Label',
+    orientation: 'column',
 };

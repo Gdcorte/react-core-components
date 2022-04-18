@@ -15,7 +15,7 @@ export const ToggleStyled = styled.div`
     cursor: pointer;
 
     :hover{
-        background-color: ${({ theme }) => theme.backgroundLighter };
+        background-color: ${({ theme }) => theme.backgroundShade2 };
         border: none;
     }
 `

@@ -2,9 +2,12 @@ import {css} from 'styled-components'
 
 export const InputCss = css`
     border: 2px solid ${({ theme })=> theme.primary };
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
 
-    background-color: ${({ theme })=> theme.background };
-    color: ${({ theme })=> theme.primary };s
+    background-color: inherit;
+    color: ${({ theme })=> theme.primary };
 
     border-radius: 5px;
     width: 100%;
@@ -17,7 +20,7 @@ export const InputCss = css`
     }
 
     :disabled{ 
-        border:none; 
-        background-color: ${({ theme })=> theme.alternate };
+        border: 2px double ${({ theme })=> theme.backgroundShade3};
+        color: ${({ theme })=> theme.backgroundShade3};
     }
 `

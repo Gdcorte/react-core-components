@@ -51,23 +51,7 @@ export const getTheme = (themeName: string = 'darkgreen'): ExpandedThemeInterfac
         defaultTheme = LightGreen
     }
 
-    let rawTheme = themeMap[themeName] || defaultTheme
-    // Ensures consistency of colors when switching a theme ^.^
-    if (rawTheme.type == 'Light'){
-        let theme = {
-            ...rawTheme,
-            backgroundLightest: rawTheme.backgroundDarkest,
-            backgroundLighter: rawTheme.backgroundDarker,
-            backgroundLight: rawTheme.backgroundDark,
-            backgroundDark: rawTheme.backgroundLight,
-            backgroundDarker: rawTheme.backgroundLighter,
-            backgroundDarkest: rawTheme.backgroundLightest,
-        }
-
-        rawTheme = theme
-    }
-
-    return rawTheme 
+    return themeMap[themeName] || defaultTheme
 }
 
 /**
