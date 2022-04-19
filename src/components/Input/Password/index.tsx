@@ -21,11 +21,11 @@ const Password: FunctionComponent<PasswordInterface> = ({
     errorMessage,
     ...props
 }) =>{
-    const [inputType, setinputType] = useState('password')
+    const [inputType, setinputType] = useState<'text'|'password'>('password')
     const [lockStatus, setlockStatus] = useState(true)
     
     function toggleImgIcon(){
-        let newInputStatus = 'password'
+        let newInputStatus: 'text'|'password' = 'password'
 
         if (inputType =='password'){
             newInputStatus = 'text'

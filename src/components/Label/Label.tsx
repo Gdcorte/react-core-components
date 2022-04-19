@@ -25,7 +25,7 @@ export interface InputContainerInterface {
     expand?: boolean,
 }
 
-const InputContainer:FunctionComponent<InputContainerInterface> = ({ 
+const Label:FunctionComponent<InputContainerInterface> = ({ 
     children,
     orientation,
     label,
@@ -54,10 +54,10 @@ const InputContainer:FunctionComponent<InputContainerInterface> = ({
     )
 }
 
-InputContainer.defaultProps = {
+Label.defaultProps = {
     bold: false,
     usePointer: true,
     key:undefined,
 }
 
-export default InputContainer
+export default Label

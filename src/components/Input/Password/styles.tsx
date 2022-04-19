@@ -29,4 +29,5 @@ export const IconStyled = styled.div`
     bottom: 0;
     vertical-align: middle;
     border-style: none;
+    cursor: pointer;
 `

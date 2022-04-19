@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { InputCss } from './style'
 
@@ -14,8 +15,8 @@ const InputStyled = styled.input`
 
 const SpanStyled = styled.span`
     position: relative;
-    top: -24px;
-    left: 90%;
+    top: -30px;
+    left: 2%;
 
     div:first-child {
         top: 4px;
@@ -42,9 +43,16 @@ const SpanStyled = styled.span`
     }
 `
 
-const SimpleInput = ({
-    validInput=true,
-    errorMessage='Invalid Input',
+export interface SimpleInputInterface {
+    validInput?: boolean,
+    errorMessage?: string,
+    disabled?: boolean,
+    type?: 'text'|'password'|'number'|'checkbox',
+}
+
+const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
+    validInput,
+    errorMessage,
     ...props
 }) => {
     return (
@@ -60,6 +68,13 @@ const SimpleInput = ({
             }
         </InputContainerStyled>
     )
+}
+
+SimpleInput.defaultProps = {
+    validInput: true,
+    errorMessage: 'Invalid Input',
+    disabled: false,
+    type: 'text',
 }
 
 export default SimpleInput
