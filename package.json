@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/gdcorte"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Collection of React Components",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "author": "Gustavo <gustavodacorte@gmail.com>",
