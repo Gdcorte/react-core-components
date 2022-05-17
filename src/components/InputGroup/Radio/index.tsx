@@ -9,6 +9,7 @@ export interface RadioInputInterface {
         value: string,
     }[]
     defaultValue?: string,
+    useRow?: boolean,
     changeCallback: CallableFunction,
 }
 
@@ -16,6 +17,7 @@ const RadioButton: FunctionComponent<RadioInputInterface> = ({
     options,
     defaultValue,
     changeCallback,
+    useRow,
     ...props
 }) =>{
     const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined)
@@ -33,7 +35,9 @@ const RadioButton: FunctionComponent<RadioInputInterface> = ({
     }
 
     return(
-        <RadioContainer>
+        <RadioContainer
+            useRow={useRow}
+        >
             {options.map(singleOption => {
                 return(
                     <LabelStyled

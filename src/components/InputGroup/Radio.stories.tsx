@@ -25,5 +25,6 @@ Radio.args = {
         {value: 'value4', label: 'Test Value 4'},
     ],
     defaultValue: "value1",
-    changeCallback: (event: SyntheticEvent)=> { console.log(event)}
+    changeCallback: (event: SyntheticEvent)=> { console.log(event)},
+    useRow: false
 };

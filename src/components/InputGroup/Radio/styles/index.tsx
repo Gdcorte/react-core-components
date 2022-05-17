@@ -12,6 +12,19 @@ export const CaptionStyled = styled.p<{checked:boolean}>`
     margin-left: 6px;
 `
 
-export const RadioContainer = styled.div`
-    width: fit-content;
+export const RadioContainer = styled.div<{useRow?: boolean}>`
+    display: flex;
+    flex-direction: column;
+
+    ${({useRow})=>{
+        if(useRow){
+            return (`
+                flex-direction:row;
+
+                label {
+                    margin-right: 20px;
+                }
+            `)
+        }
+    }}
 `
