@@ -1,1 +1,0 @@
-export {LockedSvg, UnlockedSvg} from "./svg"

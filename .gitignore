@@ -106,5 +106,9 @@ dist
 # Storybook
 storybook-static
 
+# Others 
+ignore.*
+.ignore*
+
 # temporary
 ignore_refactor/*

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { ButtonColorInterface } from "./defaultColors";
 import { Button, ButtonProps } from './Button'
 import { useTheme } from "styled-components";

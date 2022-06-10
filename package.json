@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core-components",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -10,10 +10,13 @@
   "author": "Gustavo <gustavodacorte@gmail.com>",
   "license": "MIT",
   "private": false,
+  "peerDependencies": {
+    "moment": ">= 2",
+    "react": ">= 16",
+    "react-datetime": ">= 3",
+    "styled-components": ">= 5"
+  },
   "dependencies": {
-    "moment": "^2.29.2",
-    "react-datetime": "^3.1.1",
-    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -29,11 +32,14 @@
     "@types/react": "^17.0.43",
     "@types/styled-components": "^5.1.24",
     "babel-loader": "^8.2.4",
+    "moment": "^2.29.2",
     "react": "^18.0.0",
+    "react-datetime": "^3.1.1",
     "react-dom": "^18.0.0",
     "rollup": "^2.70.1",
     "rollup-plugin-dts": "^4.2.0",
     "storybook-addon-styled-component-theme": "^2.0.0",
+    "styled-components": "^5.3.5",
     "tslib": "^2.3.1",
     "typescript": "^4.6.3"
   },
@@ -46,6 +52,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "rollup": "rollup -c"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "pretest": "npm run build"
   }
 }
