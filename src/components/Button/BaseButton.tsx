@@ -1,23 +1,23 @@
 import { FunctionComponent, HTMLProps } from "react";
-import { ButtonColorInterface, buttonColorMap, ButtonDefaultColor } from "./defaultColors";
+import { ButtonColorInterface, ButtonDefaultColor } from "./defaultColors";
 import { ButtonStyled } from "./style";
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   colors?: ButtonColorInterface,
-  variant?: "primary"|"secondary"|"info"|"success"|"warning"|"danger",
   inverse?: boolean,
-  edges?: "oval"|"round"|"pill"|"rectangle",
-  edgeSize?: string,
+  shape?: "oval"|"round"|"pill"|"rectangle",
+  radius?: string,
   fontSize?: string,
+  disableFocus?: boolean,
 }
 
-export const Button: FunctionComponent<ButtonProps> = ({
+export const BaseButton: FunctionComponent<ButtonProps> = ({
   colors,
-  variant,
   inverse,
-  edges,
-  edgeSize,
+  shape,
+  radius,
   fontSize,
+  disableFocus,
   onClick,
   disabled,
   className,
@@ -27,9 +27,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   const getColorPallete = () =>{
     if (colors) return colors
 
-    if (!variant) return ButtonDefaultColor
-
-    return buttonColorMap[variant] || ButtonDefaultColor
+    return ButtonDefaultColor
   }
 
   return (
@@ -39,13 +37,14 @@ export const Button: FunctionComponent<ButtonProps> = ({
       disabled={disabled}
       colors={getColorPallete()}
       inverse={inverse}
-      edges={edges}
-      edgeSize={edgeSize}
+      shape={shape}
+      radius={radius}
       fontSize={fontSize}
+      disableFocus={disableFocus}
     >
       {children}
     </ButtonStyled>
   );
 };
 
-export default Button;
+export default BaseButton;

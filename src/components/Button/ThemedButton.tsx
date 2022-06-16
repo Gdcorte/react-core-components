@@ -1,14 +1,17 @@
 import { FunctionComponent, useMemo } from "react";
 import { ButtonColorInterface } from "./defaultColors";
-import { Button, ButtonProps } from './Button'
+import { BaseButton, ButtonProps } from './BaseButton'
 import { useTheme } from "styled-components";
 
-export const ThemedButton: FunctionComponent<ButtonProps> = ({
-  colors,
+export interface ThemedButtonProps extends ButtonProps {
+  variant?: "primary"|"secondary"|"info"|"success"|"warning"|"danger",
+}
+
+export const ThemedButton: FunctionComponent<ThemedButtonProps> = ({
   variant,
   inverse,
-  edges,
-  edgeSize,
+  shape,
+  radius,
   fontSize,
   onClick,
   disabled,
@@ -62,18 +65,18 @@ export const ThemedButton: FunctionComponent<ButtonProps> = ({
     }, [theme.primary, variant])
 
     return (
-    <Button
+    <BaseButton
         className={className}
         onClick={onClick}
         disabled={disabled}
         colors={buttonColors}
         inverse={inverse}
-        edges={edges}
-        edgeSize={edgeSize}
+        shape={shape}
+        radius={radius}
         fontSize={fontSize}
     >
         {children}
-    </Button>
+    </BaseButton>
     );
 };
 

@@ -22,5 +22,5 @@ ButtonThemed.args = {
   variant: 'primary',
   inverse: false,
   disabled: false,
-  edges: 'rectangle',
+  shape: 'rectangle',
 };
