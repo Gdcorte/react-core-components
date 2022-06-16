@@ -21,10 +21,10 @@ const Green:ColorInterface ={
 }
 
 const Pink:ColorInterface ={
-    primary: '#FFAEBC',
-    primaryVariant: '#f03faf',
-    secondary: '#ffe0ee',
-    secondaryVariant: '#bf30bd',
+    primary: '#ffaaff',
+    primaryVariant: '#FFAEBC',
+    secondary: '#ddaaff',
+    secondaryVariant: '#dd7aff',
 }
 
 const Blue:ColorInterface ={
@@ -35,10 +35,10 @@ const Blue:ColorInterface ={
 }
 
 const Yellow:ColorInterface ={
-    primary: '#FBE7C6',
-    primaryVariant: '#ffb84b',
-    secondary: '#c8b595',
-    secondaryVariant: '#845a00',
+    primary: '#ffefaa',
+    primaryVariant: '#eedd6c',
+    secondary: '#ccbbaa',
+    secondaryVariant: '#FBE7C6',
 }
 
 const mergedPrimary: MergedInterface = {
