@@ -23,42 +23,55 @@ export const ThemedButton: FunctionComponent<ThemedButtonProps> = ({
 
     const buttonColors = useMemo(() => {
         var buttonColors:ButtonColorInterface = {
-            background: theme.primary, 
-            color: theme.background, 
-            actionableColor: theme.primaryVariant, 
-            selected: theme.secondary, 
-            focused: theme.secondary,
+            main: {
+                bg: theme.primary,
+                text: theme.background,
+            },
+            hover: {
+                bg: theme.secondary,
+                text: theme.background,
+            },
+            click: {
+                bg: theme.secondaryVariant,
+                text: theme.background,
+            },
+            focus: {
+                bg: theme.primaryVariant,
+                text: theme.background,
+            },
+            disabled: {
+                bg: `${theme.primary}30`,
+                text: `${theme.background}30`,
+            },
         }
 
-        let alertType = undefined
-        switch (variant){
-            case 'primary':
-                break
-
-            case 'secondary':
+        switch(variant){
+            case "info":
+            case "danger":
+            case "warning":
+            case "success":
                 buttonColors = {
-                    background: theme.secondary, 
-                    color: theme.background, 
-                    actionableColor: theme.secondaryVariant, 
-                    selected: theme.primary, 
-                    focused: theme.primary,
+                    main: {
+                        bg: theme[variant].main,
+                        text: theme[variant].contrast,
+                    },
+                    hover: {
+                        bg: `${theme[variant].main}bb`,
+                        text: theme[variant].contrast,
+                    },
+                    click: {
+                        bg: `${theme[variant].main}99`,
+                        text: theme[variant].contrast,
+                    },
+                    focus: {
+                        bg: `${theme[variant].main}cc`,
+                        text: theme[variant].contrast,
+                    },
+                    disabled: {
+                        bg: `${theme[variant].main}70`,
+                        text: `${theme[variant].contrast}`,
+                    },
                 }
-                break
-            
-            default:
-                alertType = variant
-                break;
-        }
-
-        if (alertType){
-            buttonColors = {
-                background: theme[alertType].main, 
-                color: theme[alertType].contrast, 
-                actionableColor: theme[alertType].main, 
-                selected: theme[alertType].main, 
-                focused: theme[alertType].main,
-            }
-
         }
 
         return buttonColors
@@ -67,10 +80,10 @@ export const ThemedButton: FunctionComponent<ThemedButtonProps> = ({
     return (
     <BaseButton
         className={className}
-        onClick={onClick}
+        onClick={disabled ?  ()=>{} : onClick}
         disabled={disabled}
         colors={buttonColors}
-        inverse={inverse}
+        inverse={inverse || variant=="secondary"}
         shape={shape}
         radius={radius}
         fontSize={fontSize}

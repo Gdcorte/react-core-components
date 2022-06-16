@@ -40,6 +40,7 @@ const buttonDisabled = css<{
     inverse?:boolean, 
 }>`
     :disabled{
+        cursor: default;
         background-color: ${({colors, inverse}) => inverse ? 'transparent' : colors.disabled.bg};
         color: ${({colors, inverse}) => inverse ? colors.disabled.bg : colors.disabled.text};
 
@@ -60,6 +61,7 @@ const buttonBaseStyle = css<{
     background-color: ${({colors, inverse}) => inverse ? 'transparent' : colors.main.bg};
     color: ${({colors, inverse}) => inverse ? colors.main.bg : colors.main.text};
     border: medium double ${({colors, inverse}) => inverse ? colors.main.bg : 'transparent'};
+    cursor: pointer;
     ${({shape, radius})=>{
         switch(shape){
             case 'pill':
