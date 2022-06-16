@@ -50,10 +50,10 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "dev": "CHOKIDAR_USEPOLLING=true start-storybook -p 6006 -s src --ci",
     "build-storybook": "build-storybook",
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "pretest": "npm run build"
+    "build-dev": "rollup -c -w",
+    "build-test": "npm run build"
   }
 }
