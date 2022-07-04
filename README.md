@@ -8,4 +8,4 @@ In both cases all the components provide an easy to customize interface and you 
 ## How to test this library locally
 
 For local development of this library, run `yarn install -D` to install all the development dependncies.
-Then you can run storybook with `yarn storybook` and see all of the components more in depth.
+Then you can run storybook with `yarn dev` and see all of the components more in depth.
