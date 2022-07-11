@@ -1,2 +1,2 @@
-export {default as SimpleDropdown} from './simple'
-export {default as LinksDropdown} from './links'
+export {default as ClickDropdown} from './Click'
+export {default as HoverDropdown} from './Hover'

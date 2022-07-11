@@ -7,17 +7,19 @@ export const ClickDropdown: FunctionComponent<DropdownMenuProps> = ({
     label,
     options,
     listOrientation,
-    autoClose,
 })=>{
 
     const masterRef = useRef(null)
 
     return(
-        <ElemDropdownContainer elementRef={masterRef}>
+        <ElemDropdownContainer 
+            elementRef={masterRef}
+        >
             <ElemDropdown
                 label={label}
                 options={options}
                 parentRef={masterRef}
+                listOrientation={listOrientation}
             />
         </ElemDropdownContainer>
     )
@@ -25,7 +27,6 @@ export const ClickDropdown: FunctionComponent<DropdownMenuProps> = ({
 
 ClickDropdown.defaultProps = {
     listOrientation: "left",
-    autoClose: true,
 }
 
 export default ClickDropdown

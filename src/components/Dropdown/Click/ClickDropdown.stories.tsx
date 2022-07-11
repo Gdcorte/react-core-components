@@ -17,7 +17,8 @@ const Template: ComponentStory<typeof ClickDropdown> = (args) => <div> <ClickDro
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 export const Click = Template.bind({});
 Click.args = {
-  label: "Hi!, I'm a menu",
+  label: "Hi!, I'm a down menu",
+  listOrientation: "down",
   options: [
     {
       href: "#",
@@ -25,14 +26,37 @@ Click.args = {
       selected: true,
     },
     {
-      label: 'multi-level',
-      listOrientation: "right",
-      autoClose: true,
+      label: 'multi-level up',
+      listOrientation: "up",
       options: [
         {
-          href: "value2.com",
-          label: "label2"
-        }
+          href: "value3.com",
+          label: "labe1awd"
+        },
+        {
+          label: 'Level3 left',
+          listOrientation: "right",
+          options: [
+            {
+              href: "value3.com",
+              label: "label3"
+            },
+            {
+              label: 'Level4 right',
+              listOrientation: "left",
+              options: [
+                {
+                  href: "value3.com",
+                  label: "label4"
+                }
+              ],
+            },
+          ],
+        },
+        {
+          href: "value3.com",
+          label: "labe12w"
+        },
       ],
     },
     {
@@ -43,7 +67,6 @@ Click.args = {
     {
       label: 'multi-level2',
       listOrientation: "right",
-      autoClose: true,
       options: [
         {
           href: "ohno.com",

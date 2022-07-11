@@ -4,8 +4,10 @@ import {
     ElemDropdownMenu,
     ElemDropdownList,
     ElemDropdownOption,
+    ElemDropdownSubContainer,
 } from '../Elements'
 import { OutsideClickHandler } from '../../../hooks/OutsideClick';
+import { Carrets } from '../../../icons';
 
 interface ClickDropdownMenuProps extends DropdownMenuProps {
     parentRef?: RefObject<HTMLObjectElement>
@@ -15,8 +17,8 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
     label,
     options,
     listOrientation,
-    autoClose,
     parentRef,
+    showCarret,
 })=>{
     const [isOpen, setisOpen] = useState(false);
 
@@ -43,19 +45,20 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
                 </ElemDropdownOption>
             )
         }
-        const dropdownRef = useRef(null)
 
         return (
-            <ClickDropdown 
-                key={`drop-menu-${label}-${option.label}`}
-                label={option.label}
-                options={option.options}
-                listOrientation={option.listOrientation}
-                autoClose={option.autoClose}
-                parentRef={dropdownRef}
-            />
+            <ElemDropdownSubContainer>
+                <ClickDropdown 
+                    key={`drop-menu-${label}-${option.label}`}
+                    label={option.label}
+                    options={option.options}
+                    listOrientation={option.listOrientation}
+                />
+            </ElemDropdownSubContainer>
         )
     }) 
+    const CarretNode = Carrets[listOrientation || "down"]
+
     return(
         <>
             <ElemDropdownMenu
@@ -63,11 +66,14 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
                 elementRef={parentRef}
                 elementKey={`main-menu-${label}`}
             >
-                {label}
+                <div>{label}</div>    
+                {showCarret && <CarretNode />}
             </ElemDropdownMenu>
 
             { isOpen &&
-                <ElemDropdownList>
+                <ElemDropdownList
+                    listOrientation={listOrientation}
+                >
                     {optionsNode}
                 </ElemDropdownList>
             }
@@ -77,7 +83,7 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
 
 ClickDropdown.defaultProps = {
     listOrientation: "left",
-    autoClose: true,
+    showCarret: true,
 }
 
 export default ClickDropdown

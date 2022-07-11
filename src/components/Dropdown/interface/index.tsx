@@ -7,12 +7,14 @@ export type DropdownOptionProps = {
     selected?: boolean,
 }
 
+export type DropdownListOrientation = "up"|"down"|"left"|"right"
+
 export type DropdownMenuProps = {
     label: string,
-    listOrientation?: "up"|"down"|"left"|"right"
-    autoClose?: boolean,
+    listOrientation?: DropdownListOrientation
     selected?: boolean,
     options: (DropdownOptionProps | DropdownMenuProps)[],
+    showCarret?: boolean
 }
 
 export function isDropdownOption(option: DropdownMenuProps | DropdownOptionProps): option is DropdownOptionProps {

@@ -9,7 +9,7 @@ const StyledMenu = styled.div`
 `
 interface ElemMenuProps {
     children: ReactNode,
-    onClick: CallableFunction,
+    onClick?: CallableFunction,
     elementRef?: RefObject<HTMLObjectElement>
     elementKey?: string
 }
@@ -21,7 +21,9 @@ const ElemMenu: FunctionComponent<ElemMenuProps> = ({
     elementKey,
 }) => {
     function executeClick(event: SyntheticEvent){
-        onClick(event)
+        if(onClick){
+            onClick(event)
+        }
     }
     return (
         <StyledMenu 
