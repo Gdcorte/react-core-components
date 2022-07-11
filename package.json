@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core-components",
-  "version": "0.4.1",
+  "version": "0.4.0",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -16,23 +16,22 @@
     "react-datetime": ">= 3",
     "styled-components": ">= 5"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@rollup/plugin-commonjs": "^21.0.3",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.1",
-    "@storybook/addon-actions": "^6.5.0-alpha.51",
-    "@storybook/addon-essentials": "^6.5.0-alpha.51",
-    "@storybook/addon-interactions": "^6.5.0-alpha.51",
-    "@storybook/addon-links": "^6.5.0-alpha.51",
-    "@storybook/react": "^6.5.0-alpha.51",
-    "@storybook/testing-library": "^0.0.9",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^17.0.43",
     "@types/styled-components": "^5.1.24",
     "babel-loader": "^8.2.4",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "react": "^18.0.0",
     "react-datetime": "^3.1.1",
     "react-dom": "^18.0.0",
@@ -54,6 +53,7 @@
     "build-storybook": "build-storybook",
     "build": "rollup -c",
     "build-dev": "rollup -c -w",
-    "build-test": "npm run build"
+    "build-test": "npm run build",
+    "audit-fix": ""
   }
 }
