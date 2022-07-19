@@ -1,10 +1,12 @@
 import { FunctionComponent } from "react"
 
 
-const CarretDownIcon:FunctionComponent = ({})=> {
+const CarretDownIcon:FunctionComponent = ({
+    ...props
+})=> {
 
     return(
-        <svg 
+        <svg {...props}
             xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" 
             fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512.02 319.26"
         >
