@@ -24,4 +24,8 @@ export function isAccordionItem(option: SubAccordion): option is AccordionItemPr
     return (option as AccordionItemProps).description !== undefined
 }
 
+export function isEmptyTitle(option: SubAccordion): option is AccordionBaseProps{
+    return ((option as AccordionItemProps).description === undefined) && ((option as SubAccordionProps).content === undefined)
+}
+
 export type Accordion = SubAccordion[]

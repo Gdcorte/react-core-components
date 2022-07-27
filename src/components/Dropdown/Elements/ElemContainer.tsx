@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
     ${DropdownContainerCss}
 `
 interface ElementContainerProps {
-    children: ReactNode,
+    children: JSX.Element,
     elementRef?: RefObject<HTMLObjectElement>
     mouseEnter?: MouseEventHandler<HTMLDivElement>,
     mouseLeave?: MouseEventHandler<HTMLDivElement>,

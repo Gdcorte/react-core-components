@@ -8,7 +8,7 @@ const StyledList = styled.div`
     ${DropDownListCss}
 `
 interface ElemListProps {
-    children: ReactNode,
+    children: JSX.Element,
     listOrientation?: DropdownListOrientation
 }
 

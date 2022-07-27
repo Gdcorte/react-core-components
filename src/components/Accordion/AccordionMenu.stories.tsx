@@ -42,7 +42,6 @@ Base.args = {
     accordionOptions: [
         {
             title: <SettingsIcon />,
-            description: <div>"lorem Ipsum"</div>,
             action: ()=>{console.log("Accord me! Menu 1 Op1")},
             uniqueKey: 'm1op1',
             commonClass: "lv1",

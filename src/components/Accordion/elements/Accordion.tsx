@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useMemo, useState } from "react"
 import { AccordionContent } from "../elements"
-import { SubAccordion, AccordionItemProps, isSubAccordion, isAccordionItem } from "../interface"
+import { SubAccordion, AccordionItemProps, isSubAccordion, isAccordionItem, isEmptyTitle } from "../interface"
 import styled , {css} from 'styled-components'
 import { CarretDown } from "../../../icons"
 
@@ -26,7 +26,7 @@ const AccordionTitle = styled.div`
     justify-content: center;
 
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
 
     :hover{
         background-color: ${({theme})=> theme.backgroundShade0}
@@ -62,6 +62,11 @@ const AccordionItem: FunctionComponent<AccordionMenuProps> = ({
 
     function changeMenu(){
         changeOpenMenu(option.uniqueKey)
+
+        if (isEmptyTitle(option)){
+            option.action && option.action()
+        }
+
     }
 
     function changeOpenSubMenu(newMenu: string){
@@ -93,6 +98,7 @@ const AccordionItem: FunctionComponent<AccordionMenuProps> = ({
                 <AccordionContent 
                     key={option.uniqueKey}
                     option={option.description}
+                    action={option.action}
                 />
             )
         }

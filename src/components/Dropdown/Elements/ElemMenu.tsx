@@ -8,7 +8,7 @@ const StyledMenu = styled.div`
     ${DropDownMenuCss}
 `
 interface ElemMenuProps {
-    children: ReactNode,
+    children: JSX.Element,
     onClick?: CallableFunction,
     elementRef?: RefObject<HTMLObjectElement>
     elementKey?: string
