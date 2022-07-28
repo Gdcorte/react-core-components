@@ -29,7 +29,12 @@ const AccordionTitle = styled.div`
     border-radius: 5px;
 
     :hover{
-        background-color: ${({theme})=> theme.backgroundShade0}
+        background-color: ${({theme})=> theme.backgroundShade0};
+        color: ${({theme})=> theme.primary};
+
+        svg {
+            fill: ${({theme})=> theme.primary};
+        }
     }
 `
 
