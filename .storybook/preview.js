@@ -10,8 +10,14 @@ import {
   LightBlue, 
   LightGreen, 
   LightPink, 
-  LightYellow
+  LightYellow,
+  TestTheme,
+  ThemeManager
 } from '../src/themes'
+
+let themeManager = new ThemeManager()
+
+const FullTheme = themeManager.buildTheme(TestTheme)
 
 const themes = [
   DarkYellow, 
