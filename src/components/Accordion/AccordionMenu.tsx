@@ -4,7 +4,8 @@ import { Accordion } from "./interface"
 import styled from 'styled-components'
 
 export interface AccordionMenuProps {
-    accordionOptions: Accordion
+    accordionOptions: Accordion,
+    className?: string,
 }
 
 
@@ -17,6 +18,7 @@ const StyledMenuContainer = styled.div`
 
 const AccordionMenu: FunctionComponent<AccordionMenuProps> = ({
     accordionOptions,
+    className,
 })=>{
     const [openMenu, setopenMenu] = useState('')
 
@@ -37,6 +39,7 @@ const AccordionMenu: FunctionComponent<AccordionMenuProps> = ({
                         option={option}
                         openMenu={openMenu}
                         changeOpenMenu={changeOpenMenu}
+                        parentLevel={0}
                     />
                 )
         })
@@ -45,7 +48,7 @@ const AccordionMenu: FunctionComponent<AccordionMenuProps> = ({
     
 
     return (
-        <StyledMenuContainer>
+        <StyledMenuContainer className={`accordion-base lvl-0 ${className || ""}`}>
             {renderedOptions}
         </StyledMenuContainer>
     )

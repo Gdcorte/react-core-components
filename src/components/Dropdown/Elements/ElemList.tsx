@@ -8,7 +8,7 @@ const StyledList = styled.div`
     ${DropDownListCss}
 `
 interface ElemListProps {
-    children: JSX.Element,
+    children: JSX.Element|JSX.Element[],
     listOrientation?: DropdownListOrientation
 }
 

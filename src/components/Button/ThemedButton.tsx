@@ -2,6 +2,7 @@ import { FunctionComponent, useMemo } from "react";
 import { ButtonColorInterface } from "./defaultColors";
 import { BaseButton, ButtonProps } from './BaseButton'
 import { useTheme } from "styled-components";
+import { FontHelper } from "../../themes";
 
 export interface ThemedButtonProps extends ButtonProps {
   variant?: "primary"|"secondary"|"info"|"success"|"warning"|"danger",
@@ -19,63 +20,49 @@ export const ThemedButton: FunctionComponent<ThemedButtonProps> = ({
   children,
 }) => {
 
-    const theme = useTheme()
+    const {theme} = useTheme()
 
     const buttonColors = useMemo(() => {
-        var buttonColors:ButtonColorInterface = {
-            main: {
-                bg: theme.primary,
-                text: theme.background,
-            },
-            hover: {
-                bg: theme.secondary,
-                text: theme.background,
-            },
-            click: {
-                bg: theme.secondaryVariant,
-                text: theme.background,
-            },
-            focus: {
-                bg: theme.primaryVariant,
-                text: theme.background,
-            },
-            disabled: {
-                bg: `${theme.primary}30`,
-                text: `${theme.background}30`,
-            },
+        if (!variant){
+            variant = 'primary'
         }
 
-        switch(variant){
-            case "info":
-            case "danger":
-            case "warning":
-            case "success":
-                buttonColors = {
-                    main: {
-                        bg: theme[variant].main,
-                        text: theme[variant].contrast,
-                    },
-                    hover: {
-                        bg: `${theme[variant].main}bb`,
-                        text: theme[variant].contrast,
-                    },
-                    click: {
-                        bg: `${theme[variant].main}99`,
-                        text: theme[variant].contrast,
-                    },
-                    focus: {
-                        bg: `${theme[variant].main}cc`,
-                        text: theme[variant].contrast,
-                    },
-                    disabled: {
-                        bg: `${theme[variant].main}70`,
-                        text: `${theme[variant].contrast}`,
-                    },
-                }
+        let fonts = [
+            theme.fonts.light,
+            theme.fonts.dark,
+        ]
+
+        var buttonColors:ButtonColorInterface = {
+            main: {
+                bg: theme[variant].base,
+                text: FontHelper.findBestContrast(theme[variant].base, fonts),
+            },
+            hover: {
+                bg: theme[variant].hover,
+                text: FontHelper.findBestContrast(theme[variant].hover, fonts),
+            },
+            click: {
+                bg: theme[variant].selected,
+                text: FontHelper.findBestContrast(theme[variant].selected, fonts),
+            },
+            focus: {
+                bg: theme[variant].focus,
+                text: FontHelper.findBestContrast(theme[variant].focus, fonts),
+            },
+            disabled: {
+                bg: `${theme[variant].disabled}`,
+                text: `${FontHelper.findBestContrast(
+                    theme[variant].disabled, 
+                    [
+                        theme.fonts.light,
+                        `${theme.fonts.dark}80`,
+                    ]
+                )}`,
+            },
         }
 
         return buttonColors
-    }, [theme.primary, variant])
+    }, [theme.primary.base, variant])
 
     return (
     <BaseButton

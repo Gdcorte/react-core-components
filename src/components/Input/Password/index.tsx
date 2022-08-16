@@ -27,7 +27,7 @@ export const IconStyled = styled.div`
         height: 20px;
 
         path:last-child{
-            fill: ${({theme})=> theme.primary};
+            fill: ${({theme: {theme}})=> theme.primary.base};
         }
     }
 `

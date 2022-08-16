@@ -1,47 +1,89 @@
-import type { ColorInterface} from './colors'
-import type { AlertInterface } from './alerts'
-
-export type { ColorInterface, AlertInterface}
-
-export interface CommonThemeInterface extends AlertInterface {
-    backgroundShade3: string,
-    backgroundShade2: string,
-    backgroundShade1: string,
-    backgroundShade0: string,
-    background:string,
-    text:string,
-    type?: string,
+export interface RgbColor{
+    [key: string]: number,
+    red: number,
+    green: number,
+    blue:  number,
 }
 
-export interface ThemeInterface extends CommonThemeInterface, ColorInterface {}
-
-export interface ExpandedThemeInterface extends ThemeInterface {
-    name: string,
-    mergedPrimary: MergedInterface,
+export interface FontTypes {
+    light: string,
+    dark: string,
 }
 
-export interface BaseThemeColorsInterface {
-    main: string,
-    alternate?: string,
-    contrast: string,
+export interface ThemeTypes {
+    light: string,
+    dark: string,
+}
+export const defaultTypes = ['light', 'dark']
+
+export interface ThemeColors {
+    primary: string,
+    secondary: string,
+    color: string
+}
+export const defaultColors = ['primary', 'secondary']
+
+export interface ThemeAlertColors {
+    info: string,
+    success: string,
+    warning: string,
+    danger: string,
+}
+export const defaultAlerts = ['info', 'success', 'warning', 'danger']
+
+export interface InputTheme extends ThemeTypes, ThemeColors, ThemeAlertColors {
+    type: string,
 }
 
-export interface PaletteInterface extends BaseThemeColorsInterface {
-
+export interface ShadePresets {
+    shade1: string,
+    shade2: string,
+    shade3: string,
+    shade4: string,
+    shade5: string,
 }
 
-export interface ThemeMapInterface {
-    [themeName: string]: ExpandedThemeInterface,
-    lightgreen: ExpandedThemeInterface,
-    lightpink: ExpandedThemeInterface, 
-    lightblue: ExpandedThemeInterface, 
-    lightyellow: ExpandedThemeInterface,
-    darkgreen: ExpandedThemeInterface,
-    darkpink: ExpandedThemeInterface,
-    darkblue: ExpandedThemeInterface,
-    darkyellow: ExpandedThemeInterface
-}
-
-export interface MergedInterface {
+export interface ActionablePresets {
     [key: string]: string,
+    hover: string,
+    selected: string,
+    focus: string,
+    disabled: string,
 }
+
+export interface OutputTypesPresets extends ShadePresets {
+    base: string,
+};
+export interface OutputThemeTypes {
+    light: OutputTypesPresets,
+    dark: OutputTypesPresets,
+}
+
+export interface OutputColorPresets extends ShadePresets, ActionablePresets {
+    base: string,
+};
+export interface OutputAlertPresets extends ActionablePresets {
+    base: string,
+};
+export interface OutputThemeColors {
+    primary: OutputColorPresets,
+    secondary: OutputColorPresets,
+}
+
+export interface OutputThemeAlerts {
+    info: OutputAlertPresets,
+    success: OutputAlertPresets,
+    warning: OutputAlertPresets,
+    danger: OutputAlertPresets,
+}
+
+export interface OutputTheme extends OutputThemeTypes, OutputThemeColors, OutputThemeAlerts {
+    [key: string]: any,
+    fonts: FontTypes,
+    background: OutputTypesPresets,
+    type: string,
+    color: string,
+    name: string
+};
+
+export * from './oldIndex'

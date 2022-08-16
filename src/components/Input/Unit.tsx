@@ -2,6 +2,7 @@ import { SimpleInput } from './'
 import styled from 'styled-components';
 import { FunctionComponent } from 'react';
 import { SimpleInputInterface } from './Simple';
+import { FontHelper } from '../../themes';
 
 export const ContainerStyled = styled.div`
     display: flex;
@@ -10,7 +11,7 @@ export const ContainerStyled = styled.div`
 `
 
 export const UnitStyled = styled.p`
-    color: ${({ theme }) =>  theme.text };
+    color: ${({ theme: {theme}}) =>  FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light]) };
     position: absolute;
     top: 0;
     right: 0;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FontHelper } from '../../../themes';
 
 export const WrapperStyled = styled.div`
     display: flex;
@@ -8,14 +9,14 @@ export const WrapperStyled = styled.div`
 
 export const InputStyled = styled.input`
     border-radius: 5px;
-    border: 1px solid ${({ theme }) => theme.background};
+    border: 1px solid ${({ theme: {theme}}) => theme.background.base};
     width: 100%;
     padding-left: 8px;
-    color: ${({ theme }) =>  theme.text };
+    color: ${({ theme: {theme}}) =>  FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light]) };
 
     :focus-visible{
         outline: none;
-        border:2px dotted ${({ theme }) => theme.background};
+        border:2px dotted ${({ theme: {theme}}) => theme.background.base};
     }
 `
 

@@ -1,13 +1,13 @@
 import {css} from 'styled-components'
 
 export const InputCss = css`
-    border: 2px solid ${({ theme })=> theme.primary };
+    border: 2px solid ${({ theme: {theme}})=> theme.primary.base };
     border-top: transparent;
     border-left: transparent;
     border-right: transparent;
 
     background-color: inherit;
-    color: ${({ theme })=> theme.primary };
+    color: ${({ theme: {theme}})=> theme.primary.base };
 
     border-radius: 5px;
     width: 100%;
@@ -16,11 +16,11 @@ export const InputCss = css`
 
     :focus-visible{ 
         outline: none; 
-        border: 2px dotted ${({ theme })=> theme.primary };
+        border: 2px dotted ${({ theme: {theme}})=> theme.primary.base };
     }
 
     :disabled{ 
-        border: 2px double ${({ theme })=> theme.backgroundShade3};
-        color: ${({ theme })=> theme.backgroundShade3};
+        border: 2px double ${({ theme: {theme}})=> theme.primary.disabled};
+        color: ${({ theme: {theme}})=> theme.primary.disabled};
     }
 `

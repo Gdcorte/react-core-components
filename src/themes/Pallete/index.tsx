@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react"
-import { OutputTheme, TestTheme, ThemeManager } from ".."
 import PalleteColor from "./PalleteColor"
 import styled from 'styled-components'
 
@@ -9,21 +8,34 @@ const StyledContainer = styled.div`
         margin-right: 16px;
     }
 `
+const StyledAlertColumn = styled.div`
+    >div {
+        margin-top: 8px;
+    }
+
+    >div:first-child {
+        margin:0;
+    }
+`
 
 const PalleteCreator: FunctionComponent = ({}) => {
 
     return (
         <StyledContainer>  
-            <PalleteColor colorName={"light" as keyof OutputTheme} />
-            <PalleteColor colorName={"dark" as keyof OutputTheme} />
+            <PalleteColor colorName={"background"} />
 
-            <PalleteColor colorName={"primary" as keyof OutputTheme} />
-            <PalleteColor colorName={"secondary" as keyof OutputTheme} />
+            <PalleteColor colorName={"primary"} />
+            <PalleteColor colorName={"secondary"} />
 
-            <PalleteColor colorName={"info" as keyof OutputTheme} />
-            <PalleteColor colorName={"success" as keyof OutputTheme} />
-            <PalleteColor colorName={"warning" as keyof OutputTheme} />
-            <PalleteColor colorName={"danger" as keyof OutputTheme} />
+            <StyledAlertColumn>
+                <PalleteColor colorName={"info"} />
+                <PalleteColor colorName={"success"} />
+            </StyledAlertColumn>
+
+            <StyledAlertColumn>
+                <PalleteColor colorName={"warning"} />
+                <PalleteColor colorName={"danger"} />
+            </StyledAlertColumn>
         </StyledContainer>
     )
 }

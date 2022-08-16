@@ -3,32 +3,34 @@ import { withThemesProvider } from "storybook-addon-styled-component-theme";
 import { ThemeProvider } from "styled-components";
 
 import {
-  DarkBlue, 
-  DarkGreen, 
-  DarkPink, 
-  DarkYellow, 
-  LightBlue, 
-  LightGreen, 
-  LightPink, 
-  LightYellow,
-  TestTheme,
-  ThemeManager
+  bundleThemes,
 } from '../src/themes'
 
-let themeManager = new ThemeManager()
+let allThemes = bundleThemes()
+let darkThemes = Object.values(allThemes.dark.themes).map((value)=>{
+  return {
+    presets: allThemes.dark.presets,
+    theme: value,
+    name: value.name,
+  }
 
-const FullTheme = themeManager.buildTheme(TestTheme)
+})
+
+let lightThemes = Object.values(allThemes.light.themes).map((value)=>{
+  return {
+    presets: allThemes.light.presets,
+    theme: value,
+    name: value.name,
+  }
+})
 
 const themes = [
-  DarkYellow, 
-  DarkGreen, 
-  DarkBlue, 
-  DarkPink, 
-  LightGreen, 
-  LightBlue, 
-  LightPink, 
-  LightYellow];
+  ...darkThemes,
+  ...lightThemes,
+];
+
 addDecorator(withThemesProvider(themes), ThemeProvider);
+
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

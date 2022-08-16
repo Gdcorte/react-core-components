@@ -22,11 +22,11 @@ const StyledTestContainer = styled.div`
     }
 
     .body-lv1 {
-        background-color: ${({theme})=>theme.backgroundShade1};
+        background-color: ${({theme: {theme}})=>theme.background.shade1};
     }
 
     .body-lv2 {
-        background-color: ${({theme})=>theme.backgroundShade2};
+        background-color: ${({theme: {theme}})=>theme.background.shade2};
     }
 `
 

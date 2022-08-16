@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import { FontHelper } from '../../themes';
 import { InputCss } from './style'
 
 
@@ -28,14 +29,14 @@ const SpanStyled = styled.span`
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
         
-        border-top: 10px solid ${({ theme }) =>  theme.danger.main };
+        border-top: 10px solid ${({ theme: {theme} }) =>  theme.danger.base };
     }
 
     div:last-child {
-        background-color: ${({ theme }) =>  theme.danger.main };
-        color: ${({ theme }) =>  theme.danger.contrast };
+        background-color: ${({ theme: {theme} }) =>  theme.danger.base };
+        color: ${({ theme: {theme} }) =>  FontHelper.findBestContrast(theme.danger.base, [theme.fonts.dark, theme.fonts.light]) };
         padding: 2px;
-        border: 2px solid ${({ theme }) =>  theme.danger.main };
+        border: 2px solid ${({ theme: {theme} }) =>  theme.danger.base };
         border-radius: 8px;
         position: absolute;
         top: -20px;
@@ -47,16 +48,21 @@ export interface SimpleInputInterface {
     validInput?: boolean,
     errorMessage?: string,
     disabled?: boolean,
+    className?: string,
     type?: 'text'|'password'|'number'|'checkbox',
 }
 
 const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     validInput,
     errorMessage,
+    disabled,
+    className,
 }) => {
     return (
         <InputContainerStyled>
-            <InputStyled className={`InputElement`} 
+            <InputStyled 
+                className={`InputElement ${className || ""}`} 
+                disabled={disabled}
             />
             {!validInput && 
                 <SpanStyled className={`InputErrorMessage`}>

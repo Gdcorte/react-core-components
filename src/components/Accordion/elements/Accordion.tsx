@@ -3,18 +3,20 @@ import { AccordionContent } from "../elements"
 import { SubAccordion, AccordionItemProps, isSubAccordion, isAccordionItem, isEmptyTitle } from "../interface"
 import styled , {css} from 'styled-components'
 import { CarretDown } from "../../../icons"
+import { FontHelper } from "../../../themes"
 
 export interface AccordionMenuProps {
     option: SubAccordion,
     openMenu: string,
     changeOpenMenu: CallableFunction,
+    parentLevel: number,
 }
 
 const AccordionContainer = styled.div`
-    color: ${({theme})=> theme.text};
+    color: ${({theme: {theme}})=> FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light])};
 
     svg {
-        fill: ${({theme})=> theme.text};
+        fill: ${({theme: {theme}})=> FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light])};
     }
 
 `
@@ -29,11 +31,11 @@ const AccordionTitle = styled.div`
     border-radius: 5px;
 
     :hover{
-        background-color: ${({theme})=> theme.backgroundShade0};
-        color: ${({theme})=> theme.primary};
+        background-color: ${({theme: {theme}})=> theme.background.shade1};
+        color: ${({theme: {theme}})=> theme.primary.base};
 
         svg {
-            fill: ${({theme})=> theme.primary};
+            fill: ${({theme: {theme}})=> theme.primary.base};
         }
     }
 `
@@ -61,9 +63,11 @@ const AccordionItem: FunctionComponent<AccordionMenuProps> = ({
     option,
     openMenu,
     changeOpenMenu,
+    parentLevel,
 })=>{
     const [openSubMenu, setopenSubMenu] = useState('')
     const [showCarret, setshowCarret] = useState(true)
+    const currentLevel = parentLevel+1
 
     function changeMenu(){
         changeOpenMenu(option.uniqueKey)
@@ -91,6 +95,7 @@ const AccordionItem: FunctionComponent<AccordionMenuProps> = ({
                         option={value}
                         openMenu={openSubMenu}
                         changeOpenMenu={changeOpenSubMenu}
+                        parentLevel={currentLevel}
                     />
                 )
             })
@@ -117,12 +122,12 @@ const AccordionItem: FunctionComponent<AccordionMenuProps> = ({
 
     return (
         <AccordionContainer
-            className={`accordionContainer ${option.uniqueKey} ${option.commonClass}`}
+            className={`accordionContainer ${option.uniqueKey} ${option.commonClass || ""} container-lvl-${currentLevel}`}
         >
             <AccordionTitle 
                 key={option.uniqueKey}
                 onClick={changeMenu}
-                className={`accordionTitle`}
+                className={`accordionTitle title-lvl-${currentLevel}`}
             >
                 {option.title}
                 {showCarret ?
@@ -131,7 +136,7 @@ const AccordionItem: FunctionComponent<AccordionMenuProps> = ({
                 }
             </AccordionTitle>
             {openMenu==option.uniqueKey && 
-                <AccordionBody className={`accordionBody ${option.bodyClass}`}>{
+                <AccordionBody className={`accordionBody body-lvl-${currentLevel} ${option.bodyClass || ""}`}>{
                     renderedOptions}
                 </AccordionBody>
             }

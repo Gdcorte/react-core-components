@@ -69,15 +69,16 @@ export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
                 elementKey={`main-menu-${label}`}
             >
                 <div>{label}</div>    
-                {showCarret && <CarretNode />}
+                {showCarret ? <CarretNode /> : <></>}
             </ElemDropdownMenu>
 
-            { isOpen &&
+            { isOpen ?
                 <ElemDropdownList
                     listOrientation={listOrientation}
                 >
                     {optionsNode}
                 </ElemDropdownList>
+                : <></>
             }
         </ContainerNode>
     )

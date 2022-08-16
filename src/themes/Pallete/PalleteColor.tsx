@@ -1,36 +1,49 @@
 import { FunctionComponent } from "react"
-import { OutputTheme, ShaderManager, TestTheme, ThemeManager } from ".."
+import { ThemeHelper, FontHelper } from "../helpers"
+import { TestTheme } from '..'
 
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
+
 
 const StyledBlock = styled.div`
     height: 1rem;
     padding: 8px;
     margin-top: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    >div {
+        margin-left:4px;
+        margin-right:4px;
+    }
 `
 
 const StyledContainer = styled.div`
-    width: 10vw;
 `
 
+type colorNames = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'background'
+
 interface PalleteColor {
-    colorName: keyof OutputTheme
+    colorName: colorNames
 }
 
 const PalleteColor: FunctionComponent<PalleteColor> = ({
     colorName
 }) => {
-    const themeManager = new ThemeManager()
-    const testingTheme = themeManager.buildTheme(TestTheme)
+    const { theme } = useTheme()
+    
+    const myJsxElement = Object.entries(theme[colorName]).map((value)=>{
+        const [presetName, presetColor]:[string, string] = value
 
-    const myJsxElement = Object.entries(testingTheme[colorName]).map(([presetName, presetColor]:[string, string])=>{
-        console.log(`${colorName}-${presetName}`, presetColor)
         return (
             <StyledBlock 
                 key={`${colorName}-${presetName}`} 
                 style={{backgroundColor: presetColor, 
-                color:ShaderManager.findBestContrast(presetColor, testingTheme.light.base, testingTheme.dark.base)}}>
-                {presetName}
+                color:FontHelper.findBestContrast(presetColor, [theme.fonts.dark, theme.fonts.light])}}
+            >   
+                <div>{presetName}</div>
+                <div>{presetColor}</div>
             </StyledBlock>
         )
     })
