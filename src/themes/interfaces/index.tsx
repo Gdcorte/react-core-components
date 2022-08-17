@@ -85,5 +85,3 @@ export interface OutputTheme extends OutputThemeTypes, OutputThemeColors, Output
     color: string,
     name: string
 };
-
-export * from './oldIndex'

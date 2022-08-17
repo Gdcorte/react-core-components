@@ -1,68 +1,16 @@
-import {
-    LightGreen, 
-    LightPink, 
-    LightBlue, 
-    LightYellow,
-    lightColors,
-} from './light'
+import { lightColors } from './light'
 
-import { 
-    DarkGreen, 
-    DarkPink, 
-    DarkYellow, 
-    DarkBlue,
-    darkColors,
-} from './dark'
+import { darkColors } from './dark'
 
 import type {
-    ExpandedThemeInterface,
     InputTheme,
     ThemeAlertColors,
     ThemeColors,
-    ThemeMapInterface,
     ThemeTypes,
 } from './interfaces'
 import { ThemeHelper } from './helpers'
 
-
-export {
-    LightGreen, 
-    LightPink, 
-    LightBlue, 
-    LightYellow,
-} from './light'
-
-export { 
-    DarkGreen, 
-    DarkPink, 
-    DarkYellow, 
-    DarkBlue,
-} from './dark'
-
-export { BaseAlerts } from './alerts'
-
 import { OutputTheme } from './interfaces'
-
-export const getTheme = (themeName: string = 'darkgreen'): ExpandedThemeInterface => {    
-    const themeMap: ThemeMapInterface = {
-        lightgreen: LightGreen,
-        lightpink: LightPink, 
-        lightblue: LightBlue, 
-        lightyellow: LightYellow,
-        darkgreen: DarkGreen,
-        darkpink: DarkPink,
-        darkblue: DarkBlue,
-        darkyellow: DarkYellow,
-    }
-
-    let defaultTheme = DarkGreen
-    if (themeName.startsWith('light')){
-        defaultTheme = LightGreen
-    }
-
-    return themeMap[themeName] || defaultTheme
-}
-
 
 const BaseTypes: ThemeTypes = {
     light: '#fefefe',
