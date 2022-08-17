@@ -1,23 +1,25 @@
-import { FunctionComponent, useState } from 'react';
-import { Carrets } from '../../../icons';
-import { 
-    ElemDropdownContainer, 
-    ElemDropdownList, 
-    ElemDropdownMenu, 
-} from '../Elements';
-import { renderBodyDropdown } from '../helper';
+import { FunctionComponent, RefObject, useState } from 'react';
 import { DropdownMenuProps } from '../interface';
+import { 
+    ElemDropdownMenu,
+    ElemDropdownList,
+    ElemDropdownSubContainer,
+} from '../Elements'
+import { Carrets } from '../../../icons';
+import { renderBodyDropdown } from '../helper';
 import SubDropdown from './SubDropdown'
-export interface HoverDropdownMenuProps extends DropdownMenuProps {
+
+interface ClickDropdownMenuProps extends DropdownMenuProps {
+    parentRef?: RefObject<HTMLObjectElement>
 }
 
-export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
+export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
     label,
     options,
     listOrientation,
+    parentRef,
     showCarret,
 })=>{
-
     const [isOpen, setisOpen] = useState(false);
 
     function setOpen(){
@@ -27,6 +29,7 @@ export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
     function setClosed(){
         setisOpen(false)
     }
+    
 
     const body = renderBodyDropdown({
         options,
@@ -37,18 +40,19 @@ export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
     const CarretNode = Carrets[listOrientation || "down"]
 
     return(
-        <ElemDropdownContainer
-            mouseEnter={setOpen}
-            mouseLeave={setClosed}
-        >
+        <ElemDropdownSubContainer
+        mouseEnter={setOpen}
+        mouseLeave={setClosed}
+    >
             <ElemDropdownMenu
+                elementRef={parentRef}
                 elementKey={`main-menu-${label}`}
             >
                 <div>{label}</div>    
                 {showCarret ? <CarretNode /> : <></>}
             </ElemDropdownMenu>
 
-            { body.length && isOpen ?
+            { body && isOpen ?
                 <ElemDropdownList
                     listOrientation={listOrientation}
                 >
@@ -56,13 +60,13 @@ export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
                 </ElemDropdownList>
                 : <></>
             }
-        </ElemDropdownContainer>
+        </ElemDropdownSubContainer>
     )
 }
 
-HoverDropdown.defaultProps = {
-    listOrientation: "down",
+ClickDropdown.defaultProps = {
+    listOrientation: "left",
     showCarret: true,
 }
 
-export default HoverDropdown
+export default ClickDropdown

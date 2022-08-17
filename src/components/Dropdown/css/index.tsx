@@ -60,7 +60,7 @@ export const DropDownMenuCss = css`
     font-size: 1rem;
     color: ${({theme: {theme}})=> FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light])};
 
-    div {
+    > div {
         margin: 0px 8px 0px 0px;
     }
 
