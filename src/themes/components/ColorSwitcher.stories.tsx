@@ -17,4 +17,6 @@ const Template: ComponentStory<typeof ColorSwitcher> = (args) =>  (
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 export const ColorPicker = Template.bind({});
-ColorPicker.args = {};
+ColorPicker.args = {
+  newColorCallback: (value: any)=>console.info(value)
+};

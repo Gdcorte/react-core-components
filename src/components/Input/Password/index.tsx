@@ -53,7 +53,7 @@ const Password: FunctionComponent<PasswordInterface> = ({
         if (inputType =='password'){
             newInputStatus = 'text'
         }
-
+        
         setinputType(newInputStatus)
         setlockStatus(!lockStatus)
     }

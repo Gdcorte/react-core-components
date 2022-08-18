@@ -1,31 +1,30 @@
-import { FunctionComponent, useState } from 'react';
-import { Carrets } from '../../../icons';
-import { 
-    ElemDropdownContainer, 
-    ElemDropdownList, 
-    ElemDropdownMenu, 
-} from '../Elements';
-import { renderBodyDropdown } from '../helper';
+import { FunctionComponent, useRef, useState } from 'react';
 import { DropdownMenuProps } from '../interface';
-import SubDropdown from './SubDropdown'
-export interface HoverDropdownMenuProps extends DropdownMenuProps {
-}
+import {  ElemDropdownContainer, ElemDropdownList, ElemDropdownMenu } from '../Elements'
+import { Carrets } from '../../../icons';
+import { renderBodyDropdown } from '../helper';
+import SubDropdown from './SubDropdown';
 
-export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
+export const HybridDropdown: FunctionComponent<DropdownMenuProps> = ({
     label,
     options,
     listOrientation,
     showCarret,
 })=>{
-
     const [isOpen, setisOpen] = useState(false);
+    const masterRef = useRef(null)
+    const CarretNode = Carrets[listOrientation || "down"]
 
-    function setOpen(){
-        setisOpen(true)
+    function toggleOpen(){
+        setisOpen(!isOpen)
     }
 
     function setClosed(){
         setisOpen(false)
+    }
+
+    function setOpen(){
+        setisOpen(true)
     }
 
     const body = renderBodyDropdown({
@@ -34,18 +33,19 @@ export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
         SubDropdown,
     })
 
-    const CarretNode = Carrets[listOrientation || "down"]
-
     return(
-        <ElemDropdownContainer
+        <ElemDropdownContainer 
+            elementRef={masterRef}
             mouseEnter={setOpen}
             mouseLeave={setClosed}
         >
             <ElemDropdownMenu
+                onClick={toggleOpen}
+                elementRef={masterRef}
                 elementKey={`main-menu-${label}`}
             >
-                <div>{label}</div>    
-                {showCarret ? <CarretNode /> : <></>}
+                <div>{label}</div>
+                {showCarret ? <CarretNode /> : <></>}  
             </ElemDropdownMenu>
 
             { body.length && isOpen ?
@@ -60,9 +60,8 @@ export const HoverDropdown: FunctionComponent<HoverDropdownMenuProps> = ({
     )
 }
 
-HoverDropdown.defaultProps = {
-    listOrientation: "down",
-    showCarret: true,
+HybridDropdown.defaultProps = {
+    listOrientation: "left",
 }
 
-export default HoverDropdown
+export default HybridDropdown

@@ -57,12 +57,14 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     errorMessage,
     disabled,
     className,
+    type,
 }) => {
     return (
         <InputContainerStyled>
             <InputStyled 
                 className={`InputElement ${className || ""}`} 
                 disabled={disabled}
+                type={type}
             />
             {!validInput && 
                 <SpanStyled className={`InputErrorMessage`}>

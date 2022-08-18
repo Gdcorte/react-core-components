@@ -5,12 +5,14 @@ export type DropdownOptionProps = {
     href: string,
     label: any,
     selected?: boolean,
+    onClick?: CallableFunction,
+    data?:string,
 }
 
 export type DropdownListOrientation = "up"|"down"|"left"|"right"
 
 export type DropdownMenuProps = {
-    label: string,
+    label: any,
     listOrientation?: DropdownListOrientation
     selected?: boolean,
     options: (DropdownOptionProps | DropdownMenuProps)[],

@@ -1,24 +1,26 @@
 import { FunctionComponent, SyntheticEvent, useState } from "react";
 import { useTheme } from "styled-components";
-import { CarretDown, CarretUp } from "../../icons";
+
 
 import styled from 'styled-components'
+import { DarkTheme, LightTheme } from "../../icons/theme";
 
 const StyledContainer = styled.div`
     display: flex;
     
     >div {
+        cursor: pointer; 
         padding: 8px;
         border-radius: 50%;
-        height: 20px;
-        width: 20px;
+        height: 24px;
+        width: 24px;
 
         >svg {
             height: inherit;
             width: inherit;
         }
         :hover{
-            background-color: ${({theme: {theme}})=> theme.background.shade1};
+            background-color: ${({theme: {theme}})=> theme.background.shade4};
         }
     }
 
@@ -40,7 +42,7 @@ const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({
 
         typeChangeCallback(newType)
     }
-    const TypeIcon = type=='light' ? CarretUp : CarretDown
+    const TypeIcon = type=='light' ? LightTheme : DarkTheme
 
     return(
         <StyledContainer
