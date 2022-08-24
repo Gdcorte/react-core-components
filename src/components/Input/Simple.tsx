@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, SyntheticEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontHelper } from '../../themes';
 import { InputCss } from './style'
@@ -45,7 +45,9 @@ const SpanStyled = styled.span`
 `
 
 export interface SimpleInputInterface {
-    validInput?: boolean,
+    useValue: string | number,
+    onValueChange: CallableFunction,
+    useValidator?: CallableFunction,
     errorMessage?: string,
     disabled?: boolean,
     className?: string,
@@ -53,18 +55,40 @@ export interface SimpleInputInterface {
 }
 
 const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
-    validInput,
+    useValue,
+    onValueChange,
+    useValidator,
     errorMessage,
     disabled,
     className,
     type,
 }) => {
+    const [validInput, setvalidInput] = useState(true)
+
+    function updateValue(event: SyntheticEvent<HTMLInputElement>){
+        let newValue = event.currentTarget.value
+
+        if (useValidator){
+            setvalidInput(useValidator(newValue))
+        }
+
+        onValueChange(newValue)
+    }
+
+    useEffect(() => {
+        if (useValidator){
+            setvalidInput(useValidator(useValue))
+        }
+    }, [])
+
     return (
         <InputContainerStyled>
             <InputStyled 
                 className={`InputElement ${className || ""}`} 
                 disabled={disabled}
                 type={type}
+                value={useValue}
+                onChange={updateValue}
             />
             {!validInput && 
                 <SpanStyled className={`InputErrorMessage`}>
@@ -77,7 +101,6 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
 }
 
 SimpleInput.defaultProps = {
-    validInput: true,
     errorMessage: 'Invalid Input',
     disabled: false,
     type: 'text',

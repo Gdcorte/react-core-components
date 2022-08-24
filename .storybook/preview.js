@@ -25,8 +25,8 @@ let lightThemes = Object.values(allThemes.light.themes).map((value)=>{
 })
 
 const themes = [
-  ...darkThemes,
   ...lightThemes,
+  ...darkThemes,
 ];
 
 addDecorator(withThemesProvider(themes), ThemeProvider);

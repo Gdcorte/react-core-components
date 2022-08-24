@@ -1,4 +1,4 @@
-import {FunctionComponent, useCallback, useEffect, useMemo} from 'react'
+import {FunctionComponent, useMemo} from 'react'
 
 // import styles from '../../../../styles/Inputs.module.css'
 import { useState } from 'react'
@@ -9,6 +9,7 @@ import {SimpleInput} from '../'
 import { passwordStatus } from '../../../icons/password'
 
 import styled from 'styled-components'
+import { SimpleInputInterface } from '../Simple'
 
 export const IconStyled = styled.div`
     position: absolute;
@@ -32,16 +33,10 @@ export const IconStyled = styled.div`
     }
 `
 
-export interface PasswordInterface { 
-    validInput?: boolean,
-    errorMessage?: string,
-    value: string,
-    onChange: CallableFunction,
+export interface PasswordInterface extends SimpleInputInterface { 
 }
 
 const Password: FunctionComponent<PasswordInterface> = ({
-    validInput,
-    errorMessage,
     ...props
 }) =>{
     const [inputType, setinputType] = useState<'text'|'password'>('password')
@@ -62,8 +57,8 @@ const Password: FunctionComponent<PasswordInterface> = ({
     const PasswordIcon = useMemo(
       () => {
         return lockStatus ? passwordStatus.hide : passwordStatus.show
-      },
-      [lockStatus],)
+      }, [lockStatus]
+    )
     
     
 
@@ -71,7 +66,6 @@ const Password: FunctionComponent<PasswordInterface> = ({
         <WrapperStyled>
             <SimpleInput 
                 {...props}
-                validInput={validInput}
                 type={inputType}
             />
             
@@ -87,8 +81,7 @@ const Password: FunctionComponent<PasswordInterface> = ({
 }
 
 Password.defaultProps = {
-    validInput: true,
-    errorMessage: '',
+    errorMessage: 'Invalid Password',
 }
 
 export default Password
