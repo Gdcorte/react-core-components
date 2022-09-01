@@ -84,3 +84,5 @@ export function bundleThemes(): BundledTheme{
 
     return themes
 }
+
+export * from './components'
