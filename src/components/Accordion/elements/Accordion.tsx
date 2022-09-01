@@ -1,6 +1,6 @@
-import { FunctionComponent, useEffect, useMemo, useState } from "react"
-import { AccordionContent } from "../elements"
-import { SubAccordion, AccordionItemProps, isSubAccordion, isAccordionItem, isEmptyTitle } from "../interface"
+import { FunctionComponent, useMemo, useState } from "react"
+import { default as  AccordionContent } from "./Content"
+import { SubAccordion, isSubAccordion, isAccordionItem, isEmptyTitle } from "../interface"
 import styled , {css} from 'styled-components'
 import { CarretDown } from "../../../icons"
 import { FontHelper } from "../../../themes"

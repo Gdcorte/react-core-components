@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { FontHelper } from '../../../themes'
+import { FontHelper } from '../../../themes/helpers'
 
 const HoverBehaviuour = css`
     :hover {
