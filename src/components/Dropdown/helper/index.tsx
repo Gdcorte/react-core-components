@@ -22,7 +22,7 @@ export function renderBodyDropdown({
         if ( isDropdownOption(option) ){
             return (
                 <ElemDropdownOption
-                    key={`drop-opt-${label}-${option.label}`}
+                    key={`drop-opt-${Math.random().toFixed(5)}-${label}-${option.data}`}
                     href={option.href}
                     selected={option.selected}
                     onClick={option.onClick}

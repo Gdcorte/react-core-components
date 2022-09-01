@@ -52,7 +52,7 @@ export const SubDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
             <ElemDropdownMenu
                 onClick={toggleOpen}
                 elementRef={parentRef}
-                elementKey={`main-menu-${label}`}
+                elementKey={`main-menu-${label}-${Math.random().toFixed(5)}`}
             >
                 <div>{label}</div>    
                 {showCarret ? <CarretNode /> : <></>}
