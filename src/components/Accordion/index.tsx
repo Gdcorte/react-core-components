@@ -1,1 +1,2 @@
-export {default as AccordionMenu} from './AccordionMenu'
+export {default as Accordion} from './AccordionMenu'
+export type { Accordion as AccordionOptionProps } from './interface'

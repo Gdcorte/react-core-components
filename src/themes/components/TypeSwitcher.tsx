@@ -47,6 +47,7 @@ const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({
     return(
         <StyledContainer
             onClick={changeType}
+            className={`theme-type-switcher-${type}`}
         >
             <div>
                 <TypeIcon />

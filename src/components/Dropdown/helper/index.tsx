@@ -43,6 +43,5 @@ export function renderBodyDropdown({
         )
     }) 
 
-    console.log(optionsNode)
     return optionsNode
 }
