@@ -2,7 +2,6 @@ import { StyledDateTimeContainer } from './style'
 import moment from 'moment'
 import DateTime from 'react-datetime'
 
-import "react-datetime/css/react-datetime.css";
 import { FunctionComponent } from 'react';
 import { DatetimepickerProps } from 'react-datetime';
 

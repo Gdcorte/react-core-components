@@ -1,6 +1,5 @@
 import {FunctionComponent, useMemo} from 'react'
 
-// import styles from '../../../../styles/Inputs.module.css'
 import { useState } from 'react'
 
 import { WrapperStyled } from './styles'
