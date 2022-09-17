@@ -42,7 +42,7 @@ const ColorSwitcher: FunctionComponent<ColorSwitcherProps> = ({
             label: <StyledColorBlock color={colorValue} />,
             href: '',
             onClick: changeToNewColor,
-            data: colorName
+            data: colorName,
         }
 
         return colorOption
@@ -55,6 +55,7 @@ const ColorSwitcher: FunctionComponent<ColorSwitcherProps> = ({
                 options={colors}
                 showCarret={true}
                 listOrientation={'down'}
+                closeOnClick={true}
             />
         </StyledContainer>
     )

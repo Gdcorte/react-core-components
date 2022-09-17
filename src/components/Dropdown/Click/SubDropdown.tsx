@@ -18,6 +18,7 @@ export const SubDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
     listOrientation,
     parentRef,
     showCarret,
+    closeOnClick,
 })=>{
     const [isOpen, setisOpen] = useState(false);
 

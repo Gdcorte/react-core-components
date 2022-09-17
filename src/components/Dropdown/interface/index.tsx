@@ -16,7 +16,8 @@ export type DropdownMenuProps = {
     listOrientation?: DropdownListOrientation
     selected?: boolean,
     options: (DropdownOptionProps | DropdownMenuProps)[],
-    showCarret?: boolean
+    showCarret?: boolean,
+    closeOnClick?: boolean,
 }
 
 export function isDropdownOption(option: DropdownMenuProps | DropdownOptionProps): option is DropdownOptionProps {

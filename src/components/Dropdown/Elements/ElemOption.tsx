@@ -12,6 +12,7 @@ interface ElemOptionProps {
     children: JSX.Element|JSX.Element[],
     onClick?: CallableFunction,
     data?: string,
+    closeCallback?: CallableFunction,
 }
 
 const ElemOption: FunctionComponent<ElemOptionProps> = ({
@@ -20,6 +21,7 @@ const ElemOption: FunctionComponent<ElemOptionProps> = ({
     selected,
     onClick,
     data,
+    closeCallback,
 }) => {
     function validHref(link: string | null): boolean{
         if (!link){
@@ -35,6 +37,10 @@ const ElemOption: FunctionComponent<ElemOptionProps> = ({
 
     function clickAction(event: SyntheticEvent){
         let link = event.currentTarget.getAttribute('href')
+        
+        if (closeCallback){
+            closeCallback()
+        }
         
         if (validHref(link)){
             return
