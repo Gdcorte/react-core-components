@@ -12,21 +12,23 @@ export function renderBodyDropdown({
     options,
     label,
     SubDropdown,
+    closeCallback,
 }:{
     options: (DropdownOptionProps | DropdownMenuProps)[],
     label: string,
     SubDropdown: FunctionComponent<DropdownMenuProps>,
+    closeCallback?: CallableFunction,
 }){
-
     const optionsNode = options.map(option => {
         if ( isDropdownOption(option) ){
             return (
                 <ElemDropdownOption
-                    key={`drop-opt-${label}-${option.label}`}
+                    key={`drop-opt-${Math.random()}-${label}-${option.label}`}
                     href={option.href}
                     selected={option.selected}
                     onClick={option.onClick}
                     data={option.data}
+                    closeCallback={closeCallback}
                 >
                     {option.label}
                 </ElemDropdownOption>
@@ -39,6 +41,7 @@ export function renderBodyDropdown({
                 label={option.label}
                 options={option.options}
                 listOrientation={option.listOrientation}
+                closeOnClick={option.closeOnClick}
             />
         )
     }) 

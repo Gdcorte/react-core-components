@@ -19,6 +19,7 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
     listOrientation,
     parentRef,
     showCarret,
+    closeOnClick,
 })=>{
     const [isOpen, setisOpen] = useState(false);
 

@@ -9,13 +9,14 @@ const StyledList = styled.div`
 `
 interface ElemListProps {
     children: JSX.Element|JSX.Element[],
-    listOrientation?: DropdownListOrientation
+    listOrientation?: DropdownListOrientation,
 }
 
 const ElemList: FunctionComponent<ElemListProps> = ({
     children,
     listOrientation,
 }) => {
+
     return (
         <StyledList 
             className={`dropdown-list open-${listOrientation}`}

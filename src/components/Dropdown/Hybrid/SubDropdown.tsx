@@ -12,6 +12,7 @@ import SubDropdown from './SubDropdown';
 
 interface ClickDropdownMenuProps extends DropdownMenuProps {
     parentRef?: RefObject<HTMLObjectElement>
+    closeCallback?: CallableFunction
 }
 
 export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
@@ -20,6 +21,7 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
     listOrientation,
     parentRef,
     showCarret,
+    closeCallback,
 })=>{
     const [isOpen, setisOpen] = useState(false);
 
@@ -43,6 +45,7 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
         options,
         label,
         SubDropdown,
+        closeCallback: closeCallback
     })
 
     return(

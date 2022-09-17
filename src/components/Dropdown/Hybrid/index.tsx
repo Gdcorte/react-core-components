@@ -10,6 +10,7 @@ export const HybridDropdown: FunctionComponent<DropdownMenuProps> = ({
     options,
     listOrientation,
     showCarret,
+    closeOnClick,
 })=>{
     const [isOpen, setisOpen] = useState(false);
     const masterRef = useRef(null)
@@ -31,6 +32,7 @@ export const HybridDropdown: FunctionComponent<DropdownMenuProps> = ({
         options,
         label,
         SubDropdown,
+        closeCallback: closeOnClick? setClosed : undefined
     })
 
     return(
