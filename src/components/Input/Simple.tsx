@@ -12,6 +12,8 @@ const InputContainerStyled = styled.div`
 
 const InputStyled = styled.input`
     ${InputCss}
+
+
 `
 
 const SpanStyled = styled.span`
@@ -51,7 +53,9 @@ export interface SimpleInputInterface {
     errorMessage?: string,
     disabled?: boolean,
     className?: string,
+    autocomplete?: string,
     type?: 'text'|'password'|'number'|'checkbox',
+    inputmode?: "text" | "search" | "email" | "tel" | "url" | "none" | "numeric" | "decimal",
 }
 
 const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
@@ -62,6 +66,8 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     disabled,
     className,
     type,
+    autocomplete,
+    inputmode,
 }) => {
     const [validInput, setvalidInput] = useState(true)
     const [currValue, setCurrValue] = useState(useValue || '')
@@ -91,6 +97,8 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
                 type={type}
                 value={currValue}
                 onChange={updateValue}
+                autoComplete={autocomplete}
+                inputMode={inputmode}
             />
             {!validInput && 
                 <SpanStyled className={`InputErrorMessage`}>
@@ -106,6 +114,7 @@ SimpleInput.defaultProps = {
     errorMessage: 'Invalid Input',
     disabled: false,
     type: 'text',
+    autocomplete: 'enabled',
 }
 
 export default SimpleInput

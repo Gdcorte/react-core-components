@@ -1,4 +1,4 @@
-import { SimpleInput } from './'
+import SimpleInput from './Simple'
 import styled from 'styled-components';
 import { FunctionComponent } from 'react';
 import { SimpleInputInterface } from './Simple';

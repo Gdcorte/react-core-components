@@ -23,4 +23,10 @@ export const InputCss = css`
         border: 2px double ${({ theme: {theme}})=> theme.primary.disabled};
         color: ${({ theme: {theme}})=> theme.primary.disabled};
     }
+
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 `
