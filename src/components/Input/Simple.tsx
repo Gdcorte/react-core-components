@@ -45,7 +45,7 @@ const SpanStyled = styled.span`
 `
 
 export interface SimpleInputInterface {
-    useValue: string | number,
+    useValue?: string,
     onValueChange: CallableFunction,
     useValidator?: CallableFunction,
     errorMessage?: string,
@@ -64,6 +64,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     type,
 }) => {
     const [validInput, setvalidInput] = useState(true)
+    const [currValue, setCurrValue] = useState(useValue || '')
 
     function updateValue(event: SyntheticEvent<HTMLInputElement>){
         let newValue = event.currentTarget.value
@@ -73,6 +74,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
         }
 
         onValueChange(newValue)
+        setCurrValue(newValue)
     }
 
     useEffect(() => {
@@ -87,7 +89,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
                 className={`InputElement ${className || ""}`} 
                 disabled={disabled}
                 type={type}
-                value={useValue}
+                value={currValue}
                 onChange={updateValue}
             />
             {!validInput && 
