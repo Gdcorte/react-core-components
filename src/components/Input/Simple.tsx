@@ -48,7 +48,7 @@ const SpanStyled = styled.span`
 
 export interface SimpleInputInterface {
     useValue?: string,
-    onValueChange: CallableFunction,
+    onValueChange?: CallableFunction,
     useValidator?: CallableFunction,
     errorMessage?: string,
     disabled?: boolean,
@@ -79,7 +79,9 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
             setvalidInput(useValidator(newValue))
         }
 
-        onValueChange(newValue)
+        if(onValueChange){
+            onValueChange(newValue)
+        }
         setCurrValue(newValue)
     }
 
@@ -95,7 +97,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
                 className={`InputElement ${className || ""}`} 
                 disabled={disabled}
                 type={type}
-                value={currValue}
+                value={disabled ? useValue : currValue}
                 onChange={updateValue}
                 autoComplete={autocomplete}
                 inputMode={inputmode}

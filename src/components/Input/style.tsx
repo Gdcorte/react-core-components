@@ -10,8 +10,6 @@ export const InputCss = css`
     color: ${({ theme: {theme}})=> theme.primary.base };
 
     border-radius: 5px;
-    width: 100%;
-    padding-left: 8px;
 
 
     :focus-visible{ 
