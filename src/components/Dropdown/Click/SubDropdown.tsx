@@ -7,13 +7,12 @@ import {
 } from '../Elements'
 import { Carrets } from '../../../icons';
 import { renderBodyDropdown } from '../helper';
-import SubDropdown from './SubDropdown'
 
 interface ClickDropdownMenuProps extends DropdownMenuProps {
     parentRef?: RefObject<HTMLObjectElement>
 }
 
-export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
+export const SubDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
     label,
     options,
     listOrientation,
@@ -58,9 +57,9 @@ export const ClickDropdown: FunctionComponent<ClickDropdownMenuProps> = ({
     )
 }
 
-ClickDropdown.defaultProps = {
+SubDropdown.defaultProps = {
     listOrientation: "left",
     showCarret: true,
 }
 
-export default ClickDropdown
+export default SubDropdown

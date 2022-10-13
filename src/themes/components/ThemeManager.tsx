@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 
 import { FunctionComponent, useMemo } from 'react'
-import { bundleThemes } from '..'
+import { bundleThemes } from '../bundler'
 
 interface ThemeManagerProps {
     children: JSX.Element

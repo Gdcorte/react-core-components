@@ -1,11 +1,10 @@
 import {FunctionComponent, useMemo} from 'react'
 
-// import styles from '../../../../styles/Inputs.module.css'
 import { useState } from 'react'
 
 import { WrapperStyled } from './styles'
 
-import {SimpleInput} from '../'
+import SimpleInput from '../Simple'
 import { passwordStatus } from '../../../icons/password'
 
 import styled from 'styled-components'

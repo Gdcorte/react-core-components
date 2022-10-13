@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof ThemedButton> = (args) => <ThemedButton {.
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 export const ButtonThemed = Template.bind({});
 ButtonThemed.args = {
-  children:  'Button',
+  children:  <p>Button</p>,
   variant: 'primary',
   inverse: false,
   disabled: false,

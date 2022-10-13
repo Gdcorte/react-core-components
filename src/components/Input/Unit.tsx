@@ -1,4 +1,4 @@
-import { SimpleInput } from './'
+import SimpleInput from './Simple'
 import styled from 'styled-components';
 import { FunctionComponent } from 'react';
 import { SimpleInputInterface } from './Simple';
@@ -10,8 +10,8 @@ export const ContainerStyled = styled.div`
     width: 100%;
 `
 
-export const UnitStyled = styled.p`
-    color: ${({ theme: {theme}}) =>  FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light]) };
+export const UnitStyled = styled.p<{disabled?:boolean}>`
+    color: ${({ theme: {theme}, disabled}) => disabled ? theme.primary.disabled : FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light]) };
     position: absolute;
     top: 0;
     right: 0;
@@ -24,14 +24,20 @@ export interface WithUnitInterface extends SimpleInputInterface {
 
 const WithUnitInput: FunctionComponent<WithUnitInterface> = ({
     unitName,
+    disabled,
     ...props
 }) => {
     return (
         <ContainerStyled>
             <SimpleInput 
+                disabled={disabled}
                 {...props}
             />
-            <UnitStyled>{unitName}</UnitStyled>
+            <UnitStyled 
+                disabled={disabled} 
+            >
+                {unitName}
+            </UnitStyled>
         </ContainerStyled>
     )
 }

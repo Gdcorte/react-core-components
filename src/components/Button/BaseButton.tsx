@@ -9,6 +9,7 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   radius?: string,
   fontSize?: string,
   disableFocus?: boolean,
+  children: JSX.Element | JSX.Element[]
 }
 
 export const BaseButton: FunctionComponent<ButtonProps> = ({

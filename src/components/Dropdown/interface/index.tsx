@@ -15,7 +15,7 @@ export type DropdownMenuProps = {
     label: any,
     listOrientation?: DropdownListOrientation
     selected?: boolean,
-    options: (DropdownOptionProps | DropdownMenuProps)[],
+    options: DropdownMenuOptions,
     showCarret?: boolean,
     closeOnClick?: boolean,
 }
@@ -23,6 +23,8 @@ export type DropdownMenuProps = {
 export function isDropdownOption(option: DropdownMenuProps | DropdownOptionProps): option is DropdownOptionProps {
     return (option as DropdownOptionProps).href !== undefined
 }
+
+export type DropdownMenuOptions = (DropdownOptionProps | DropdownMenuProps)[]
 
 export interface DropDownCssInterface {
     [key: string]: any,

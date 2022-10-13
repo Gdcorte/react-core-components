@@ -1,5 +1,4 @@
-import { FunctionComponent, MouseEventHandler, SyntheticEvent } from "react";
-import { AccordionItemProps } from "../interface";
+import { FunctionComponent, SyntheticEvent } from "react";
 import styles, {css} from 'styled-components'
 
 interface AccordionContainerProps {
@@ -9,11 +8,11 @@ interface AccordionContainerProps {
 
 const StyledItemHover = css`
     :hover{
-        background-color: ${({theme})=> theme.backgroundShade0};
-        color: ${({theme})=> theme.primary};
+        background-color: ${({theme: {theme}})=> theme.background.shade1};
+        color: ${({theme: {theme}})=> theme.primary.base};
 
         svg {
-            fill: ${({theme})=> theme.primary};
+            fill: ${({theme: {theme}})=> theme.primary.base};
         }
     }
 `

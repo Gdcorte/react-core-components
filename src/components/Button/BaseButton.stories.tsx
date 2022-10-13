@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof BaseButton> = (args) => <BaseButton {...ar
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 export const ButtonBase = Template.bind({});
 ButtonBase.args = {
-  children:  'Button',
+  children:  <p>Button</p>,
   inverse: false,
   disabled: false,
   shape: 'rectangle',

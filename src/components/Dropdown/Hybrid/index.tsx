@@ -46,7 +46,7 @@ export const HybridDropdown: FunctionComponent<DropdownMenuProps> = ({
                 elementRef={masterRef}
                 elementKey={`main-menu-${label}`}
             >
-                <div>{label}</div>
+                <div className='dropdown-menu-label'>{label}</div>
                 {showCarret ? <CarretNode /> : <></>}  
             </ElemDropdownMenu>
 

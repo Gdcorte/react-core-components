@@ -10,8 +10,6 @@ export const InputCss = css`
     color: ${({ theme: {theme}})=> theme.primary.base };
 
     border-radius: 5px;
-    width: 100%;
-    padding-left: 8px;
 
 
     :focus-visible{ 
@@ -22,5 +20,11 @@ export const InputCss = css`
     :disabled{ 
         border: 2px double ${({ theme: {theme}})=> theme.primary.disabled};
         color: ${({ theme: {theme}})=> theme.primary.disabled};
+    }
+
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 `

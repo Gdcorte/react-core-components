@@ -12,6 +12,8 @@ const InputContainerStyled = styled.div`
 
 const InputStyled = styled.input`
     ${InputCss}
+
+
 `
 
 const SpanStyled = styled.span`
@@ -45,13 +47,15 @@ const SpanStyled = styled.span`
 `
 
 export interface SimpleInputInterface {
-    useValue: string | number,
-    onValueChange: CallableFunction,
+    useValue?: string,
+    onValueChange?: CallableFunction,
     useValidator?: CallableFunction,
     errorMessage?: string,
     disabled?: boolean,
     className?: string,
+    autocomplete?: string,
     type?: 'text'|'password'|'number'|'checkbox',
+    inputmode?: "text" | "search" | "email" | "tel" | "url" | "none" | "numeric" | "decimal",
 }
 
 const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
@@ -62,8 +66,11 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     disabled,
     className,
     type,
+    autocomplete,
+    inputmode,
 }) => {
     const [validInput, setvalidInput] = useState(true)
+    const [currValue, setCurrValue] = useState(useValue || '')
 
     function updateValue(event: SyntheticEvent<HTMLInputElement>){
         let newValue = event.currentTarget.value
@@ -72,7 +79,10 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
             setvalidInput(useValidator(newValue))
         }
 
-        onValueChange(newValue)
+        if(onValueChange){
+            onValueChange(newValue)
+        }
+        setCurrValue(newValue)
     }
 
     useEffect(() => {
@@ -87,8 +97,10 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
                 className={`InputElement ${className || ""}`} 
                 disabled={disabled}
                 type={type}
-                value={useValue}
+                value={disabled ? useValue : currValue}
                 onChange={updateValue}
+                autoComplete={autocomplete}
+                inputMode={inputmode}
             />
             {!validInput && 
                 <SpanStyled className={`InputErrorMessage`}>
@@ -104,6 +116,7 @@ SimpleInput.defaultProps = {
     errorMessage: 'Invalid Input',
     disabled: false,
     type: 'text',
+    autocomplete: 'enabled',
 }
 
 export default SimpleInput
