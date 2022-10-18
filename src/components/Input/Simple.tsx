@@ -1,4 +1,4 @@
-import { FunctionComponent, SyntheticEvent, useEffect, useState } from 'react';
+import { FunctionComponent, HTMLProps, SyntheticEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontHelper } from '../../themes';
 import { InputCss } from './style'
@@ -17,8 +17,8 @@ const InputStyled = styled.input`
 `
 
 const SpanStyled = styled.span`
-    position: relative;
-    top: -30px;
+    position: absolute;
+    top: -10px;
     left: 0%;
 
     div:first-child {
@@ -56,6 +56,7 @@ export interface SimpleInputInterface {
     autocomplete?: string,
     type?: 'text'|'password'|'number'|'checkbox',
     inputmode?: "text" | "search" | "email" | "tel" | "url" | "none" | "numeric" | "decimal",
+    lockValue?: boolean
 }
 
 const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
@@ -68,6 +69,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     type,
     autocomplete,
     inputmode,
+    lockValue,
 }) => {
     const [validInput, setvalidInput] = useState(true)
     const [currValue, setCurrValue] = useState(useValue || '')
@@ -82,6 +84,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
         if(onValueChange){
             onValueChange(newValue)
         }
+
         setCurrValue(newValue)
     }
 
@@ -92,12 +95,13 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     }, [])
 
     return (
-        <InputContainerStyled>
+        <InputContainerStyled
+        >
             <InputStyled 
                 className={`InputElement ${className || ""}`} 
                 disabled={disabled}
                 type={type}
-                value={disabled ? useValue : currValue}
+                value={(disabled || lockValue) ? useValue : currValue}
                 onChange={updateValue}
                 autoComplete={autocomplete}
                 inputMode={inputmode}

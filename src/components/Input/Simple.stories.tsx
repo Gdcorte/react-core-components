@@ -35,5 +35,6 @@ const Template: ComponentStory<typeof SimpleInput> = (args) => {
 export const Simple = Template.bind({});
 Simple.args = {
   disabled: false,
-  type: 'number'
+  type: 'number',
+  useValidator: ()=>{return false},
 };

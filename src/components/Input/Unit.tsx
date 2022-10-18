@@ -7,14 +7,14 @@ import { FontHelper } from '../../themes';
 export const ContainerStyled = styled.div`
     display: flex;
     position: relative;
-    width: 100%;
+    width: fit-content;
 `
 
 export const UnitStyled = styled.p<{disabled?:boolean}>`
     color: ${({ theme: {theme}, disabled}) => disabled ? theme.primary.disabled : FontHelper.findBestContrast(theme.background.base, [theme.fonts.dark, theme.fonts.light]) };
     position: absolute;
     top: 0;
-    right: 0;
+    right: 4px;
     margin: 0;
 `
 
