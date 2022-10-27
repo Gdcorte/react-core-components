@@ -56,7 +56,8 @@ export interface SimpleInputInterface {
     autocomplete?: string,
     type?: 'text'|'password'|'number'|'checkbox',
     inputmode?: "text" | "search" | "email" | "tel" | "url" | "none" | "numeric" | "decimal",
-    lockValue?: boolean
+    lockValue?: boolean,
+    selectOnClick?: boolean,
 }
 
 const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
@@ -70,6 +71,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     autocomplete,
     inputmode,
     lockValue,
+    selectOnClick,
 }) => {
     const [validInput, setvalidInput] = useState(true)
     const [currValue, setCurrValue] = useState(useValue || '')
@@ -94,6 +96,12 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
         }
     }, [])
 
+    function handleInputClick(event: SyntheticEvent<HTMLInputElement>){
+        if (selectOnClick) {
+            event.currentTarget.select()
+        }
+    }
+
     return (
         <InputContainerStyled
         >
@@ -105,6 +113,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
                 onChange={updateValue}
                 autoComplete={autocomplete}
                 inputMode={inputmode}
+                onClick={handleInputClick}
             />
             {!validInput && 
                 <SpanStyled className={`InputErrorMessage`}>

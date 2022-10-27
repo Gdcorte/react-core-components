@@ -37,4 +37,5 @@ Simple.args = {
   disabled: false,
   type: 'number',
   useValidator: ()=>{return false},
+  selectOnClick: false,
 };

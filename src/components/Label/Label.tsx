@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, HTMLProps } from "react";
 import styled from 'styled-components'
 import { FontHelper } from "../../themes";
 
@@ -17,7 +17,7 @@ export const TitleStyled = styled.p<{ bold?: boolean }>`
     margin-right: 8px;
 `
 
-export interface InputContainerInterface {
+export interface InputContainerInterface extends HTMLProps<HTMLDivElement> {
     label:string,
     children: JSX.Element | JSX.Element[]
     orientation?: 'column'|'row',
@@ -30,12 +30,14 @@ const Label:FunctionComponent<InputContainerInterface> = ({
     orientation,
     label,
     bold,
+    className,
 }) => {
 
     return(
         <> 
             <ContainerStyled
                 orientation={orientation}
+                className={className}
             >
                 
                 <TitleStyled 
