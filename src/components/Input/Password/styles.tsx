@@ -3,8 +3,8 @@ import { FontHelper } from '../../../themes';
 
 export const WrapperStyled = styled.div`
     display: flex;
+    flex: 1;
     position: relative;
-    width: fit-content;
 `
 
 export const InputStyled = styled.input`

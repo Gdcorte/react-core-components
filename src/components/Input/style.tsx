@@ -11,6 +11,8 @@ export const InputCss = css`
 
     border-radius: 5px;
 
+    display: flex;
+    flex: 1; 
 
     :focus-visible{ 
         outline: none; 

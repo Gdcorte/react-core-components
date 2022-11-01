@@ -7,12 +7,13 @@ import { InputCss } from './style'
 const InputContainerStyled = styled.div`
     width: inherit;
     position: relative;
+    display: flex;
+    flex: 1;
     
 `
 
 const InputStyled = styled.input`
     ${InputCss}
-
 
 `
 
@@ -58,6 +59,7 @@ export interface SimpleInputInterface {
     inputmode?: "text" | "search" | "email" | "tel" | "url" | "none" | "numeric" | "decimal",
     lockValue?: boolean,
     selectOnClick?: boolean,
+    label?: string,
 }
 
 const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
@@ -72,6 +74,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     inputmode,
     lockValue,
     selectOnClick,
+    label,
 }) => {
     const [validInput, setvalidInput] = useState(true)
     const [currValue, setCurrValue] = useState(useValue || '')
@@ -80,11 +83,11 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
         let newValue = event.currentTarget.value
 
         if (useValidator){
-            setvalidInput(useValidator(newValue))
+            setvalidInput(useValidator(newValue, label))
         }
 
         if(onValueChange){
-            onValueChange(newValue)
+            onValueChange(newValue, label)
         }
 
         setCurrValue(newValue)

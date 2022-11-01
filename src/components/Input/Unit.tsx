@@ -7,7 +7,8 @@ import { FontHelper } from '../../themes';
 export const ContainerStyled = styled.div`
     display: flex;
     position: relative;
-    width: fit-content;
+    flex: 1;
+
 `
 
 export const UnitStyled = styled.p<{disabled?:boolean}>`
