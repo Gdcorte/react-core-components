@@ -51,6 +51,7 @@ export interface SimpleInputInterface {
     useValue?: string,
     onValueChange?: CallableFunction,
     useValidator?: CallableFunction,
+    validState?: boolean, //When validator and validState are passed, this will override validator method
     errorMessage?: string,
     disabled?: boolean,
     className?: string,
@@ -66,6 +67,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     useValue,
     onValueChange,
     useValidator,
+    validState,
     errorMessage,
     disabled,
     className,
@@ -79,10 +81,22 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
     const [validInput, setvalidInput] = useState(true)
     const [currValue, setCurrValue] = useState(useValue || '')
 
+    useEffect(() => {
+        
+        if(validState != undefined){
+            setvalidInput(validState)
+        }
+
+    }, [validState])
+    
     function updateValue(event: SyntheticEvent<HTMLInputElement>){
         let newValue = event.currentTarget.value
 
-        if (useValidator){
+        if(validState != undefined){
+            setvalidInput(validState)
+        }
+
+        if ((validState==undefined)&&(useValidator)){
             setvalidInput(useValidator(newValue, label))
         }
 

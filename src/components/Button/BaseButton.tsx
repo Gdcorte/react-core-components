@@ -3,13 +3,13 @@ import { ButtonColorInterface, ButtonDefaultColor } from "./defaultColors";
 import { ButtonStyled } from "./style";
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
-  colors?: ButtonColorInterface,
-  inverse?: boolean,
-  shape?: "oval"|"round"|"pill"|"rectangle",
-  radius?: string,
-  fontSize?: string,
-  disableFocus?: boolean,
-  children: JSX.Element | JSX.Element[]
+  colors?: ButtonColorInterface;
+  inverse?: boolean;
+  shape?: "oval" | "round" | "pill" | "rectangle";
+  radius?: string;
+  fontSize?: string;
+  disableFocus?: boolean;
+  children: JSX.Element | JSX.Element[];
 }
 
 export const BaseButton: FunctionComponent<ButtonProps> = ({
@@ -23,17 +23,18 @@ export const BaseButton: FunctionComponent<ButtonProps> = ({
   disabled,
   className,
   children,
+  name,
+  selected,
 }) => {
+  const getColorPallete = () => {
+    if (colors) return colors;
 
-  const getColorPallete = () =>{
-    if (colors) return colors
-
-    return ButtonDefaultColor
-  }
+    return ButtonDefaultColor;
+  };
 
   return (
     <ButtonStyled
-      className={className}
+      className={`${className ?? ""} ${selected ? "selected" : ""}`}
       onClick={onClick}
       disabled={disabled}
       colors={getColorPallete()}
@@ -42,6 +43,7 @@ export const BaseButton: FunctionComponent<ButtonProps> = ({
       radius={radius}
       fontSize={fontSize}
       disableFocus={disableFocus}
+      name={name}
     >
       {children}
     </ButtonStyled>
