@@ -1,12 +1,8 @@
 // import original module declarations
-import 'styled-components';
-import { OutputTheme } from './src/themes'
+import { BaseTheme } from "@gdcorte/react-core-theme";
+import "styled-components";
 
 // and extend them!
-declare module 'styled-components' {
-
-  export interface DefaultTheme{
-    presets: {[key:string]: string},
-    theme: OutputTheme
-  }
+declare module "styled-components" {
+  export interface DefaultTheme extends BaseTheme {}
 }
