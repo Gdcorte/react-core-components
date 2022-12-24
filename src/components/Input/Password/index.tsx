@@ -14,8 +14,7 @@ export const IconStyled = styled.div`
     position: absolute;
     margin-top: auto;
     margin-bottom: auto;
-    margin-right: 8px;
-    right: -16px;
+    right: 4px;
     top: 0;
     bottom: 0;
     vertical-align: middle;

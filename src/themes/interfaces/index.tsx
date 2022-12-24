@@ -14,14 +14,16 @@ export interface ThemeTypes {
     light: string,
     dark: string,
 }
-export const defaultTypes = ['light', 'dark']
+export const defaultTypes = ['light', 'dark'] as const
+export type defaultThemeTypesType = typeof defaultTypes[number]
 
 export interface ThemeColors {
     primary: string,
     secondary: string,
     color: string
 }
-export const defaultColors = ['primary', 'secondary']
+export const defaultColors = ['primary', 'secondary'] as const
+export type defaultColorsType = typeof defaultColors[number]
 
 export interface ThemeAlertColors {
     info: string,
@@ -29,7 +31,8 @@ export interface ThemeAlertColors {
     warning: string,
     danger: string,
 }
-export const defaultAlerts = ['info', 'success', 'warning', 'danger']
+export const defaultAlerts = ['info', 'success', 'warning', 'danger'] as const
+export type defaultAlertsType = typeof defaultAlerts[number]
 
 export interface InputTheme extends ThemeTypes, ThemeColors, ThemeAlertColors {
     type: string,
@@ -85,3 +88,15 @@ export interface OutputTheme extends OutputThemeTypes, OutputThemeColors, Output
     color: string,
     name: string
 };
+
+export function isAlertType(option: string): option is defaultAlertsType {
+    return defaultAlerts.includes(option as defaultAlertsType)
+}
+
+export function isThemeType(option: string): option is defaultThemeTypesType {
+    return defaultTypes.includes(option as defaultThemeTypesType)
+}
+
+export function isColorType(option: string): option is defaultColorsType {
+    return defaultColors.includes(option as defaultColorsType)
+}

@@ -7,7 +7,7 @@ export const RadioContainer = styled.div`
 export const Icon = styled.svg`
   fill: ${({theme: {theme}})=> theme.background.shade1};
   stroke: ${({theme: {theme}}) => ( theme.background.shade1 )};
-  stroke-width: 10px;
+  stroke-width: 5px;
   position: absolute;
 `
 // Hide Radio visually but remain accessible to screen readers.

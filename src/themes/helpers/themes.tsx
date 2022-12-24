@@ -1,4 +1,4 @@
-import { ActionablePresets, defaultAlerts, defaultColors, defaultTypes, InputTheme, OutputColorPresets, OutputTheme, ShadePresets } from "../interfaces"
+import { ActionablePresets, defaultAlerts, defaultColors, defaultTypes, InputTheme, isAlertType, isColorType, isThemeType, OutputColorPresets, OutputTheme, ShadePresets } from "../interfaces"
 import { ColorHelper } from "./colors"
 import { FontHelper } from "./fonts"
 
@@ -33,7 +33,7 @@ export class ThemeHelper {
             let shades: ShadePresets = this.buildShades(base)
             let actionables: ActionablePresets = this.buildActionables(base)
             
-            if (defaultTypes.includes(key)){
+            if (isThemeType(key)){
                 result[key]= {
                     base,
                     ...shades,
@@ -41,7 +41,7 @@ export class ThemeHelper {
                 return
             }
 
-            if (defaultAlerts.includes(key)){
+            if (isAlertType(key)){
                 result[key]= {
                     base,
                     ...actionables,
@@ -49,7 +49,7 @@ export class ThemeHelper {
                 return
             }
 
-            if (defaultColors.includes(key)){
+            if (isColorType(key)){
                 let expandedColorPreset: OutputColorPresets = {
                     base,
                     ...shades,

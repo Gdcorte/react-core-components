@@ -15,6 +15,14 @@ export const CaptionStyled = styled.p<{checked:boolean}>`
 export const RadioContainer = styled.div<{useRow?: boolean}>`
     display: flex;
     flex-direction: column;
+    
+    label {
+        margin: 2px;
+    }
+
+    p {
+        margin: 0;
+    }
 
     ${({useRow})=>{
         if(useRow){
