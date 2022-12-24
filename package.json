@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core-components",
-  "version": "0.9.10",
+  "version": "0.10.0",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -11,17 +11,18 @@
   "license": "MIT",
   "private": false,
   "peerDependencies": {
+    "@gdcorte/react-core-theme": "^1.0.0",
     "moment": ">= 2",
     "react": ">= 16",
     "react-datetime": ">= 3",
     "styled-components": ">= 5"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@gdcorte/react-core-theme": "^1.0.0",
     "@rollup/plugin-commonjs": "^21.0.3",
     "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.1",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
@@ -54,6 +55,7 @@
     "build": "rollup -c",
     "build-dev": "rollup -c -w",
     "build-test": "npm run build",
-    "audit-fix": ""
+    "audit-fix": "",
+    "release": "rollup -c && pnpm publish --access=public"
   }
 }

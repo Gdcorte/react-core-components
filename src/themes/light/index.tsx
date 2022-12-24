@@ -1,1 +1,0 @@
-export * as lightColors from './colors'

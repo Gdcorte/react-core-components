@@ -1,1 +1,0 @@
-export * as darkColors from './colors'
