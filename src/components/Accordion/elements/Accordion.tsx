@@ -1,14 +1,14 @@
 import { FunctionComponent, useMemo, useState } from "react";
-import { default as AccordionContent } from "./Content";
-import {
-  SubAccordion,
-  isSubAccordion,
-  isAccordionItem,
-  isEmptyTitle,
-} from "../interface";
 import styled, { css } from "styled-components";
 import { CarretDown } from "../../../icons";
 import { FontHelper } from "../../../themes";
+import {
+  isAccordionItem,
+  isEmptyTitle,
+  isSubAccordion,
+  SubAccordion,
+} from "../interface";
+import { default as AccordionContent } from "./Content";
 
 export interface AccordionMenuProps {
   option: SubAccordion;
