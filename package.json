@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core-components",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -11,7 +11,6 @@
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@gdcorte/react-core-theme": "^1.0.0",
     "moment": ">= 2",
     "react": ">= 16",
     "react-datetime": ">= 3",
@@ -19,7 +18,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
-    "@gdcorte/react-core-theme": "^1.0.0",
     "@rollup/plugin-commonjs": "^21.0.3",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^10.0.1",
@@ -27,21 +25,25 @@
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
+    "@storybook/addons": "^6.5.15",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "^17.0.43",
     "@types/styled-components": "^5.1.24",
-    "babel-loader": "^8.2.4",
+    "babel-loader": "^8.3.0",
     "moment": "^2.29.4",
     "react": "^18.0.0",
     "react-datetime": "^3.1.1",
     "react-dom": "^18.0.0",
+    "react-is": "^18.2.0",
+    "require-from-string": "^2.0.2",
     "rollup": "^2.70.1",
     "rollup-plugin-dts": "^4.2.0",
     "storybook-addon-styled-component-theme": "^2.0.0",
     "styled-components": "^5.3.5",
     "tslib": "^2.3.1",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "webpack": "^5.75.0"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -57,5 +59,9 @@
     "build-test": "npm run build",
     "audit-fix": "",
     "release": "rollup -c && pnpm publish --access=public"
+  },
+  "dependencies": {
+    "@gdcorte/react-core-icons": "^1.0.0",
+    "@gdcorte/react-core-theme": "^1.0.0"
   }
 }
