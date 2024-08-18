@@ -1,1 +1,1 @@
-export { OutsideClickHandler } from './OutsideClick'
+export { OutsideClickHandler } from "./OutsideClick";
