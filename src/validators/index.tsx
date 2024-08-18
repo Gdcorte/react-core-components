@@ -1,2 +1,1 @@
-
-export {validatePercentageValue as validPercentageInput} from './inputs'
+export { validatePercentageValue as validPercentageInput } from "./inputs";
