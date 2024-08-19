@@ -16,7 +16,11 @@ const darkTheme = createThemeWithDefaultPresets({
   combination: "tetradic",
 });
 
-const GlobalStyles = createGlobalStyle``;
+const GlobalStyles = createGlobalStyle`
+  .sb-story{
+    stroke: currentColor;
+  }
+`;
 
 const preview: Preview = {
   globalTypes: {

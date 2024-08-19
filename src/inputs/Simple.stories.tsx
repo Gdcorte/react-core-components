@@ -25,3 +25,18 @@ export const Primary: Story = {
     tag: "input",
   },
 };
+
+export const WithError: Story = {
+  args: {
+    tag: "input-with-error",
+    isValid: false,
+    children: <span style={{ color: "coral" }}>Invalid input</span>,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    tag: "input-disabled",
+    disabled: true,
+  },
+};
