@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@gdcorte/react-core-theme':
         specifier: '>=4'
-        version: 4.0.2(react@18.3.1)(styled-components@6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        version: 4.0.4(react@18.3.1)(styled-components@6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       styled-components:
         specifier: '>= 6'
         version: 6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -889,8 +889,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@gdcorte/react-core-theme@4.0.2':
-    resolution: {integrity: sha512-lJJbydppRSI8Kz4Te/W68HD1wUxT6Nn1WSml/VYBEMF7DkM0anCB62mIBgRi2DTH49/FUOVGJy7NTzdVaPpwGQ==}
+  '@gdcorte/react-core-theme@4.0.4':
+    resolution: {integrity: sha512-TROO5LNy8i+gp2y9i/xmdtcS4s2LC2vK91dG4MR8CzO6+ZQpElPpsIVNk5Qpgt/B/8EoQl5rCI0Gjzy280B7nw==}
     peerDependencies:
       react: '>= 18'
       styled-components: '>= 6'
@@ -4324,7 +4324,7 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@gdcorte/react-core-theme@4.0.2(react@18.3.1)(styled-components@6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@gdcorte/react-core-theme@4.0.4(react@18.3.1)(styled-components@6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
       react: 18.3.1
       styled-components: 6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
