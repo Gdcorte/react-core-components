@@ -34,11 +34,16 @@ const IconFrame = styled.div`
   height: inherit;
   width: 32px;
 
-  ${RequiredColorStyle};
-  ${ErrorColorStyle};
-  ${DisabledColorStyle};
+  &.required {
+    ${RequiredColorStyle};
+  }
+
+  &.error {
+    ${ErrorColorStyle};
+  }
 
   &.disabled {
+    ${DisabledColorStyle};
     background: transparent;
   }
 `;
@@ -68,13 +73,7 @@ export type IconInputProps = {
 
 type Props = IconInputProps & CustomColor;
 
-export default function IconInput({
-  icon,
-  label,
-  customColor,
-  focusColor,
-  ...props
-}: Props) {
+export default function IconInput({ icon, label, ...props }: Props) {
   const flagClass = convertStatusFlagToClass(props);
   return (
     <Frame className={`icon-input-frame`}>

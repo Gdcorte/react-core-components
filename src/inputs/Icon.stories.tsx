@@ -50,6 +50,7 @@ export const WithoutLabel: Story = {
     tag: "input",
   },
 };
+
 export const WithLabel: Story = {
   args: {
     label: "Hello Darkness...",
@@ -58,5 +59,18 @@ export const WithLabel: Story = {
     disabled: false,
     icon: <TestIcon />,
     tag: "input",
+  },
+};
+
+export const WithCustomColor: Story = {
+  args: {
+    label: "Hello Darkness...",
+    isValid: true,
+    isRequired: false,
+    disabled: false,
+    icon: <TestIcon />,
+    tag: "input",
+    customColor: "cyan",
+    focusColor: "purple",
   },
 };

@@ -56,3 +56,12 @@ export const Disabled: Story = {
     autoComplete: "new-password",
   },
 };
+
+export const WithCustomColor: Story = {
+  args: {
+    tag: "password",
+    autoComplete: "new-password",
+    customColor: "cyan",
+    focusColor: "darkgreen",
+  },
+};
