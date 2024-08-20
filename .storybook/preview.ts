@@ -3,6 +3,7 @@ import type { Preview, ReactRenderer } from "@storybook/react";
 import { createThemeWithDefaultPresets } from "@gdcorte/react-core-theme";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import ThemeDecorator from "./decorators/theme";
 
 const lightTheme = createThemeWithDefaultPresets({
   name: "green",
@@ -27,6 +28,7 @@ const preview: Preview = {
     theme: { type: "string" },
   },
   decorators: [
+    ThemeDecorator,
     withThemeFromJSXProvider<ReactRenderer>({
       themes: {
         light: lightTheme,
