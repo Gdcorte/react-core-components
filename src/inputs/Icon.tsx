@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
+import { CustomColor } from "../interface";
 import Input, { type SimpleInputProps } from "./Simple";
 import {
   DisabledColorStyle,
@@ -60,10 +61,12 @@ const InputFrame = styled.div`
   }
 `;
 
-type Props = {
+export type IconInputProps = {
   icon: ReactNode;
   label?: string;
 } & SimpleInputProps;
+
+type Props = IconInputProps & CustomColor;
 
 export default function IconInput({
   icon,

@@ -45,9 +45,11 @@ const Frame = styled.div<{ iconPos?: "left" | "right" }>`
   }
 `;
 
-type Props = {
+export type PasswordInputProps = {
   iconPos?: "left" | "right";
 } & Omit<SimpleInputProps, "type">;
+
+type Props = PasswordInputProps & CustomColor;
 
 export default function PasswordInput({
   iconPos,
