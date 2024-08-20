@@ -36,8 +36,9 @@ export type SimpleInputProps = {
   isValid?: boolean;
   isRequired?: boolean;
   children?: ReactNode;
-} & InputHTMLAttributes<HTMLInputElement> &
-  CustomColor;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+type Props = SimpleInputProps & CustomColor;
 
 export default function SimpleInput({
   tag,
@@ -49,7 +50,7 @@ export default function SimpleInput({
   isRequired,
   children,
   ...props
-}: SimpleInputProps) {
+}: Props) {
   async function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (onChange) {
       onChange(event);
