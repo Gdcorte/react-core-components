@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import SimpleButton from "./Simple";
+import TransparentButton from "./Transparent";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Buttons/Simple",
-  component: SimpleButton,
+  title: "Buttons/Transparent",
+  component: TransparentButton,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -14,7 +14,7 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {},
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-} satisfies Meta<typeof SimpleButton>;
+} satisfies Meta<typeof TransparentButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     tag: "button",
-    children: "Simple Button",
+    children: "Transparent Button",
   },
 };
 
@@ -31,8 +31,8 @@ export const CustomColor: Story = {
   args: {
     tag: "button",
     children: "Custom Colored Button",
-    $customColor: {
-      color: "beige",
+    customColor: {
+      color: "purple",
       contrast: "darkgreen",
       tint: "lightgreen",
       shade: "darkblue",
@@ -44,7 +44,7 @@ export const CustomColor: Story = {
 export const Disabled: Story = {
   args: {
     tag: "button",
-    children: "Simple Button",
+    children: "Transparent Button",
     disabled: true,
   },
 };
