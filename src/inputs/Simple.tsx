@@ -42,6 +42,7 @@ type Props = SimpleInputProps & CustomColor;
 
 export default function SimpleInput({
   tag,
+  name,
   onChangeCustom,
   onChange,
   clickMode,
@@ -57,7 +58,7 @@ export default function SimpleInput({
     }
 
     if (onChangeCustom) {
-      await onChangeCustom(event.currentTarget.value, tag);
+      await onChangeCustom(event.currentTarget.value, name ?? tag);
     }
   }
 
@@ -66,6 +67,7 @@ export default function SimpleInput({
       <Input
         className={`simple-input ${convertStatusFlagToClass({ isRequired, isValid, ...props })}  ${className ?? ""}`}
         onChange={handleChange}
+        name={name ?? tag}
         {...props}
       />
       {isValid == false && children}

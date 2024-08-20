@@ -70,8 +70,8 @@ export default function PasswordInput({
       <SimpleInput
         disabled={disabled}
         customColor={customColor}
-        {...props}
         type={type}
+        {...props}
       />
       <IconBox
         className={`password-input-icon-box ${convertStatusFlagToClass({ disabled, ...props })}`}

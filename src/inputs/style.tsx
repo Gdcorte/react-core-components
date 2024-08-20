@@ -42,6 +42,7 @@ export const BaseInputStyle = css<CustomColor>`
   border-radius: 5px;
   ${BaseInputColorStyle};
 
+  color: inherit;
   background: transparent;
 
   font-size: 1rem;
