@@ -54,8 +54,23 @@ export const Checked: Story = {
 export const Disabled: Story = {
   args: {
     tag: "checked",
+    label: "I Should not be clicked",
+    checked: false,
+    disabled: true,
+  },
+};
+
+export const WithCustomColor: Story = {
+  args: {
+    tag: "checked",
     label: "I am already clicked",
     checked: true,
-    disabled: true,
+    customColor: {
+      color: "cornflowerblue",
+      contrast: "darkblue",
+      tint: "lightgreen",
+      shade: "darkgreen",
+      tone: "lightblue",
+    },
   },
 };

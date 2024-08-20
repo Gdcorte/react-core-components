@@ -31,28 +31,32 @@ export const Icon = styled.svg`
   position: absolute;
 `;
 
-const CheckedStyle = css<{ customColor?: ColorElement }>`
-  background: ${({ theme, customColor }) =>
-    customColor ? customColor.color : theme.background.contrast};
+const CheckedStyle = css<{ $customColor?: ColorElement }>`
+  background: ${({ theme, $customColor }) =>
+    $customColor ? $customColor.color : theme.background.contrast};
   border: 2px solid
-    ${({ theme, customColor }) =>
-      customColor ? customColor.tint : theme.background.tint};
+    ${({ theme, $customColor }) =>
+      $customColor ? $customColor.tint : theme.background.tint};
 
   ${Icon} {
     visibility: visible;
-    stroke: ${({ theme, customColor }) =>
-      customColor ? customColor.shade : theme.background.shade};
+    stroke: ${({ theme, $customColor }) =>
+      $customColor ? $customColor.shade : theme.background.shade};
   }
 `;
 
 const UncheckedStyle = css`
   background: transparent;
   border: 2px solid ${({ theme }) => theme.background.contrast};
+
+  ${Icon} {
+    visibility: hidden;
+  }
 `;
 
 export const StyledCheckbox = styled.div<{
   checked: boolean;
-  customColor?: ColorElement;
+  $customColor?: ColorElement;
 }>`
   display: inline-block;
   width: 24px;
@@ -92,7 +96,7 @@ export default function Checkmark({
       <HiddenCheckbox checked={checked} onChange={onClick} type={"checkbox"} />
       <StyledCheckbox
         className={`checkbox-input-icon-box ${className}`}
-        customColor={customColor}
+        $customColor={customColor}
         checked={checked}
       >
         <Icon className="checkbox-input-box-icon" viewBox="0 0 24 24">

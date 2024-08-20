@@ -55,7 +55,22 @@ export const Disabled: Story = {
   args: {
     tag: "checked",
     label: "I am already clicked",
-    selectedValue: "checked",
+    selectedValue: "unchecked",
     disabled: true,
+  },
+};
+
+export const WithCustomColor: Story = {
+  args: {
+    tag: "checked",
+    label: "I am already clicked",
+    selectedValue: "checked",
+    customColor: {
+      color: "cornflowerblue",
+      contrast: "darkblue",
+      tint: "lightgreen",
+      shade: "darkgreen",
+      tone: "lightblue",
+    },
   },
 };
