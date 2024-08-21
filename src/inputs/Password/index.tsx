@@ -1,27 +1,24 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { CustomColor } from "../../interface";
+import { CustomColor, StyledCustomColor } from "../../interface";
 import SimpleInput, { SimpleInputProps } from "../Simple";
-import { BaseInputStyle } from "../style";
+import { BaseInputStyle, FocusedColorStyle } from "../style";
 import { convertStatusFlagToClass } from "../utils";
 import LockedIcon from "./Locked";
 import UnlockedIcon from "./Unlocked";
 
-const IconBox = styled.div<CustomColor>`
+const IconBox = styled.div<StyledCustomColor>`
   display: flex;
+  cursor: pointer;
 
   ${BaseInputStyle};
 
-  stroke: ${({ theme, customColor }) =>
-    customColor ?? theme.background.contrast};
-
-  cursor: pointer;
   &.disabled {
     cursor: not-allowed;
   }
 `;
 
-const Frame = styled.div<{ iconPos?: "left" | "right" }>`
+const Frame = styled.div<{ iconPos?: "left" | "right" } & StyledCustomColor>`
   display: flex;
   flex: 1 1 0;
   flex-direction: ${({ iconPos }) =>
@@ -43,6 +40,12 @@ const Frame = styled.div<{ iconPos?: "left" | "right" }>`
         : `border-radius: 0px 5px 5px 0px;
         border-left: none;`};
   }
+
+  &:focus-within {
+    ${IconBox} {
+      ${FocusedColorStyle};
+    }
+  }
 `;
 
 export type PasswordInputProps = {
@@ -55,6 +58,7 @@ export default function PasswordInput({
   iconPos,
   disabled,
   customColor,
+  focusColor,
   ...props
 }: Props) {
   const [type, setType] = useState<"password" | "text">("password");
@@ -66,17 +70,24 @@ export default function PasswordInput({
   }
 
   return (
-    <Frame className="password-input-frame" iconPos={iconPos}>
+    <Frame
+      className="password-input-frame"
+      iconPos={iconPos}
+      $customColor={customColor}
+      $focusColor={focusColor}
+    >
       <SimpleInput
         disabled={disabled}
         customColor={customColor}
-        {...props}
+        focusColor={focusColor}
         type={type}
+        {...props}
       />
       <IconBox
         className={`password-input-icon-box ${convertStatusFlagToClass({ disabled, ...props })}`}
         onClick={handleTypeChange}
-        customColor={customColor}
+        $customColor={customColor}
+        $focusColor={focusColor}
       >
         {type === "password" ? <LockedIcon /> : <UnlockedIcon />}
       </IconBox>

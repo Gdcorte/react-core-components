@@ -34,6 +34,14 @@ export const WithError: Story = {
   },
 };
 
+export const WithCustomColor: Story = {
+  args: {
+    tag: "input-with-error",
+    customColor: "cyan",
+    focusColor: "purple",
+  },
+};
+
 export const Disabled: Story = {
   args: {
     tag: "input-disabled",

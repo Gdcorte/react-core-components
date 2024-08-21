@@ -13,6 +13,7 @@ const Frame = styled.label`
   &.disabled {
     cursor: not-allowed;
     color: ${({ theme }) => theme.disabled.color};
+    background: transparent;
   }
 `;
 
@@ -36,6 +37,7 @@ export default function CheckboxInput({
   onClick,
   checked,
   disabled,
+  customColor,
 }: Props) {
   const classes = `${disabled ? "disabled" : ""}`;
 
@@ -55,6 +57,7 @@ export default function CheckboxInput({
         className={classes}
         checked={checked ?? false}
         onClick={handleClick}
+        customColor={customColor}
       />
 
       <Label className="checkbox-input-label">{label}</Label>

@@ -1,11 +1,11 @@
 import { TestIcon } from "@/.storybook/assets";
 import type { Meta, StoryObj } from "@storybook/react";
-import IconInput from "./Icon";
+import OutlineButton from "./Outline";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Inputs/Icon",
-  component: IconInput,
+  title: "Buttons/Outline",
+  component: OutlineButton,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -15,39 +15,44 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {},
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-} satisfies Meta<typeof IconInput>;
+} satisfies Meta<typeof OutlineButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const WithoutLabel: Story = {
+export const Primary: Story = {
   args: {
-    icon: <TestIcon />,
-    tag: "input",
+    tag: "button",
+    children: "Outline Button",
   },
 };
 
-export const WithLabel: Story = {
+export const WithIcon: Story = {
   args: {
-    label: "Hello Darkness...",
-    isValid: true,
-    isRequired: false,
-    disabled: false,
-    icon: <TestIcon />,
-    tag: "input",
+    tag: "button",
+    children: <TestIcon />,
   },
 };
 
-export const WithCustomColor: Story = {
+export const CustomColor: Story = {
   args: {
-    label: "Hello Darkness...",
-    isValid: true,
-    isRequired: false,
-    disabled: false,
-    icon: <TestIcon />,
-    tag: "input",
-    customColor: "cyan",
-    focusColor: "purple",
+    tag: "button",
+    children: "Custom Colored Button",
+    customColor: {
+      color: "turquoise",
+      contrast: "darkgreen",
+      tint: "lightgreen",
+      shade: "darkblue",
+      tone: "lightblue",
+    },
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    tag: "button",
+    children: "Outline Button",
+    disabled: true,
   },
 };

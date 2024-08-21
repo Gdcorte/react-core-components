@@ -26,13 +26,13 @@ export const HiddenRadio = styled.input`
   width: 0px;
 `;
 
-const SelectedRadio = css<{ customColor?: ColorElement }>`
-  background: ${({ theme, customColor }) =>
-    customColor ? customColor.tint : theme.background.tint};
+const SelectedRadio = css<{ $customColor?: ColorElement }>`
+  background: ${({ theme, $customColor }) =>
+    $customColor ? $customColor.tint : theme.background.tint};
 
   border: 2px solid
-    ${({ theme, customColor }) =>
-      customColor ? customColor.color : theme.background.contrast};
+    ${({ theme, $customColor }) =>
+      $customColor ? $customColor.color : theme.background.contrast};
 
   ${Icon} {
     visibility: visible;
@@ -51,7 +51,7 @@ const NeutralRadio = css`
 
 export const StyledRadio = styled.div<{
   checked: boolean;
-  customColor?: ColorElement;
+  $customColor?: ColorElement;
 }>`
   display: inline-block;
   width: 20px;
@@ -79,11 +79,20 @@ type Props = {
   className?: string;
 };
 
-export default function RadioMark({ checked, onClick, className }: Props) {
+export default function RadioMark({
+  checked,
+  onClick,
+  customColor,
+  className,
+}: Props) {
   return (
     <Frame>
       <HiddenRadio checked={checked} onChange={onClick} type={"radio"} />
-      <StyledRadio className={`${className}`} checked={checked}>
+      <StyledRadio
+        $customColor={customColor}
+        className={`${className}`}
+        checked={checked}
+      >
         <Icon viewBox={`0 0 20 20`}>
           <circle cx={`${20 / 2}`} cy={`${20 / 2}`} r={`${20 / 15}`} />
         </Icon>

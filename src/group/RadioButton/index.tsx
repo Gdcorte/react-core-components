@@ -14,6 +14,7 @@ const Frame = styled.label`
   &.disabled {
     cursor: not-allowed;
     color: ${({ theme }) => theme.disabled.color};
+    background: transparent;
   }
 `;
 

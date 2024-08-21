@@ -1,16 +1,13 @@
 import { css } from "styled-components";
-import { CustomColor } from "../interface";
+import { StyledCustomColor } from "../interface";
 
 export const ErrorColorStyle = css`
-  &.error {
-    stroke: ${({ theme }) => theme.alerts.danger.color};
-    fill: ${({ theme }) => theme.alerts.danger.color};
-    border-color: ${({ theme }) => theme.alerts.danger.color};
-  }
+  stroke: ${({ theme }) => theme.alerts.danger.color};
+  fill: ${({ theme }) => theme.alerts.danger.color};
+  border-color: ${({ theme }) => theme.alerts.danger.color};
 `;
 
 export const RequiredColorStyle = css`
-  &.required {
     stroke: ${({ theme }) => theme.alerts.warning.color};
     fill: ${({ theme }) => theme.alerts.warning.color};
     border-color: ${({ theme }) => theme.alerts.warning.color};
@@ -18,47 +15,67 @@ export const RequiredColorStyle = css`
 `;
 
 export const DisabledColorStyle = css`
-  &:disabled,
-  &.disabled {
-    stroke: ${({ theme }) => theme.disabled.color};
-    fill: ${({ theme }) => theme.disabled.color};
-    border-color: ${({ theme }) => theme.disabled.color};
+  stroke: ${({ theme }) => theme.disabled.color};
+  fill: ${({ theme }) => theme.disabled.color};
+  border-color: ${({ theme }) => theme.disabled.color};
 
-    background: ${({ theme }) => theme.disabled.tone};
-  }
+  background: ${({ theme }) => theme.disabled.tone};
 `;
 
-export const BaseInputColorStyle = css<CustomColor>`
-  border: 1px solid
-    ${({ theme, customColor }) => customColor ?? theme.background.contrast};
+export const FocusedColorStyle = css<StyledCustomColor>`
+  stroke: ${({ theme, $focusColor }) =>
+    $focusColor ? $focusColor : theme.background.tone};
+  fill: ${({ theme, $focusColor }) =>
+    $focusColor ? $focusColor : theme.background.tone};
+
+  border-color: ${({ theme, $focusColor }) =>
+    $focusColor ? $focusColor : theme.background.tone};
 `;
 
-export const BaseInputStyle = css<CustomColor>`
+export const BaseInputColorStyle = css<StyledCustomColor>`
+  stroke: ${({ theme, $customColor }) =>
+    $customColor ?? theme.background.contrast};
+  fill: ${({ theme, $customColor }) =>
+    $customColor ?? theme.background.contrast};
+
+  border-color: ${({ theme, $customColor }) =>
+    $customColor ?? theme.background.contrast};
+`;
+
+export const BaseInputStyle = css<StyledCustomColor>`
   display: flex;
 
   padding: 4px;
   outline: none;
 
+  border: 1px solid transparent;
   border-radius: 5px;
   ${BaseInputColorStyle};
 
+  color: inherit;
   background: transparent;
 
   font-size: 1rem;
   height: 1rem; // This will be important for some components
 
   &:focus {
-    border-color: ${({ theme, focusColor }) =>
-      focusColor ?? theme.background.tone};
+    ${FocusedColorStyle}
   }
 
-  ${RequiredColorStyle};
+  &.required {
+    ${RequiredColorStyle};
+  }
 
-  ${ErrorColorStyle};
+  &.error {
+    ${ErrorColorStyle};
+  }
 
-  ${DisabledColorStyle};
+  &:disabled,
+  &.disabled {
+    ${DisabledColorStyle};
+  }
 `;
 
-export const SingleLineInputCss = css<CustomColor>`
+export const SingleLineInputCss = css<StyledCustomColor>`
   ${BaseInputStyle};
 `;
