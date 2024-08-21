@@ -1,20 +1,15 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-import { CustomColor } from "../interface";
+import { CustomColor, StyledCustomColor } from "../interface";
 import Input, { type SimpleInputProps } from "./Simple";
 import {
+  BaseInputColorStyle,
   DisabledColorStyle,
   ErrorColorStyle,
+  FocusedColorStyle,
   RequiredColorStyle,
 } from "./style";
 import { convertStatusFlagToClass } from "./utils";
-
-const Frame = styled.div`
-  display: flex;
-  flex: 1 1 0;
-
-  gap: 4px;
-`;
 
 const IconBox = styled.div`
   display: flex;
@@ -27,12 +22,14 @@ const IconBox = styled.div`
   }
 `;
 
-const IconFrame = styled.div`
+const IconFrame = styled.div<StyledCustomColor>`
   display: flex;
   align-items: flex-end;
 
   height: inherit;
   width: 32px;
+
+  ${BaseInputColorStyle};
 
   &.required {
     ${RequiredColorStyle};
@@ -66,6 +63,19 @@ const InputFrame = styled.div`
   }
 `;
 
+const Frame = styled.div<StyledCustomColor>`
+  display: flex;
+  flex: 1 1 0;
+
+  &:focus-within {
+    ${IconFrame} {
+      ${FocusedColorStyle}
+    }
+  }
+
+  gap: 4px;
+`;
+
 export type IconInputProps = {
   icon: ReactNode;
   label?: string;
@@ -76,8 +86,16 @@ type Props = IconInputProps & CustomColor;
 export default function IconInput({ icon, label, ...props }: Props) {
   const flagClass = convertStatusFlagToClass(props);
   return (
-    <Frame className={`icon-input-frame`}>
-      <IconFrame className={`icon-input-icon-box ${flagClass}`}>
+    <Frame
+      $customColor={props.customColor}
+      $focusColor={props.focusColor}
+      className={`icon-input-frame`}
+    >
+      <IconFrame
+        $customColor={props.customColor}
+        $focusColor={props.focusColor}
+        className={`icon-input-icon-box ${flagClass}`}
+      >
         <IconBox>{icon}</IconBox>
       </IconFrame>
 

@@ -25,6 +25,9 @@ export const DisabledColorStyle = css`
 export const FocusedColorStyle = css<StyledCustomColor>`
   stroke: ${({ theme, $focusColor }) =>
     $focusColor ? $focusColor : theme.background.tone};
+  fill: ${({ theme, $focusColor }) =>
+    $focusColor ? $focusColor : theme.background.tone};
+
   border-color: ${({ theme, $focusColor }) =>
     $focusColor ? $focusColor : theme.background.tone};
 `;
@@ -32,8 +35,11 @@ export const FocusedColorStyle = css<StyledCustomColor>`
 export const BaseInputColorStyle = css<StyledCustomColor>`
   stroke: ${({ theme, $customColor }) =>
     $customColor ?? theme.background.contrast};
-  border: 1px solid
-    ${({ theme, $customColor }) => $customColor ?? theme.background.contrast};
+  fill: ${({ theme, $customColor }) =>
+    $customColor ?? theme.background.contrast};
+
+  border-color: ${({ theme, $customColor }) =>
+    $customColor ?? theme.background.contrast};
 `;
 
 export const BaseInputStyle = css<StyledCustomColor>`
@@ -42,6 +48,7 @@ export const BaseInputStyle = css<StyledCustomColor>`
   padding: 4px;
   outline: none;
 
+  border: 1px solid transparent;
   border-radius: 5px;
   ${BaseInputColorStyle};
 
