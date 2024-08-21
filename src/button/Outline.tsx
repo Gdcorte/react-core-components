@@ -22,6 +22,7 @@ type Props = {
 export default function OutlineButton({
   tag,
   name,
+  type,
   shape,
   customColor,
   children,
@@ -29,6 +30,7 @@ export default function OutlineButton({
 }: Props) {
   return (
     <Button
+      type={type ?? "button"}
       name={name ?? tag}
       $customColor={customColor}
       $shape={shape}

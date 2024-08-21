@@ -35,13 +35,24 @@ export const BaseButtonStyle = css`
   transition: background 0.3s ease;
 
   color: inherit;
+
+  svg {
+    width: 26px;
+    height: 26px;
+  }
 `;
 
 export const SolidButtonStyle = css<{ $customColor?: ColorElement }>`
   ${BaseButtonStyle};
 
+  color: ${({ theme, $customColor }) =>
+    $customColor ? $customColor.contrast : theme.background.color};
+  fill: ${({ theme, $customColor }) =>
+    $customColor ? $customColor.contrast : theme.background.color};
+  stroke: ${({ theme, $customColor }) =>
+    $customColor ? $customColor.contrast : theme.background.color};
   background: ${({ theme, $customColor }) =>
-    $customColor ? $customColor.color : theme.background.color};
+    $customColor ? $customColor.color : theme.background.contrast};
 
   &:hover {
     background: ${({ theme, $customColor }) =>
@@ -69,11 +80,19 @@ export const OutlineButtonStyle = css<{ $customColor?: ColorElement }>`
 
   color: ${({ theme, $customColor }) =>
     $customColor ? $customColor.color : theme.background.contrast};
+  fill: ${({ theme, $customColor }) =>
+    $customColor ? $customColor.color : theme.background.contrast};
+  stroke: ${({ theme, $customColor }) =>
+    $customColor ? $customColor.color : theme.background.contrast};
   border-color: ${({ theme, $customColor }) =>
     $customColor ? $customColor.color : theme.background.contrast};
 
   &:hover {
     color: ${({ theme, $customColor }) =>
+      $customColor ? $customColor.tone : theme.background.tone};
+    fill: ${({ theme, $customColor }) =>
+      $customColor ? $customColor.tone : theme.background.tone};
+    stroke: ${({ theme, $customColor }) =>
       $customColor ? $customColor.tone : theme.background.tone};
     border-color: ${({ theme, $customColor }) =>
       $customColor ? $customColor.tone : theme.background.tone};
@@ -82,12 +101,20 @@ export const OutlineButtonStyle = css<{ $customColor?: ColorElement }>`
   &:active {
     color: ${({ theme, $customColor }) =>
       $customColor ? $customColor.shade : theme.background.shade};
+    fill: ${({ theme, $customColor }) =>
+      $customColor ? $customColor.shade : theme.background.shade};
+    stroke: ${({ theme, $customColor }) =>
+      $customColor ? $customColor.shade : theme.background.shade};
     border-color: ${({ theme, $customColor }) =>
       $customColor ? $customColor.shade : theme.background.shade};
   }
 
   &:focus {
     color: ${({ theme, $customColor }) =>
+      $customColor ? $customColor.tint : theme.background.tint};
+    fill: ${({ theme, $customColor }) =>
+      $customColor ? $customColor.tint : theme.background.tint};
+    stroke: ${({ theme, $customColor }) =>
       $customColor ? $customColor.tint : theme.background.tint};
     border-color: ${({ theme, $customColor }) =>
       $customColor ? $customColor.tint : theme.background.tint};

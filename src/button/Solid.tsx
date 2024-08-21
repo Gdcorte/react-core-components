@@ -29,10 +29,12 @@ export default function SolidButton({
   shape,
   customColor,
   children,
+  type,
   ...props
 }: Props) {
   return (
     <Button
+      type={type ?? "button"}
       name={name ?? tag}
       $customColor={customColor}
       $shape={shape}

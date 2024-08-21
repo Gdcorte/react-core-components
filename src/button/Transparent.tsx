@@ -30,12 +30,18 @@ type Props = {
 export default function TransparentButton({
   tag,
   name,
+  type,
   customColor,
   children,
   ...props
 }: Props) {
   return (
-    <Button name={name ?? tag} $customColor={customColor} {...props}>
+    <Button
+      type={type ?? "button"}
+      name={name ?? tag}
+      $customColor={customColor}
+      {...props}
+    >
       {children}
     </Button>
   );

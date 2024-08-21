@@ -1,3 +1,4 @@
+import { TestIcon } from "@/.storybook/assets";
 import type { Meta, StoryObj } from "@storybook/react";
 import TransparentButton from "./Transparent";
 
@@ -24,6 +25,13 @@ export const Primary: Story = {
   args: {
     tag: "button",
     children: "Transparent Button",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    tag: "button",
+    children: <TestIcon />,
   },
 };
 
