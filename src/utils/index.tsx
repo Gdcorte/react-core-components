@@ -18,7 +18,7 @@ export function getElementRawDimensions(element?: Element | null): {
   return dimension;
 }
 
-export function getElementInternalDimensions(element?: Element | null): {
+export function getElementInternalDimensions(element: Element | null): {
   width: number;
   height: number;
 } {

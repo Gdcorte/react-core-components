@@ -1,30 +1,4 @@
-import styled, { css } from "styled-components";
-import { TimelineOrientation } from "../../interface";
-
-export const FrameStyle = css<{
-  $customColor?: string;
-  $orientation: TimelineOrientation;
-}>`
-  ${({ $orientation }) =>
-    $orientation === "horizontal"
-      ? `
-          left: -40%;
-          width: 200px;
-          `
-      : `
-          top: -30%;
-          width: 45%;
-          min-width: 100px;
-          flex: 1 1 0;
-      `};
-
-  height: 100px;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid
-    ${({ theme, $customColor }) =>
-      $customColor ? $customColor : theme.background.contrast};
-`;
+import styled from "styled-components";
 
 export const Button = styled.button<{
   $customColor?: string;

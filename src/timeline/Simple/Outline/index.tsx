@@ -95,6 +95,7 @@ const Separator = styled.div<{
 
 type Props = {
   className?: string;
+  contentHeight?: number;
   placement: TimelinePlacement;
   orientation: TimelineOrientation;
   icon?: ReactNode;
@@ -108,6 +109,7 @@ export default function ItemOutline({
   className,
   placement,
   orientation,
+  contentHeight,
   icon,
   children,
   color,
@@ -134,6 +136,7 @@ export default function ItemOutline({
         orientation={orientation}
         placement={placement}
         hideContent={hideContent}
+        childHeight={contentHeight}
       >
         {children}
       </Content>

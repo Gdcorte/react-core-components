@@ -58,7 +58,7 @@ const activities: TimelineActivity[] = [
     icon: (
       <img src="https://cdn.outsideonline.com/wp-content/uploads/2023/03/Funny_Dog_H.jpg" />
     ),
-    title: "Working hard",
+    title: <p style={{ marginTop: "0" }}> "Working hard"</p>,
     color: "lightgreen",
   },
   {

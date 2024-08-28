@@ -1,3 +1,5 @@
+import { getElementInternalDimensions } from "@/src/utils";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {
   TimelineActivity,
@@ -46,15 +48,27 @@ export default function ItemLabel({
   placement,
   orientation,
 }: Props) {
+  const content = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  useEffect(() => {
+    if (content.current === null) return;
+
+    const contentAccDim = getElementInternalDimensions(content.current);
+    console.warn(contentAccDim);
+    setContentHeight(contentAccDim.height);
+  }, [content.current]);
+
   return (
     <ItemOutline
+      contentHeight={contentHeight}
       className={className}
       placement={placement}
       orientation={orientation}
       icon={activity.icon}
       color={activity.color}
     >
-      <Frame>
+      <Frame ref={content}>
         <Title>{activity.title}</Title>
         <Range>{determineRange(activity.start, activity.end)}</Range>
         <Description>{activity.description}</Description>

@@ -1,42 +1,109 @@
 "use client";
 
-import { useWindowSize } from "@/src/hooks";
-import { getChildrenAccDimensions, getElementRawDimensions } from "@/src/utils";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import { ReactNode, useEffect, useState } from "react";
+import styled, { css } from "styled-components";
 import { TimelineOrientation, TimelinePlacement } from "../../interface";
-import { OverflowableFrame } from "./Frames";
-import { ContentIconClose, ContentIconOpen } from "./Icon";
-import { Button, FrameStyle, OverflowControls } from "./styles";
+import SmartIcon, { IconAction } from "./Icon";
+import { Button, OverflowControls } from "./styles";
 
-const Overflowable = styled.div`
+const CONTENT_PADDING = 8;
+const CONTENT_BORDER = 1;
+
+const OuterFrameStyle = css<{ $orientation: TimelineOrientation }>`
+  ${({ $orientation }) =>
+    $orientation === "horizontal"
+      ? `
+          left: -40%;
+          width: 220px;
+          `
+      : `
+          align-items: center;
+          top: -30%;
+          width: 45%;
+          min-width: 120px;
+          flex: 1 1 0;
+      `};
+
+  height: 100px;
+`;
+
+const InnerFrameStyle = css<{
+  $customColor?: string;
+}>`
+  padding: ${CONTENT_PADDING}px;
+  border-radius: 5px;
+  border: ${CONTENT_BORDER}px solid
+    ${({ theme, $customColor }) =>
+      $customColor ? $customColor : theme.background.contrast};
+`;
+
+const Collapsed = styled.div`
   display: flex;
   flex-direction: column;
 
-  flex: 1 1 0;
   width: 100%;
 
   overflow: hidden;
+  z-index: 1;
 `;
 
-const Frame = styled.div<{
+const Container = styled.div<{
   $orientation: TimelineOrientation;
   $placement: TimelinePlacement;
   $customColor?: string;
 }>`
   display: flex;
 
-  height: 100%;
-  background: inherit;
-
-  position: relative;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 
   ${({ $placement }) =>
     $placement === "bottom"
       ? "flex-direction: column;"
       : "flex-direction: column-reverse;"}
 
-  ${FrameStyle}
+  background: inherit;
+
+  ${InnerFrameStyle}
+
+  width: calc(100% - 16px - 2px);
+  height: fit-content;
+
+  &.with-overflow {
+    ${({ $placement }) => ($placement === "bottom" ? "" : "top: 0;")}
+
+    .timeline-event-content-box-text {
+      max-height: calc(
+        100px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
+      );
+    }
+  }
+
+  &.expand {
+    height: fit-content;
+
+    .timeline-event-content-box-text {
+      height: auto;
+      overflow: auto;
+      max-height: calc(
+        200px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
+      );
+    }
+  }
+`;
+
+const Frame = styled.div<{
+  $orientation: TimelineOrientation;
+  $placement: TimelinePlacement;
+}>`
+  display: flex;
+  position: relative;
+  background: inherit;
+
+  ${({ $placement }) => ($placement === "top" ? "align-items: flex-end;" : "")}
+
+  ${OuterFrameStyle}
 
   &.invisible {
     visibility: hidden;
@@ -45,98 +112,76 @@ const Frame = styled.div<{
   }
 `;
 
-function isUndefinedNull(option: unknown): boolean {
-  return option === undefined || option === null;
-}
-
 type Props = {
-  orientation?: TimelineOrientation;
+  childHeight?: number;
+  hideContent?: boolean;
+  isInvisible?: boolean;
   placement?: TimelinePlacement;
+  orientation?: TimelineOrientation;
   className?: string;
   children?: ReactNode;
   customColor?: string;
-  hideContent?: boolean;
-  isInvisible?: boolean;
 };
 
 export default function Content({
-  className,
-  customColor,
   children,
-  orientation = "horizontal",
-  placement = "top",
+  customColor,
+  className,
   hideContent = false,
   isInvisible = false,
+  childHeight = 0,
+  placement = "top",
+  orientation = "horizontal",
+  ...props
 }: Props) {
-  const [showExpander, setShowExpander] = useState(false);
-  const [showExpandedCtx, setShowExpandedCtx] = useState(false);
-
-  const content = useRef<HTMLDivElement>(null);
-  const reference = useRef<HTMLDivElement>(null);
-  const windowSize = useWindowSize();
+  const [boxType, setBoxType] = useState<"with-overflow" | "no-overflow">(
+    "with-overflow"
+  );
+  const [showExpandedCtx, setShowExpandedCtx] =
+    useState<IconAction>("collapse");
 
   useEffect(() => {
-    if (
-      isUndefinedNull(content.current) ||
-      isUndefinedNull(reference.current)
-    ) {
-      return;
+    const maxHeight = 100 - 2 * (CONTENT_BORDER + CONTENT_PADDING);
+    if (childHeight > maxHeight) {
+      setBoxType("with-overflow");
+    } else {
+      setBoxType("no-overflow");
     }
+  }, [childHeight]);
 
-    // Decide wether to show the expande or not
-    const contentSize = getChildrenAccDimensions(content.current);
-    const referenceSize = getElementRawDimensions(reference.current);
-
-    if (contentSize.height > referenceSize.height) {
-      // In this case we need to worry about the expanded content...
-      setShowExpander(true);
-    }
-  }, [content, reference, windowSize]);
-
-  function handleOpen() {
-    setShowExpandedCtx(true);
-  }
-
-  function handleClose() {
-    setShowExpandedCtx(false);
+  function toggleIcon() {
+    setShowExpandedCtx(showExpandedCtx === "expand" ? "collapse" : "expand");
   }
 
   return (
     <Frame
-      ref={reference}
-      $customColor={customColor}
       $orientation={orientation}
       $placement={placement}
       className={`
-        timeline-event-content
-        ${hideContent || isInvisible ? "invisible" : ""} 
-        ${className ? className : ""}
-      `}
+      timeline-event-content
+      ${className ? className : ""}
+      ${isInvisible || hideContent ? "invisible" : ""}
+    `}
     >
-      <Overflowable ref={content} className="timeline-event-content-box">
-        {children}
-      </Overflowable>
-      {showExpander && (
-        <OverflowControls className="timeline-event-content-controls">
-          <Button onClick={handleOpen} $customColor={customColor}>
-            {placement === "bottom" ? (
-              <ContentIconClose />
-            ) : (
-              <ContentIconOpen />
-            )}
-          </Button>
-        </OverflowControls>
-      )}
-      {showExpandedCtx && (
-        <OverflowableFrame
-          onClick={handleClose}
-          customColor={customColor}
-          orientation={orientation}
-          placement={placement}
-        >
+      <Container
+        $customColor={customColor}
+        $orientation={orientation}
+        $placement={placement}
+        className={`
+          timeline-event-content-box ${showExpandedCtx} ${boxType}
+        `}
+      >
+        <Collapsed className={`timeline-event-content-box-text ${boxType}`}>
           {children}
-        </OverflowableFrame>
-      )}
+        </Collapsed>
+        {boxType === "with-overflow" && (
+          <OverflowControls className="timeline-event-content-box-controls">
+            <Button onClick={toggleIcon} $customColor={customColor}>
+              <SmartIcon placement={placement} action={showExpandedCtx} />
+            </Button>
+          </OverflowControls>
+        )}
+      </Container>
     </Frame>
   );
 }
