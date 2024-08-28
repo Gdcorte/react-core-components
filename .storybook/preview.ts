@@ -1,9 +1,9 @@
 import type { Preview, ReactRenderer } from "@storybook/react";
 
+import ThemeDecorator from "@/.storybook/decorators/theme";
 import { createThemeWithDefaultPresets } from "@gdcorte/react-core-theme";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import ThemeDecorator from "./decorators/theme";
 
 const lightTheme = createThemeWithDefaultPresets({
   name: "green",

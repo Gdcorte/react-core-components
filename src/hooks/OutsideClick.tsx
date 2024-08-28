@@ -1,9 +1,11 @@
+"use client";
+
 import { RefObject, useEffect } from "react";
 
 /**
  * Hook that alerts clicks outside of the passed ref
  */
-export function OutsideClickHandler(
+export default function OutsideClickHandler(
   ref: RefObject<HTMLObjectElement>,
   handler: CallableFunction
 ) {
