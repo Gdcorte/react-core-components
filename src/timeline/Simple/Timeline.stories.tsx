@@ -7,8 +7,8 @@ import { TimelineActivity } from "./interface";
 const Frame = styled.div`
   display: flex;
 
-  max-width: 700px;
-  max-height: 700px;
+  width: 700px;
+  max-height: 600px;
   background: ${({ theme }) => theme.background.color};
 
   .test-cut {
