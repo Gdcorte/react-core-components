@@ -32,7 +32,7 @@ const Frame = styled.div<{
       : `
       flex-direction: column;
       overflow-y: auto;
-      margin-bottom: 104px;
+      padding-bottom: 100px;
       `;
   }}
 

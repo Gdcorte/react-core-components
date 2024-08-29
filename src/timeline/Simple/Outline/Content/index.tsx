@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { TimelineOrientation, TimelinePlacement } from "../../interface";
