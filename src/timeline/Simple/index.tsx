@@ -68,6 +68,12 @@ export default function SimpleTimeline({
   customColor,
 }: Props) {
   const labels = useMemo(() => {
+    const sortedActivities = activities.sort((a, b) => {
+      if (a.start === b.start) return 0
+
+      return a.start < b.start ? -1 : 1
+    })
+
     //   initialize
     let placement: TimelinePlacement = "bottom";
     if (orientation === "vertical") {
@@ -82,7 +88,7 @@ export default function SimpleTimeline({
         hideContent
         hideMarker
       />,
-      ...activities.map<ReactNode>((value, index) => {
+      ...sortedActivities.map<ReactNode>((value, index) => {
         // Switch over during creation
         if (orientation === "horizontal") {
           placement = placement === "top" ? "bottom" : "top";

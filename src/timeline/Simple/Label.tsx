@@ -23,7 +23,7 @@ const Range = styled.span`
   font-size: 0.8rem;
 `;
 
-const Description = styled.p`
+const Description = styled.div`
   margin: 0;
   margin-top: 6px;
 `;
@@ -36,10 +36,10 @@ type Props = {
 };
 
 function determineRange(start: Date, end?: Date): string {
-  const startFormatted = `${start.getFullYear()}/${start.getMonth()}`;
+  const startFormatted = `${start.getFullYear()}/${start.getMonth()+1}`;
   if (end === undefined) return startFormatted;
 
-  return `${startFormatted} - ${end.getFullYear()}/${end.getMonth()}`;
+  return `${startFormatted} - ${end.getFullYear()}/${end.getMonth()+1}`;
 }
 
 export default function ItemLabel({
@@ -55,7 +55,6 @@ export default function ItemLabel({
     if (content.current === null) return;
 
     const contentAccDim = getElementInternalDimensions(content.current);
-    console.warn(contentAccDim);
     setContentHeight(contentAccDim.height);
   }, [content.current]);
 
