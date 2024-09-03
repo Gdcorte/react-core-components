@@ -17,6 +17,6 @@ export type TimelineActivity = {
   end?: Date;
   icon?: ReactNode;
   title: ReactNode;
-  description?: string;
+  description?: ReactNode;
   color?: string;
 };

@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core-components",
-  "version": "1.5.0",
+  "version": "1.4.1",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -18,8 +18,8 @@
   ],
   "peerDependencies": {
     "@gdcorte/react-core-theme": ">=4",
-    "react": ">= 18",
-    "styled-components": ">= 6"
+    "styled-components": ">= 6",
+    "react": ">= 18"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
