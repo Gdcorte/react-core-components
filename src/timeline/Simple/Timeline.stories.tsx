@@ -7,7 +7,7 @@ import { TimelineActivity } from "./interface";
 const Frame = styled.div`
   display: flex;
 
-  width: 700px;
+  width: 100%;
   max-height: 600px;
   background: ${({ theme }) => theme.background.color};
 

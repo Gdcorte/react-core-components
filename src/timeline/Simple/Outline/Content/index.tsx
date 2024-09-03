@@ -6,6 +6,7 @@ import { Button, OverflowControls } from "./styles";
 
 const CONTENT_PADDING = 8;
 const CONTENT_BORDER = 1;
+const OUTER_HEIGHT = 150
 
 const OuterFrameStyle = css<{ $orientation: TimelineOrientation }>`
   ${({ $orientation }) =>
@@ -22,7 +23,7 @@ const OuterFrameStyle = css<{ $orientation: TimelineOrientation }>`
           flex: 1 1 0;
       `};
 
-  height: 100px;
+  height: ${OUTER_HEIGHT}px;
 `;
 
 const InnerFrameStyle = css<{
@@ -54,12 +55,12 @@ const Container = styled.div<{
 
   position: absolute;
   left: 0;
-  bottom: 0;
+  ${({ $placement }) => ($placement === "bottom" ? "top: 0;" : "bottom: 0;")}
 
   ${({ $placement }) =>
     $placement === "bottom"
-      ? "flex-direction: column;"
-      : "flex-direction: column-reverse;"}
+      ? "flex-direction: column-reverse;"
+      : "flex-direction: column;"}
 
   background: inherit;
 
@@ -73,7 +74,7 @@ const Container = styled.div<{
 
     .timeline-event-content-box-text {
       max-height: calc(
-        100px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
+        ${OUTER_HEIGHT}px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
       );
     }
   }
@@ -85,7 +86,7 @@ const Container = styled.div<{
       height: auto;
       overflow: auto;
       max-height: calc(
-        200px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
+        ${2*OUTER_HEIGHT}px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
       );
     }
   }
@@ -139,7 +140,7 @@ export default function Content({
     useState<IconAction>("collapse");
 
   useEffect(() => {
-    const maxHeight = 100 - 2 * (CONTENT_BORDER + CONTENT_PADDING);
+    const maxHeight = OUTER_HEIGHT - 2 * (CONTENT_BORDER + CONTENT_PADDING);
     if (childHeight > maxHeight) {
       setBoxType("with-overflow");
     } else {

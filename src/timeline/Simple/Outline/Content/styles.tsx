@@ -23,20 +23,22 @@ export const Button = styled.button<{
   stroke: ${({ theme, $customColor }) =>
     $customColor ? $customColor : theme.background.contrast};
 
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
+    stroke-width: 18px;
   }
 `;
 
 export const OverflowControls = styled.div`
   display: flex;
 
-  height: 20px;
+  height: 16px;
   padding-right: 4px;
+  padding-top: 4px;
 
-  justify-content: flex-end;
+  justify-content: center;
 `;
