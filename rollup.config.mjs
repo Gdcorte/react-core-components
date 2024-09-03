@@ -27,7 +27,6 @@ const testFiles = [
 const rollupConfigs = [
   {
     input: "src/index.tsx",
-    external: [],
     plugins: [
       typescript({
         tsconfig: "./tsconfig.json",
