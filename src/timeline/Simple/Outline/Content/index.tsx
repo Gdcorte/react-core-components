@@ -6,7 +6,7 @@ import { Button, OverflowControls } from "./styles";
 
 const CONTENT_PADDING = 8;
 const CONTENT_BORDER = 1;
-const OUTER_HEIGHT = 150
+const OUTER_HEIGHT = 150;
 
 const OuterFrameStyle = css<{ $orientation: TimelineOrientation }>`
   ${({ $orientation }) =>
@@ -19,7 +19,7 @@ const OuterFrameStyle = css<{ $orientation: TimelineOrientation }>`
           align-items: center;
           top: -30%;
           width: 45%;
-          min-width: 120px;
+          min-width: 100px;
           flex: 1 1 0;
       `};
 
@@ -74,7 +74,8 @@ const Container = styled.div<{
 
     .timeline-event-content-box-text {
       max-height: calc(
-        ${OUTER_HEIGHT}px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
+        ${OUTER_HEIGHT}px - 20px - ${2 * CONTENT_PADDING}px -
+          ${2 * CONTENT_BORDER}px
       );
     }
   }
@@ -86,7 +87,8 @@ const Container = styled.div<{
       height: auto;
       overflow: auto;
       max-height: calc(
-        ${2*OUTER_HEIGHT}px - 20px - ${2 * CONTENT_PADDING}px - ${2 * CONTENT_BORDER}px
+        ${2 * OUTER_HEIGHT}px - 20px - ${2 * CONTENT_PADDING}px -
+          ${2 * CONTENT_BORDER}px
       );
     }
   }
