@@ -36,10 +36,10 @@ type Props = {
 };
 
 function determineRange(start: Date, end?: Date): string {
-  const startFormatted = `${start.getFullYear()}/${start.getMonth()+1}`;
+  const startFormatted = `${start.getFullYear()}/${start.getMonth() + 1}`;
   if (end === undefined) return startFormatted;
 
-  return `${startFormatted} - ${end.getFullYear()}/${end.getMonth()+1}`;
+  return `${startFormatted} - ${end.getFullYear()}/${end.getMonth() + 1}`;
 }
 
 export default function ItemLabel({
