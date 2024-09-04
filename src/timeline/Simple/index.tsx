@@ -115,7 +115,7 @@ export default function SimpleTimeline({
         );
       }),
     ];
-  }, [orientation]);
+  }, [orientation, activities]);
 
   return (
     <FixedViewport>
