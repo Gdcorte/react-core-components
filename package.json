@@ -17,9 +17,9 @@
     "dist"
   ],
   "peerDependencies": {
+    "styled-components": ">= 6",
     "@gdcorte/react-core-theme": ">= 4",
     "react": ">= 18",
-    "styled-components": ">= 6",
     "react-select": ">= 5"
   },
   "devDependencies": {
