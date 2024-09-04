@@ -55,6 +55,7 @@ const Frame = styled.div<{
 `;
 
 export type SimpleTimelineProps = {
+  sortActivities?: "asc" | "desc";
   customColor?: string;
   activities: TimelineActivity[];
   orientation?: TimelineOrientation;
@@ -64,15 +65,22 @@ type Props = {} & SimpleTimelineProps;
 
 export default function SimpleTimeline({
   activities,
-  orientation = "horizontal",
   customColor,
+  orientation = "horizontal",
+  sortActivities = "asc",
 }: Props) {
   const labels = useMemo(() => {
     const sortedActivities = activities.sort((a, b) => {
-      if (a.start === b.start) return 0
+      if (a.start === b.start) return 0;
+      const isLower = a.start < b.start;
 
-      return a.start < b.start ? -1 : 1
-    })
+      if (sortActivities === "desc") {
+        return !isLower ? -1 : 1;
+      }
+
+      // Default to ascending
+      return isLower ? -1 : 1;
+    });
 
     //   initialize
     let placement: TimelinePlacement = "bottom";

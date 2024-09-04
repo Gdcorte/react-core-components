@@ -64,7 +64,7 @@ const activities: TimelineActivity[] = [
   {
     start: new Date("2013-11-10"),
     end: new Date("2025-11-10"),
-    title: <p style={{ margin: "0", marginBottom: "40px" }}>"Vacations"</p>,
+    title: <p style={{ margin: "0", marginBottom: "400px" }}>"Vacations"</p>,
     description: "Mars",
     color: "crimson",
   },
