@@ -37,6 +37,8 @@ const StyledSelect = styled(Select)<{
   .myselect__indicator {
     padding: 0;
     border-left: ${({ $separator }) => ($separator ? "1px solid;" : "none")};
+
+    color: inherit;
   }
 
   .myselect__menu {
