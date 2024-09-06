@@ -99,7 +99,7 @@ export default function ProgressCircle({
     }
 
     return finalCircles;
-  }, [progress]);
+  }, [progress, circleColor, bgColor]);
 
   return <Frame>{computedCircles}</Frame>;
 }
