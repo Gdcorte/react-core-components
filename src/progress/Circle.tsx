@@ -86,6 +86,7 @@ export default function ProgressCircle({
       }
 
       finalCircles.push(
+        // TODO: Allow circle progress to be rendered with partial custom colors
         <Circle
           $circleColor={circleColor}
           $bgColor={bgColor}
