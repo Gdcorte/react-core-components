@@ -23,7 +23,7 @@ const Content = styled.div<{ $display: LabelDisplay }>`
   ${({ $display }) => ($display === "column" ? "width: 100%;" : "flex: 1 1 0;")}
 `;
 
-type Props = {
+export type SimpleLabelProps = {
   title?: ReactNode;
   display?: LabelDisplay;
 } & LabelHTMLAttributes<HTMLLabelElement>;
@@ -34,7 +34,7 @@ export default function SimpleLabel({
   title,
   children,
   ...props
-}: Props) {
+}: SimpleLabelProps) {
   return (
     <Label
       className={`simple-label ${className ? className : ""}`}
