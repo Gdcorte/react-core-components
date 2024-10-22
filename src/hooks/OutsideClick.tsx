@@ -5,7 +5,7 @@ import { RefObject, useEffect } from "react";
  */
 export default function OutsideClickHandler(
   ref: RefObject<HTMLObjectElement>,
-  handler: CallableFunction
+  handler: () => void | Promise<void>
 ) {
   useEffect(() => {
     /**
@@ -15,7 +15,7 @@ export default function OutsideClickHandler(
       let eventTarget = event.target as Node | null;
 
       if (ref.current && !ref.current?.contains(eventTarget)) {
-        handler(event);
+        handler();
       }
     }
     // Bind the event listener
