@@ -4,7 +4,7 @@ import LanguageSelectorSwitcher from './Switcher';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof LanguageSelectorSwitcher> = {
-  title: 'Locale/Picker/Switcher',
+  title: 'Composite/Locale Picker/Switcher',
   component: LanguageSelectorSwitcher,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
