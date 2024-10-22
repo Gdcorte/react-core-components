@@ -1,21 +1,21 @@
-import { ReactNode } from "react";
-import styled from "styled-components";
-import { TimelineOrientation, TimelinePlacement } from "../interface";
-import Content from "./Content";
+import { ReactNode } from 'react';
+import styled from 'styled-components';
+import { TimelineOrientation, TimelinePlacement } from '../interface';
+import Content from './Content';
 
 function contentPlacement(placement: TimelinePlacement) {
   switch (placement) {
-    case "top":
-      return "column-reverse";
-    case "bottom":
-      return "column";
-    case "right":
-      return "row";
-    case "left":
-      return "row-reverse";
+    case 'top':
+      return 'column-reverse';
+    case 'bottom':
+      return 'column';
+    case 'right':
+      return 'row';
+    case 'left':
+      return 'row-reverse';
 
     default:
-      return "column";
+      return 'column';
   }
 }
 
@@ -77,11 +77,11 @@ const Separator = styled.div<{
   gap: 8px;
 
   flex-direction: ${({ $orientation }) =>
-    $orientation === "horizontal" ? "row" : "column"};
+    $orientation === 'horizontal' ? 'row' : 'column'};
 
   ${Line} {
     ${({ $orientation }) =>
-      $orientation === "horizontal"
+      $orientation === 'horizontal'
         ? `
         width: 100%;
         height: 0px;
@@ -123,7 +123,7 @@ export default function ItemOutline({
       <Separator $orientation={orientation}>
         <Marker
           $customColor={color}
-          className={`timeline-event-marker ${icon ? "custom" : "default"} ${hideMarker ? "invisible" : ""}`}
+          className={`timeline-event-marker ${icon ? 'custom' : 'default'} ${hideMarker ? 'invisible' : ''}`}
         >
           {icon ? icon : <Ball />}
         </Marker>

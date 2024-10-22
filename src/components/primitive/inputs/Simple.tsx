@@ -1,13 +1,13 @@
-import { ChangeEvent, InputHTMLAttributes, ReactNode } from "react";
-import styled from "styled-components";
-import { CustomColor, StyledCustomColor } from "../interface";
+import { CustomColor, StyledCustomColor } from '@/src/interface';
+import { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
+import styled from 'styled-components';
 import {
   DisabledColorStyle,
   ErrorColorStyle,
   RequiredColorStyle,
   SingleLineInputCss,
-} from "./style";
-import { convertStatusFlagToClass } from "./utils";
+} from './style';
+import { convertStatusFlagToClass } from './utils';
 
 const Frame = styled.div`
   position: relative;
@@ -38,7 +38,7 @@ const Input = styled.input<StyledCustomColor>`
 export type SimpleInputProps = {
   tag: string;
   onChangeCustom?: (value: string, tag: string) => void | Promise<void>;
-  clickMode?: "focus" | "select";
+  clickMode?: 'focus' | 'select';
   isValid?: boolean;
   isRequired?: boolean;
   children?: ReactNode;
@@ -73,7 +73,7 @@ export default function SimpleInput({
   return (
     <Frame className="simple-input-frame">
       <Input
-        className={`simple-input ${convertStatusFlagToClass({ isRequired, isValid, ...props })}  ${className ?? ""}`}
+        className={`simple-input ${convertStatusFlagToClass({ isRequired, isValid, ...props })}  ${className ?? ''}`}
         onChange={handleChange}
         name={name ?? tag}
         $focusColor={focusColor}

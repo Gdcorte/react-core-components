@@ -1,15 +1,15 @@
-import { ReactNode } from "react";
-import styled from "styled-components";
-import { CustomColor, StyledCustomColor } from "../interface";
-import Input, { type SimpleInputProps } from "./Simple";
+import { CustomColor, StyledCustomColor } from '@/src/interface';
+import { ReactNode } from 'react';
+import styled from 'styled-components';
+import Input, { type SimpleInputProps } from './Simple';
 import {
   BaseInputColorStyle,
   DisabledColorStyle,
   ErrorColorStyle,
   FocusedColorStyle,
   RequiredColorStyle,
-} from "./style";
-import { convertStatusFlagToClass } from "./utils";
+} from './style';
+import { convertStatusFlagToClass } from './utils';
 
 const IconBox = styled.div`
   display: flex;

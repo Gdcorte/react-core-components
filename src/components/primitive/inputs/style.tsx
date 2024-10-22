@@ -1,5 +1,5 @@
-import { css } from "styled-components";
-import { StyledCustomColor } from "../interface";
+import { StyledCustomColor } from '@/src/interface';
+import { css } from 'styled-components';
 
 export const ErrorColorStyle = css`
   stroke: ${({ theme }) => theme.alerts.danger.color};
