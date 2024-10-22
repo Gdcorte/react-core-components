@@ -30,7 +30,7 @@ const StyledBtn = styled(StaticButton)`
 
 type Props = {
   currLocale: string;
-  locales: string[];
+  locales: readonly string[];
   flagMap: Record<string, () => ReactNode>;
 
   uid?: string;

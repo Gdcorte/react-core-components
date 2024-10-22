@@ -20,7 +20,7 @@ const LangCircle = styled.div`
 
 type Props = {
   currLocale: string;
-  locales: string[];
+  locales: readonly string[];
   flagMap: Record<string, () => ReactNode>;
   className?: string;
   onChange: (newLocale: string) => void | Promise<void>;
