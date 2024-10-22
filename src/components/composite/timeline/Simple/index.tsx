@@ -1,13 +1,13 @@
-import { FixedViewport } from "@/src/viewport";
-import { ReactNode, useMemo } from "react";
-import styled from "styled-components";
+import { FixedViewport } from '@/src/components/primitive/viewport';
+import { ReactNode, useMemo } from 'react';
+import styled from 'styled-components';
 import {
   TimelineActivity,
   TimelineOrientation,
   TimelinePlacement,
-} from "./interface";
-import SimpleLabel from "./Label";
-import ItemOutline from "./Outline";
+} from './interface';
+import SimpleLabel from './Label';
+import ItemOutline from './Outline';
 
 const Frame = styled.div<{
   $orientation: TimelineOrientation;
@@ -22,7 +22,7 @@ const Frame = styled.div<{
   margin: 4px;
 
   ${({ $orientation }) => {
-    return $orientation === "horizontal"
+    return $orientation === 'horizontal'
       ? `
       flex-direction: row;
       width: 100%; 
@@ -55,7 +55,7 @@ const Frame = styled.div<{
 `;
 
 export type SimpleTimelineProps = {
-  sortActivities?: "asc" | "desc";
+  sortActivities?: 'asc' | 'desc';
   customColor?: string;
   activities: TimelineActivity[];
   orientation?: TimelineOrientation;
@@ -66,15 +66,15 @@ type Props = {} & SimpleTimelineProps;
 export default function SimpleTimeline({
   activities,
   customColor,
-  orientation = "horizontal",
-  sortActivities = "asc",
+  orientation = 'horizontal',
+  sortActivities = 'asc',
 }: Props) {
   const labels = useMemo(() => {
     const sortedActivities = activities.sort((a, b) => {
       if (a.start === b.start) return 0;
       const isLower = a.start < b.start;
 
-      if (sortActivities === "desc") {
+      if (sortActivities === 'desc') {
         return !isLower ? -1 : 1;
       }
 
@@ -83,9 +83,9 @@ export default function SimpleTimeline({
     });
 
     //   initialize
-    let placement: TimelinePlacement = "bottom";
-    if (orientation === "vertical") {
-      placement = "right";
+    let placement: TimelinePlacement = 'bottom';
+    if (orientation === 'vertical') {
+      placement = 'right';
     }
 
     return [
@@ -98,15 +98,15 @@ export default function SimpleTimeline({
       />,
       ...sortedActivities.map<ReactNode>((value, index) => {
         // Switch over during creation
-        if (orientation === "horizontal") {
-          placement = placement === "top" ? "bottom" : "top";
+        if (orientation === 'horizontal') {
+          placement = placement === 'top' ? 'bottom' : 'top';
         } else {
-          placement = placement === "left" ? "right" : "left";
+          placement = placement === 'left' ? 'right' : 'left';
         }
 
         return (
           <SimpleLabel
-            className={`${activities.length === index + 1 ? "last" : ""}`}
+            className={`${activities.length === index + 1 ? 'last' : ''}`}
             orientation={orientation}
             key={`timeline-item-${Math.random().toString(36)}`}
             activity={value}

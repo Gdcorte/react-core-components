@@ -1,7 +1,7 @@
 import { ReactNode, useMemo } from 'react';
 import { SingleValue } from 'react-select';
 import styled from 'styled-components';
-import { SelectOption, SimpleSelect } from '../../select';
+import { SelectOption, SimpleSelect } from '../../primitive/select';
 
 const Frame = styled.span`
   display: flex;

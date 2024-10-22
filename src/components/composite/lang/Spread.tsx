@@ -1,6 +1,6 @@
 import { ReactNode, SyntheticEvent, useMemo } from 'react';
 import styled from 'styled-components';
-import { StaticButton } from '../../button';
+import { StaticButton } from '../../primitive/button';
 
 const Frame = styled.span`
   display: flex;
