@@ -1,20 +1,20 @@
-import { ColorElement } from "@gdcorte/react-core-theme";
-import { css } from "styled-components";
-import { ButtonShapes } from "./interface";
+import { ColorElement } from '@gdcorte/react-core-theme';
+import { css } from 'styled-components';
+import { ButtonShapes } from './interface';
 
 export function buttonShape(shape?: ButtonShapes): string {
   switch (shape) {
-    case "pill":
-      return "border-radius: 300px;";
+    case 'pill':
+      return 'border-radius: 300px;';
 
-    case "oval":
+    case 'oval':
       return `
         border-radius: 50%;
         `;
 
-    case "square":
+    case 'square':
     default:
-      return "border-radius: 5px;";
+      return 'border-radius: 5px;';
   }
 }
 
