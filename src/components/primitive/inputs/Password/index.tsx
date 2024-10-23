@@ -21,6 +21,7 @@ const IconBox = styled.div<StyledCustomColor>`
 const Frame = styled.div<{ iconPos?: 'left' | 'right' } & StyledCustomColor>`
   display: flex;
   flex: 1 1 0;
+  min-width: 0;
   flex-direction: ${({ iconPos }) =>
     iconPos === 'left' ? 'row-reverse' : 'row'};
 
@@ -59,6 +60,7 @@ export default function PasswordInput({
   disabled,
   customColor,
   focusColor,
+  className,
   ...props
 }: Props) {
   const [type, setType] = useState<'password' | 'text'>('password');
@@ -71,7 +73,7 @@ export default function PasswordInput({
 
   return (
     <Frame
-      className="password-input-frame"
+      className={`password-input-frame ${className}`}
       iconPos={iconPos}
       $customColor={customColor}
       $focusColor={focusColor}

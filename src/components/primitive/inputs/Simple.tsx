@@ -16,6 +16,7 @@ const Frame = styled.div`
   flex-direction: column;
   flex: 1 1 0;
 
+  min-width: 0;
   height: fit-content;
 
   gap: 4px;
@@ -33,6 +34,7 @@ const Frame = styled.div`
 
 const Input = styled.input<StyledCustomColor>`
   ${SingleLineInputCss}
+  min-width: 0;
 `;
 
 export type SimpleInputProps = {
@@ -71,7 +73,7 @@ export default function SimpleInput({
   }
 
   return (
-    <Frame className="simple-input-frame">
+    <Frame className={`simple-input-frame ${className}`}>
       <Input
         className={`simple-input ${convertStatusFlagToClass({ isRequired, isValid, ...props })}  ${className ?? ''}`}
         onChange={handleChange}
