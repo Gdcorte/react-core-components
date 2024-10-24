@@ -56,10 +56,10 @@ export const BaseInputStyle = css<StyledCustomColor>`
   background: transparent;
 
   font-size: 1rem;
-  height: 1rem; // This will be important for some components
+  height: 1rem;
 
   &:focus {
-    ${FocusedColorStyle}
+    ${FocusedColorStyle};
   }
 
   &.required {

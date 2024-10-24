@@ -9,19 +9,28 @@ import UnlockedIcon from './Unlocked';
 
 const IconBox = styled.div<StyledCustomColor>`
   display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 
-  ${BaseInputStyle};
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  min-width: 26px;
 
   &.disabled {
     cursor: not-allowed;
   }
+
+  ${BaseInputStyle};
 `;
 
 const Frame = styled.div<{ iconPos?: 'left' | 'right' } & StyledCustomColor>`
   display: flex;
   flex: 1 1 0;
-  min-width: 0;
+
   flex-direction: ${({ iconPos }) =>
     iconPos === 'left' ? 'row-reverse' : 'row'};
 
@@ -85,6 +94,7 @@ export default function PasswordInput({
         type={type}
         {...props}
       />
+
       <IconBox
         className={`password-input-icon-box ${convertStatusFlagToClass({ disabled, ...props })}`}
         onClick={handleTypeChange}
