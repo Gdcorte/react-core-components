@@ -16,7 +16,6 @@ const Frame = styled.div`
   flex-direction: column;
   flex: 1 1 0;
 
-  min-width: 0;
   height: fit-content;
 
   gap: 4px;
@@ -33,8 +32,10 @@ const Frame = styled.div`
 `;
 
 const Input = styled.input<StyledCustomColor>`
+  display: flex;
+  flex: 1 1 0;
+
   ${SingleLineInputCss}
-  min-width: 0;
 `;
 
 export type SimpleInputProps = {
