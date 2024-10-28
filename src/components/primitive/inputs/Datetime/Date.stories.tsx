@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     tag: 'test-datetime',
-    onValueChange: (date, name) => {
+    onDateChange: (date, name) => {
       console.info('date changed', date, 'for', name);
     },
     calendar: {},
