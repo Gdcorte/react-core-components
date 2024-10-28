@@ -1,3 +1,4 @@
+import { smallerThanDesktopWindow } from '@/src/styles';
 import { ColorElement } from '@gdcorte/react-core-theme';
 import { BaseSyntheticEvent, ReactNode } from 'react';
 import { Calendar, type CalendarProps } from 'react-calendar';
@@ -14,10 +15,9 @@ export const SIMPLE_CALENDAR_HEIGHT = 300;
 const CustomColors = css<{ $colors: CalendarColors }>`
   // All hoverable elements here
   .react-calendar__navigation button:enabled:hover,
-  .react-calendar__tile--now:enabled:hover,
   .react-calendar__tile:enabled:hover {
-    color: ${({ $colors }) => $colors.primary.color};
-    background-color: ${({ $colors }) => $colors.primary.contrast};
+    color: ${({ $colors }) => $colors.secondary.color};
+    background-color: ${({ $colors }) => $colors.secondary.contrast};
   }
 
   // Weekdays + top header controls + Weekday Header text
@@ -30,7 +30,7 @@ const CustomColors = css<{ $colors: CalendarColors }>`
   .react-calendar__year-view__months__month,
   .react-calendar__decade-view__years__year,
   .react-calendar__century-view__decades__decade {
-    color: ${({ theme }) => theme.background.contrast};
+    color: ${({ $colors }) => $colors.primary.color};
   }
 
   // weekend days colors
@@ -52,16 +52,19 @@ const CustomColors = css<{ $colors: CalendarColors }>`
     color: ${({ $colors }) => $colors.primary.color};
   }
 
+  .react-calendar__tile:enabled:hover.react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active {
-    color: ${({ $colors }) => $colors.secondary.color};
-    background: ${({ $colors }) => $colors.secondary.contrast};
+    background: ${({ $colors }) => $colors.primary.contrast};
+
+    ${smallerThanDesktopWindow} {
+      color: ${({ $colors }) => $colors.primary.color};
+    }
   }
 `;
 
 const NeutralColors = css`
   // All hoverable elements here
   .react-calendar__navigation button:enabled:hover,
-  .react-calendar__tile--now:enabled:hover,
   .react-calendar__tile:enabled:hover {
     color: ${({ theme }) => theme.background.color};
     background-color: ${({ theme }) => theme.background.contrast};
@@ -100,6 +103,7 @@ const NeutralColors = css`
     color: ${({ theme }) => theme.background.color};
   }
 
+  .react-calendar__tile:enabled:hover.react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active {
     color: ${({ theme }) => theme.background.contrast};
     background: ${({ theme }) => theme.background.color};
@@ -195,11 +199,11 @@ const StyledCalendar = styled(Calendar)<{ $colors?: CalendarColors }>`
     line-height: 16px;
   }
 
-  .react-calendar__tile--now:enabled:hover,
   .react-calendar__tile:enabled:hover {
-    border-radius: 50%;
+    border-radius: 8px;
   }
 
+  .react-calendar__tile:enabled:hover.react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active {
     border-radius: 5px 20px 5px;
   }
@@ -217,8 +221,7 @@ export type SimpleCalendarProps = {
   colors?: CalendarColors;
   onDateChange?: (value: Date) => void;
   onValueChange?: (value: string) => void;
-  defaultValue?: string | Date;
-} & Omit<CalendarProps, 'defaultValue'>;
+} & CalendarProps;
 
 export default function SimpleCalendar({
   defaultValue,
@@ -240,19 +243,7 @@ export default function SimpleCalendar({
     }
   }
 
-  function transformDate(input?: string | Date) {
-    if (input === undefined) return new Date();
-    if (typeof input === 'string') return new Date(input);
-
-    return input;
-  }
-
   return (
-    <StyledCalendar
-      {...props}
-      $colors={colors}
-      defaultValue={transformDate(defaultValue)}
-      onClickDay={handleDaySelect}
-    />
+    <StyledCalendar {...props} $colors={colors} onClickDay={handleDaySelect} />
   );
 }
