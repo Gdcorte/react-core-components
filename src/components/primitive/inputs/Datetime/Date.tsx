@@ -10,12 +10,44 @@ import {
   SIMPLE_CALENDAR_WIDTH,
 } from '../../datetime/Calendar/Simple';
 import SimpleInput, { SimpleInputProps } from '../Simple';
+import { DateIcon } from './Icons';
 import { PopUpPos, RectSize } from './interface';
 
 const Container = styled.div`
   display: flex;
-  background: inherit;
   position: relative;
+
+  align-items: center;
+  justify-content: center;
+
+  color: inherit;
+  background: inherit;
+  fill: inherit;
+  border-color: inherit;
+
+  gap: 8px;
+`;
+
+const StyledIcon = styled(DateIcon)`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  border-left: 1px solid;
+  cursor: pointer;
+
+  fill: inherit;
+
+  padding: 0 4px;
+  width: 20px;
+  height: 100%;
+`;
+
+const StyledInput = styled(SimpleInput)`
+  input {
+    min-width: 130px;
+  }
 `;
 
 const RestyledCalendar = styled(SimpleCalendarPicker)<{ pos: PopUpPos }>`
@@ -103,26 +135,46 @@ export default function SimpleInputDatePicker({
 
   OutsideClickHandler(elementRef, handleCancel);
 
-  function handleDateChange(date: Date) {
-    if (onDateChange !== undefined) onDateChange(date, tag);
+  function processDate(date: Date) {
+    if (onDateChange !== undefined) {
+      onDateChange(date, tag);
+      return;
+    }
 
     const dateValue = date.toISOString();
-    if (onValueChange !== undefined) onValueChange(dateValue, tag);
+    if (onValueChange !== undefined) {
+      onValueChange(dateValue, tag);
+      return;
+    }
+  }
 
-    setshowCalendar(false);
+  async function handleDateChange(date: Date) {
+    await processDate(date);
+
+    // The timeout is necessary here.
+    // When wrapped inside a label, selecting a value will trigger a click.
+    // Since the calendar is, technically, inside the label. This click will trigger
+    // a click in the input itself. Which will cause the closed form to reopen.
+    // Adding even a 10ms timeout (imperceptible to human eyes) will solve this race condition
+    setTimeout(() => {
+      setshowCalendar(false);
+    }, 10);
   }
 
   return (
     <Container
       ref={elementRef}
       className={`input-date-picker-frame ${className}`}
+      onClick={handleInputOpen}
     >
-      <SimpleInput
+      <StyledInput
         {...props}
         tag={tag}
-        onClick={handleInputOpen}
+        // onClick={handleInputOpen}
         value={transformPretty(value)}
       />
+      <StyledIcon />
+
       {showCalendar && (
         <RestyledCalendar
           onDateChange={handleDateChange}
