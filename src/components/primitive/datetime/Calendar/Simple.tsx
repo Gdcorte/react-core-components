@@ -1,7 +1,8 @@
 import { smallerThanDesktopWindow } from '@/src/styles';
 import { ColorElement } from '@gdcorte/react-core-theme';
-import { BaseSyntheticEvent, ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Calendar, type CalendarProps } from 'react-calendar';
+import { OnArgs, View } from 'react-calendar/dist/cjs/shared/types';
 import styled, { css } from 'styled-components';
 
 type CalendarColors = {
@@ -221,29 +222,83 @@ export type SimpleCalendarProps = {
   colors?: CalendarColors;
   onDateChange?: (value: Date) => void;
   onValueChange?: (value: string) => void;
-} & CalendarProps;
+} & Omit<
+  CalendarProps,
+  | 'onViewChange'
+  | 'onClickDay'
+  | 'onClickMonth'
+  | 'onClickYear'
+  | 'onClickDecade'
+>;
 
 export default function SimpleCalendar({
   defaultValue,
   onValueChange,
   onDateChange,
   colors,
+  view,
   ...props
 }: SimpleCalendarProps): ReactNode {
-  function handleDaySelect(value: Date, event: BaseSyntheticEvent) {
-    if (onDateChange) {
+  const [currView, setCurrView] = useState<View | undefined>(view);
+
+  function processDate(value: Date) {
+    if (onDateChange !== undefined) {
       onDateChange(value);
       return;
     }
 
-    if (onValueChange) {
+    if (onValueChange !== undefined) {
       const dateValue = value.toISOString();
       onValueChange(dateValue);
       return;
     }
   }
 
+  function handleDaySelect(value: Date) {
+    if (![undefined, 'month'].includes(view)) return;
+
+    processDate(value);
+  }
+
+  function handleMonthSelect(value: Date) {
+    if (view === undefined) return;
+    if (!['year'].includes(view)) return;
+
+    processDate(value);
+  }
+
+  function handleYearSelect(value: Date) {
+    if (view === undefined) return;
+    if (!['decade'].includes(view)) return;
+
+    processDate(value);
+  }
+
+  function handleDecadeSelect(value: Date) {
+    if (view === undefined) return;
+    if (!['century'].includes(view)) return;
+
+    processDate(value);
+  }
+
+  function handleViewChange({ ...viewProps }: OnArgs) {
+    if (view === undefined) return;
+    // Can't go below from the base
+    if (currView === view && viewProps.action === 'drillDown') return;
+
+    setCurrView(viewProps.view);
+  }
+
   return (
-    <StyledCalendar {...props} $colors={colors} onClickDay={handleDaySelect} />
+    <StyledCalendar
+      {...props}
+      view={currView}
+      onViewChange={handleViewChange}
+      $colors={colors}
+      onClickDay={handleDaySelect}
+      onClickMonth={handleMonthSelect}
+      onClickYear={handleYearSelect}
+      onClickDecade={handleDecadeSelect}
+    />
   );
 }
