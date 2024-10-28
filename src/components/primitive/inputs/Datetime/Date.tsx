@@ -105,10 +105,11 @@ export default function SimpleInputDatePicker({
 
   function handleDateChange(date: Date) {
     if (onDateChange !== undefined) onDateChange(date, tag);
-  }
 
-  function handleDateValueChange(date: string) {
-    if (onValueChange !== undefined) onValueChange(date, tag);
+    const dateValue = date.toISOString();
+    if (onValueChange !== undefined) onValueChange(dateValue, tag);
+
+    setshowCalendar(false);
   }
 
   return (
@@ -125,7 +126,6 @@ export default function SimpleInputDatePicker({
       {showCalendar && (
         <RestyledCalendar
           onDateChange={handleDateChange}
-          onValueChange={handleDateValueChange}
           pos={calendarPos}
           value={value}
           defaultValue={defaultValue}
