@@ -34,6 +34,7 @@ const RestyledCalendar = styled(SimpleCalendarPicker)<{ pos: PopUpPos }>`
 export type DatePickerInputProps = {
   calendar: Omit<SimpleCalendarProps, 'onValueChange' | 'onDateChange'>;
   value?: string | Date;
+  defaultValue?: string | Date;
   onDateChange?: (date: Date, name: string) => void;
   onValueChange?: (date: string, name: string) => void;
 } & Omit<SimpleInputProps, 'onClick' | 'onChange' | 'value'>;
@@ -43,6 +44,7 @@ export default function SimpleInputDatePicker({
   tag,
   className = '',
   value,
+  defaultValue,
   onDateChange,
   onValueChange,
   ...props
@@ -84,7 +86,6 @@ export default function SimpleInputDatePicker({
     const newPos = fitPopUpInWindow(calendarSize, elementPos);
     setcalendarPos(newPos);
     setshowCalendar(true);
-    console.info('OPENING HERE??', newPos);
   }
 
   function transformPretty(input?: string | Date) {
@@ -126,6 +127,8 @@ export default function SimpleInputDatePicker({
           onDateChange={handleDateChange}
           onValueChange={handleDateValueChange}
           pos={calendarPos}
+          value={value}
+          defaultValue={defaultValue}
           {...calendar}
         />
       )}

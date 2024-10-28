@@ -32,18 +32,18 @@ export const WithCustomColors: Story = {
   args: {
     colors: {
       primary: {
-        color: 'forestgreen',
-        contrast: 'chartreuse',
-        tone: 'lightgreen',
-        tint: 'darkgreen',
-        shade: 'springgreen',
+        color: '#a3f5a3',
+        shade: '#93dd93ff',
+        tint: '#bff8bfff',
+        tone: '#a9e4a9ff',
+        contrast: '#084a08',
       },
       secondary: {
-        color: 'cyan',
-        contrast: 'azure',
-        tone: 'aquamarine',
-        tint: 'darkblue',
-        shade: 'lightblue',
+        color: '#f5a3f5',
+        shade: '#dd93ddff',
+        tint: '#f8bff8ff',
+        tone: '#e4a9e4ff',
+        contrast: '#4a084a',
       },
     },
     onDateChange(value) {
