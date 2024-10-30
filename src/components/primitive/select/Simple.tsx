@@ -1,6 +1,6 @@
-import Select, { GroupBase, Props } from "react-select";
-import styled from "styled-components";
-import { SelectOption } from "./interface";
+import Select, { GroupBase, Props } from 'react-select';
+import styled from 'styled-components';
+import { SelectOption } from './interface';
 
 const StyledSelect = styled(Select)<{
   $separator: boolean;
@@ -11,6 +11,7 @@ const StyledSelect = styled(Select)<{
     min-height: unset;
 
     border: inherit;
+    color: inherit;
     background: inherit;
 
     text-decoration: none;
@@ -36,13 +37,14 @@ const StyledSelect = styled(Select)<{
   }
   .myselect__indicator {
     padding: 0;
-    border-left: ${({ $separator }) => ($separator ? "1px solid;" : "none")};
+    border-left: ${({ $separator }) => ($separator ? '1px solid;' : 'none')};
 
     color: inherit;
   }
 
   .myselect__menu {
     background: inherit;
+    width: max-content;
   }
 
   .myselect__option {
@@ -51,6 +53,13 @@ const StyledSelect = styled(Select)<{
 
   .myselect__option--is-focused {
     background: ${({ theme }) => theme.background.contrast};
+    color: ${({ theme }) => theme.background.color};
+  }
+
+  .myselect__input-container,
+  .myselect__value-container,
+  .myselect__single-value {
+    color: inherit;
   }
 `;
 

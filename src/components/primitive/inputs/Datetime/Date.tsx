@@ -40,13 +40,13 @@ const StyledIcon = styled(DateIcon)`
   fill: inherit;
 
   padding: 0 4px;
-  width: 20px;
+  width: 16px;
   height: 100%;
 `;
 
 const StyledInput = styled(SimpleInput)`
   input {
-    min-width: 130px;
+    min-width: 120px;
   }
 `;
 
@@ -69,7 +69,7 @@ export type DatePickerInputProps = {
   defaultValue?: string | Date;
   onDateChange?: (date: Date, name: string) => void;
   onValueChange?: (date: string, name: string) => void;
-} & Omit<SimpleInputProps, 'onClick' | 'onChange' | 'value'>;
+} & Omit<SimpleInputProps, 'onClick' | 'onFocus' | 'onChange' | 'value'>;
 
 export default function SimpleInputDatePicker({
   calendar,
@@ -170,7 +170,7 @@ export default function SimpleInputDatePicker({
       <StyledInput
         {...props}
         tag={tag}
-        // onClick={handleInputOpen}
+        onFocus={handleInputOpen}
         value={transformPretty(value)}
       />
       <StyledIcon />
