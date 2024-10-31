@@ -1,7 +1,7 @@
-import { LabelHTMLAttributes, ReactNode } from "react";
-import styled from "styled-components";
+import { LabelHTMLAttributes, ReactNode } from 'react';
+import styled from 'styled-components';
 
-type LabelDisplay = "row" | "column";
+type LabelDisplay = 'row' | 'column';
 
 const Label = styled.label<{ $display: LabelDisplay }>`
   display: flex;
@@ -10,7 +10,7 @@ const Label = styled.label<{ $display: LabelDisplay }>`
   gap: 6px;
 
   ${({ $display }) =>
-    $display === "column" ? "align-items: flex-start;" : "align-items: center"}
+    $display === 'column' ? 'align-items: flex-start;' : 'align-items: center'}
 `;
 
 const Title = styled.span`
@@ -18,9 +18,10 @@ const Title = styled.span`
 `;
 const Content = styled.div<{ $display: LabelDisplay }>`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
-  ${({ $display }) => ($display === "column" ? "width: 100%;" : "flex: 1 1 0;")}
+  gap: 4px;
+  ${({ $display }) => ($display === 'column' ? 'width: 100%;' : 'flex: 1 1 0;')}
 `;
 
 export type SimpleLabelProps = {
@@ -29,7 +30,7 @@ export type SimpleLabelProps = {
 } & LabelHTMLAttributes<HTMLLabelElement>;
 
 export default function SimpleLabel({
-  display = "column",
+  display = 'column',
   className,
   title,
   children,
@@ -37,7 +38,7 @@ export default function SimpleLabel({
 }: SimpleLabelProps) {
   return (
     <Label
-      className={`simple-label ${className ? className : ""}`}
+      className={`simple-label ${className ? className : ''}`}
       $display={display}
       {...props}
     >
