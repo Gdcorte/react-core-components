@@ -216,6 +216,15 @@ const StyledCalendar = styled(Calendar)<{ $colors?: CalendarColors }>`
       return NeutralColors;
     }
   }
+
+  .react-calendar__month-view__days__day,
+  .react-calendar__year-view__months__month,
+  .react-calendar__decade-view__years__year,
+  .react-calendar__century-view__decades__decade {
+    &:disabled {
+      color: transparent;
+    }
+  }
 `;
 
 export type SimpleCalendarProps = {

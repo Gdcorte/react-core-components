@@ -25,6 +25,8 @@ export const Primary: Story = {
     onDateChange(value) {
       console.info('new value', value);
     },
+    tileDisabled: ({ activeStartDate, date, view }) =>
+      date.getTime() > new Date().getTime(),
   },
 };
 
