@@ -1,19 +1,6 @@
 // https://css-loaders.com/clones/ #12
 import styled from 'styled-components';
-
-const Container = styled.div`
-  position: fixed;
-
-  display: flex;
-  width: 100%;
-  height: 100%;
-
-  justify-content: center;
-  align-items: center;
-
-  background: ${({ theme }) => theme.background.color}44;
-  z-index: 999;
-`;
+import { Container } from './styles';
 
 const Spinner = styled.span`
   height: 40px;
