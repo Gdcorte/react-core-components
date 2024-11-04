@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
 
   display: flex;
   width: 100%;
@@ -10,6 +12,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: ${({ theme }) => theme.background.color}44;
+  background: #0008;
   z-index: 999;
 `;
