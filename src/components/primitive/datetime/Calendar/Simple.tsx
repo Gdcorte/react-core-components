@@ -24,7 +24,7 @@ const CustomColors = css<{ $colors: CalendarColors }>`
   // Weekdays + top header controls + Weekday Header text
   .react-calendar__navigation__label,
   .react-calendar__navigation__arrow {
-    color: ${({ theme }) => theme.background.contrast};
+    color: ${({ $colors }) => $colors.secondary.color};
   }
 
   .react-calendar__month-view__days__day,

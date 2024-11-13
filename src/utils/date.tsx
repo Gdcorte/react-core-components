@@ -29,9 +29,13 @@ export class UtcDateAsLocal {
       value = `${value.split('.')[0]}.000Z`;
     }
 
-    if (value.split('T').length < 2) {
-      value = `${value}T00:00:00.000Z`;
+    const splitValue = value.split('T');
+    splitValue[0] = splitValue[0].replace(/[./\s_:]/g, '-');
+
+    if (splitValue.length < 2) {
+      splitValue[1] = '00:00:00.000Z';
     }
+    value = splitValue.join('T');
 
     if (value.slice(-1) != 'Z') {
       value = `${value}.000Z`;
