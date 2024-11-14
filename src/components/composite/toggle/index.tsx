@@ -1,2 +1,2 @@
 export { default as SimpleToggleSwitch } from './Switch';
-export type { SwitchOptions } from './Switch';
+export type { SwitchOption } from './Switch';

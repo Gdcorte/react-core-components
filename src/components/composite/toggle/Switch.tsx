@@ -1,9 +1,14 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-export type SwitchOptions = {
+export type SwitchOption = {
   value: string;
   display: ReactNode;
+};
+
+type ColorProp = {
+  left: string;
+  right: string;
 };
 
 const Container = styled.label`
@@ -11,6 +16,7 @@ const Container = styled.label`
   flex-direction: row;
   cursor: pointer;
 
+  align-items: center;
   width: max-content;
 
   gap: 8px;
@@ -18,9 +24,15 @@ const Container = styled.label`
 
 const DisplayBox = styled.div`
   display: flex;
+  align-items: center;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
-const SliderBox = styled.div`
+const SliderBox = styled.div<{ $colors?: ColorProp }>`
   display: flex;
 
   height: 20px;
@@ -30,13 +42,16 @@ const SliderBox = styled.div`
   border-radius: 34px;
 
   &.right {
-    background: ${({ theme }) => theme.colors.primary.color};
-    justify-content: flex-start;
+    justify-content: flex-end;
+
+    // background: ${({ theme }) => theme.background.tone};
+    ${({ $colors }) => $colors && `background: ${$colors.right}`};
   }
 
   &.left {
-    justify-content: flex-end;
-    background: ${({ theme }) => theme.colors.secondary.color};
+    justify-content: flex-start;
+    // background: ${({ theme }) => theme.background.tint};
+    ${({ $colors }) => $colors && `background: ${$colors.left}`};
   }
 `;
 
@@ -51,8 +66,9 @@ const SliderBall = styled.span`
 
 type Props = {
   tag: string;
-  left: SwitchOptions;
-  right: SwitchOptions;
+  left: SwitchOption;
+  right: SwitchOption;
+  colors?: ColorProp;
   selected?: string;
   onChange?: (newValue: string, tag: string) => void;
 };
@@ -62,6 +78,7 @@ export default function SimpleToggleSwitch({
   right,
   selected,
   tag,
+  colors,
   onChange,
 }: Props) {
   function handleSlidingChange() {
@@ -73,7 +90,10 @@ export default function SimpleToggleSwitch({
     <Container onClick={handleSlidingChange}>
       <DisplayBox className="left">{left.display}</DisplayBox>
 
-      <SliderBox className={selected === right.value ? 'right' : 'left'}>
+      <SliderBox
+        $colors={colors}
+        className={selected === right.value ? 'right' : 'left'}
+      >
         <SliderBall className="ball" />
       </SliderBox>
 
