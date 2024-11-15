@@ -112,6 +112,12 @@ const NeutralColors = css`
 `;
 
 const StyledCalendar = styled(Calendar)<{ $colors?: CalendarColors }>`
+  border: 1px solid transparent;
+
+  &.invalid {
+    border: 1px solid ${({ theme }) => theme.alerts.danger.color};
+  }
+
   border-radius: 8px;
   padding: 8px;
 
@@ -231,6 +237,7 @@ export type SimpleCalendarProps = {
   colors?: CalendarColors;
   onDateChange?: (value: Date) => void;
   onValueChange?: (value: string) => void;
+  isValid?: boolean;
 } & Omit<
   CalendarProps,
   | 'onViewChange'
@@ -241,11 +248,13 @@ export type SimpleCalendarProps = {
 >;
 
 export default function SimpleCalendar({
+  className,
   defaultValue,
   onValueChange,
   onDateChange,
   colors,
   view,
+  isValid = true,
   ...props
 }: SimpleCalendarProps): ReactNode {
   const [currView, setCurrView] = useState<View | undefined>(view);
@@ -301,6 +310,7 @@ export default function SimpleCalendar({
   return (
     <StyledCalendar
       {...props}
+      className={`${className} ${isValid ? '' : 'invalid'}`}
       view={currView}
       onViewChange={handleViewChange}
       $colors={colors}
