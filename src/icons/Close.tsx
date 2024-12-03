@@ -1,10 +1,12 @@
-type Props = { className?: string };
+import { SVGAttributes } from 'react';
 
-export default function CloseIcon({ className = '' }: Props) {
+type Props = { className?: string } & SVGAttributes<HTMLOrSVGElement>;
+
+export default function CloseIcon({ className = '', ...props }: Props) {
   // https://uxwing.com/close-icon/
 
   return (
-    <svg className={className} viewBox="0 0 121.31 122.876">
+    <svg {...props} className={className} viewBox="0 0 121.31 122.876">
       <g>
         <path
           fillRule="evenodd"

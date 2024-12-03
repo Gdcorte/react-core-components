@@ -1,8 +1,8 @@
+import { CloseIcon } from '@/src/icons';
 import { phoneWindow } from '@/src/styles';
 import { ReactNode } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { SolidButton } from '../../primitive';
-import { CloseIcon } from './icons';
 
 const Container = styled.div`
   position: absolute;
