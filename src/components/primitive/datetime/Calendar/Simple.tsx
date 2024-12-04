@@ -228,7 +228,7 @@ const StyledCalendar = styled(Calendar)<{ $colors?: CalendarColors }>`
   .react-calendar__decade-view__years__year,
   .react-calendar__century-view__decades__decade {
     &:disabled {
-      color: transparent;
+      color: #d3d3d360;
     }
   }
 `;
