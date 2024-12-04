@@ -51,5 +51,8 @@ export const WithCustomColors: Story = {
     onDateChange(value) {
       console.info('new value', value);
     },
+    onViewChange(value, view) {
+      console.info('new view attempt!', value, view);
+    },
   },
 };

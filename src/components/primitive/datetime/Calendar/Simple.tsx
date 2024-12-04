@@ -237,6 +237,7 @@ export type SimpleCalendarProps = {
   colors?: CalendarColors;
   onDateChange?: (value: Date) => void;
   onValueChange?: (value: string) => void;
+  onViewChange?: (value: Date, view: View) => void;
   isValid?: boolean;
 } & Omit<
   CalendarProps,
@@ -252,6 +253,7 @@ export default function SimpleCalendar({
   defaultValue,
   onValueChange,
   onDateChange,
+  onViewChange,
   colors,
   view,
   isValid = true,
@@ -269,6 +271,12 @@ export default function SimpleCalendar({
       const dateValue = value.toISOString();
       onValueChange(dateValue);
       return;
+    }
+  }
+
+  function handleExternalViewChanges(value: Date, view: View) {
+    if (onViewChange !== undefined) {
+      onViewChange(value, view);
     }
   }
 
@@ -300,6 +308,9 @@ export default function SimpleCalendar({
   }
 
   function handleViewChange({ ...viewProps }: OnArgs) {
+    const date = viewProps.activeStartDate;
+    if (date !== null) handleExternalViewChanges(date, viewProps.view);
+
     if (view === undefined) return;
     // Can't go below from the base
     if (currView === view && viewProps.action === 'drillDown') return;
