@@ -1,7 +1,7 @@
 import {
   SimpleCalendarPicker,
   SimpleCalendarProps,
-} from '@/src/components/primitive/datetime';
+} from '@/src/_src/_components/primitive/datetime';
 import OutsideClickHandler from '@/src/hooks/OutsideClick';
 import { ReactNode, useRef, useState } from 'react';
 import styled from 'styled-components';

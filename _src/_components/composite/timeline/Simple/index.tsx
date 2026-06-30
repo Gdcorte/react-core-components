@@ -1,4 +1,4 @@
-import { FixedViewport } from '@/src/components/primitive/viewport';
+import { FixedViewport } from '@/src/_src/_components/primitive/viewport';
 import { ReactNode, useMemo } from 'react';
 import styled from 'styled-components';
 import {

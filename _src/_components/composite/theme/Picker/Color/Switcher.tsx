@@ -1,4 +1,7 @@
-import { SelectOption, SimpleSelect } from '@/src/components/primitive/select';
+import {
+  SelectOption,
+  SimpleSelect,
+} from '@/src/_src/_components/primitive/select';
 import {
   ColorVariants,
   isColorVariant,

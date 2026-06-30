@@ -1,0 +1,9 @@
+/* Hard boundaries based on screen sizes */
+@custom-media --desktop (max-width: 1440px);
+@custom-media --tablet (max-width: 800px);
+@custom-media --phone (max-width: 480px);
+@custom-media --smallPhone (max-width: 320px);
+
+/* Interaction, to differentiate between full desktops and phone/tablets */
+@custom-media --touch (pointer: coarse);
+@custom-media --mouse (pointer: fine);

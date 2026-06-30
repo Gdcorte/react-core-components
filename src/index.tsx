@@ -1,5 +1,6 @@
-export * from './components';
+// Styles
+import './styles/media.css';
+
 export * from './hooks';
-export * from './styles';
 export { CaseFormatting, NumberUtils, UtcDateAsLocal } from './utils';
 export * from './validators';

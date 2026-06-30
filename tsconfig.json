@@ -2,7 +2,7 @@
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "nodenext",
     "esModuleInterop": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,12 +14,11 @@
     "declarationDir": "types",
     "sourceMap": true,
     "outDir": "dist",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
