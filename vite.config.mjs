@@ -10,6 +10,16 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       include: ['src/**/*'],
+      beforeWriteFile: (filePath, content) => {
+        if (
+          filePath.endsWith('media.d.ts') ||
+          filePath.endsWith('theme.d.ts')
+        ) {
+          return false;
+        }
+        return { filePath, content };
+      },
+
       compilerOptions: {
         root: 'src',
         emitDeclarationOnly: true,
@@ -23,6 +33,8 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   build: {
+    // can't use native lightningCSS yet because of custom-media defs
+    cssMinify: 'esbuild',
     codeSplitting: true,
     cssCodeSplit: true,
     sourcemap: true,

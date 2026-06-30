@@ -1,0 +1,50 @@
+[data-theme="dark"] {
+  /* Base */
+  --background: oklch(0.3 0.01 0);
+  --text: oklch(0.9 0.01 0);
+  --placeholder: oklch(0.55 0.01 0);
+
+  --text-disable: oklch(0.6 0 0);
+  --background-disable: oklch(0.4 0 0);
+
+  /* Elevations */
+  --elev-higher: oklch(0.25 0.01 0);
+  --elev-highest: oklch(0.2 0 0);
+  --elev-lower: oklch(0.35 0.01 0);
+  --elev-lowest: oklch(0.4 0.01 0);
+
+  /* Alerts */
+  --alert-yay-txt: oklch(1 0.15 160);
+  --alert-yay-bg: oklch(0.6 0.15 160);
+  --alert-yay-bg-hov: oklch(0.4 0.15 160);
+  --alert-yay-bg-act: oklch(0.3 0.15 160);
+
+  --alert-dg-txt: oklch(1 0.22 29);
+  --alert-dg-bg: oklch(0.6 0.22 29);
+  --alert-dg-bg-hov: oklch(0.4 0.22 29);
+  --alert-dg-bg-act: oklch(0.3 0.22 29);
+
+  --alert-warn-txt: oklch(1 0.18 109);
+  --alert-warn-bg: oklch(0.6 0.18 109);
+  --alert-warn-bg-hov: oklch(0.5 0.18 109);
+  --alert-warn-bg-act: oklch(0.4 0.18 109);
+
+  --alert-info-txt: oklch(1 0.16 270);
+  --alert-info-bg: oklch(0.6 0.16 270);
+  --alert-info-bg-hov: oklch(0.5 0.16 270);
+  --alert-info-bg-act: oklch(0.4 0.16 270);
+
+  --alert-none-txt: oklch(1 0 0);
+  --alert-none-bg: oklch(0.7 0 0);
+  --alert-none-bg-hov: oklch(0.65 0 0);
+  --alert-none-bg-act: oklch(0.6 0 0);
+
+  /* Shadows */
+  --shadow-color: var(--background);
+
+  --shadow-left: none;
+  --shadow-up: none;
+  --shadow-right: none;
+  --shadow-down: none;
+  --shadow-center: none;
+}

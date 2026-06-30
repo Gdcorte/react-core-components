@@ -1,0 +1,43 @@
+[data-theme="dark"][data-color="green"] {
+  --primary-txt: oklch(1 0.1 150);
+  --primary-bg: oklch(0.4 0.1 150);
+  --primary-bg-hov: oklch(0.5 0.1 150);
+  --primary-bg-act: oklch(0.6 0.1 150);
+
+  --secondary-txt: oklch(1 0.1 330);
+  --secondary-bg: oklch(0.4 0.1 330);
+  --secondary-bg-hov: oklch(0.5 0.1 330);
+  --secondary-bg-act: oklch(0.6 0.1 330);
+
+  --tertiary-txt: oklch(1 0.1 60);
+  --tertiary-bg: oklch(0.4 0.1 60);
+  --tertiary-bg-hov: oklch(0.5 0.1 60);
+  --tertiary-bg-act: oklch(0.6 0.1 60);
+
+  --extra-txt: oklch(1 0.1 210);
+  --extra-bg: oklch(0.4 0.1 210);
+  --extra-bg-hov: oklch(0.5 0.1 210);
+  --extra-bg-act: oklch(0.6 0.1 210);
+}
+
+[data-theme="light"][data-color="green"] {
+  --primary-txt: oklch(0.1 0.1 150);
+  --primary-bg: oklch(0.55 0.1 150);
+  --primary-bg-hov: oklch(0.65 0.1 150);
+  --primary-bg-act: oklch(0.75 0.1 150);
+
+  --secondary-txt: oklch(0.1 0.1 330);
+  --secondary-bg: oklch(0.55 0.1 330);
+  --secondary-bg-hov: oklch(0.65 0.1 330);
+  --secondary-bg-act: oklch(0.75 0.1 330);
+
+  --tertiary-txt: oklch(0.1 0.1 60);
+  --tertiary-bg: oklch(0.55 0.1 60);
+  --tertiary-bg-hov: oklch(0.65 0.1 60);
+  --tertiary-bg-act: oklch(0.75 0.1 60);
+
+  --extra-txt: oklch(0.1 0.1 210);
+  --extra-bg: oklch(0.55 0.1 210);
+  --extra-bg-hov: oklch(0.65 0.1 210);
+  --extra-bg-act: oklch(0.75 0.1 210);
+}
