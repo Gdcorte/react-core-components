@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ThemeType, useTheme } from "@/providers/theme";
-import { MoonIcon, SunIcon } from "./icons";
-import styles from "./theme.module.css";
+import { type ThemeType, useTheme } from '@/providers/theme/layout';
+import { MoonIcon, SunIcon } from './icons';
+import styles from './theme.module.css';
 
 type Props = {
   className?: string;
@@ -12,7 +12,7 @@ export default function ThemePicker({ className }: Props) {
   const { theme, setTheme } = useTheme();
 
   function onThemeClick() {
-    const newTheme: ThemeType = theme == "dark" ? "light" : "dark";
+    const newTheme: ThemeType = theme == 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
   }
 
@@ -21,7 +21,7 @@ export default function ThemePicker({ className }: Props) {
       onClick={onThemeClick}
       className={`theme-picker ${className} ${styles.container}`}
     >
-      {theme == "dark" ? <MoonIcon /> : <SunIcon />}
+      {theme == 'dark' ? <MoonIcon /> : <SunIcon />}
     </button>
   );
 }

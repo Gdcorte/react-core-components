@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core",
-  "version": "2.0.0-rc12",
+  "version": "2.0.0-rc15",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -48,6 +48,11 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/browser-playwright": "^4.1.5",
     "bumpp": "^11.1.0",
+    "postcss-custom-media": "^12.0.1",
+    "postcss-import": "^16.1.1",
+    "postcss-load-config": "^6.0.1",
+    "postcss-modules": "^6.0.1",
+    "postcss-nested": "^7.0.2",
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
     "vite": "^8.0.11",

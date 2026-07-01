@@ -6,10 +6,9 @@ export default defineConfig({
   format: ['esm'],
 
   dts: true,
-  exports: true,
+  exports: false,
   clean: true,
   unbundle: true,
-
   css: {
     inject: true,
   },
