@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core",
-  "version": "2.0.0-rc15",
+  "version": "2.0.0-rc17",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -36,6 +36,7 @@
   "peerDependencies": {
     "@daypicker/react": ">=10",
     "next": ">=16",
+    "next-intl": "^4.13.1",
     "radix-ui": ">=1.6",
     "react": ">= 19"
   },
