@@ -1,0 +1,38 @@
+@import "@/styles/media.css";
+
+.item-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+[data-radix-collection-item] .item-box {
+  width: 42px;
+  padding: 4px 8px;
+}
+
+.item {
+  display: flex;
+  border-radius: 50% !important;
+
+  height: 100%;
+  aspect-ratio: 1 / 1;
+
+  max-width: 36px;
+  max-height: 36px;
+}
+
+.select-trigger-sizing {
+  box-sizing: border-box;
+  margin: 8px 0;
+  height: calc(100% - 16px);
+
+  @media (--tablet) {
+    margin: 0;
+    height: 100%;
+  }
+}

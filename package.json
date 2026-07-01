@@ -1,6 +1,6 @@
 {
-  "name": "@gdcorte/react-core-components",
-  "version": "2.0.0",
+  "name": "@gdcorte/react-core",
+  "version": "2.0.0-rc12",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -10,56 +10,48 @@
   "author": "Gustavo <gustavodacorte@gmail.com>",
   "license": "MIT",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json",
+    "./media.css": "./dist/media.css",
+    "./theme.css": "./dist/theme.css"
+  },
   "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "play": "vite",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp",
+    "prepublishOnly": "pnpm run build"
+  },
   "files": [
     "dist"
   ],
   "peerDependencies": {
+    "@daypicker/react": ">=10",
+    "next": ">=16",
+    "radix-ui": ">=1.6",
     "react": ">= 19"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.1",
-    "@chromatic-com/storybook": "^5.2.1",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-typescript": "^12.3.0",
-    "@storybook/addon-links": "^10.4.6",
-    "@storybook/addon-themes": "^10.4.6",
-    "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
-    "@storybook/react": "^10.4.6",
-    "@storybook/react-vite": "^10.4.6",
-    "@types/node": "^26.0.1",
-    "@types/react": "^19.2.17",
-    "babel-loader": "^10.1.1",
-    "prettier": "^3.9.4",
-    "react": "^19.2.7",
-    "react-calendar": "^6.0.1",
-    "react-dom": "^19.2.7",
-    "react-is": "^19.2.7",
-    "react-select": "^5.10.2",
-    "require-from-string": "^2.0.2",
-    "rollup": "^4.62.2",
-    "rollup-plugin-dts": "^6.4.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-tsconfig-paths": "^1.5.2",
-    "storybook": "^10.4.6",
-    "styled-components": "^6.4.3",
-    "tslib": "^2.8.1",
+    "@tsconfig/strictest": "^2.0.8",
+    "@tsdown/css": "^0.22.3",
+    "@types/node": "^25.6.2",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/browser-playwright": "^4.1.5",
+    "bumpp": "^11.1.0",
+    "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
-    "unplugin-dts": "^1.0.3",
-    "vite": "8.1.1",
-    "webpack": "^5.108.3"
-  },
-  "scripts": {
-    "dev:old": "rollup -c -w",
-    "dev": "vite build --watch",
-    "test:local": "pnpm pack",
-    "build": "vite build ",
-    "build:old": "rollup -c",
-    "build:sb": "storybook build",
-    "build-storybook": "storybook build",
-    "storybook": "CHOKIDAR_USEPOLLING=true storybook dev -p 6006"
+    "vite": "^8.0.11",
+    "vitest": "^4.1.5",
+    "vitest-browser-react": "^2.2.0"
   }
 }

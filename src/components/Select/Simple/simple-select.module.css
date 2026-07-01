@@ -1,0 +1,54 @@
+.content {
+  display: flex;
+
+  gap: 4px;
+  padding: 4px 0;
+
+  border: 1px solid var(--text);
+  border-radius: 6px;
+  background: var(--background);
+
+  &[data-orientation="center"] {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+  box-shadow: none;
+  border: none;
+  background: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+
+  & :hover {
+    border-radius: 5px;
+    background: var(--primary-bg-hov);
+  }
+}
+
+.option {
+  display: flex;
+  outline: none;
+  cursor: pointer;
+
+  & :hover {
+    background: var(--primary-bg-hov);
+  }
+}
+
+[data-state="checked"].option {
+  background: var(--background-disable);
+  border-radius: 5px;
+  cursor: not-allowed;
+
+  & :hover {
+    background: unset;
+  }
+}

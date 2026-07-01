@@ -1,0 +1,41 @@
+.dumbbell-contour,
+.plant-stem,
+.plant-leaf,
+.dumbbell,
+.thought-baloon {
+    stroke-miterlimit: 10;
+}
+
+.dumbbell-contour,
+.dumbbell {
+    fill: #313035;
+}
+
+.plant-stem {
+    fill: none;
+    stroke: #73431b;
+}
+
+.plant-leaf {
+    fill: #9c9;
+    stroke: #9c9;
+}
+
+.plant-leaf,
+.dumbbell {
+    stroke-width: 0.5px;
+}
+
+.dumbbell {
+    stroke: #313035;
+}
+
+.dumbbell-contour {
+    stroke: #fefefe;
+    stroke-width: 0.15px;
+}
+
+.thought-baloon {
+    fill: #f0f0f0;
+    stroke: #000;
+}
