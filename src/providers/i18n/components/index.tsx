@@ -1,1 +1,1 @@
-export { default as LanguagePicker } from "./Locale";
+export { LanguagePicker } from './Locale';

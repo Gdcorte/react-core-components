@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import { Select } from "radix-ui";
-import { ReactNode } from "react";
-import styles from "./simple-select.module.css";
+import { Select } from 'radix-ui';
+import styles from './simple-select.module.css';
 
 type SelectConfig = {
   useMarker?: boolean;
@@ -16,7 +15,7 @@ type Props = {
   selected?: string;
   defaultValue?: string;
   config?: SelectConfig;
-  optionRendering: (value: string) => ReactNode;
+  optionRendering: (value: string) => React.ReactNode;
 };
 
 export default function SimpleSelect({
@@ -35,7 +34,10 @@ export default function SimpleSelect({
       onValueChange={onSelect}
       defaultValue={defaultValue}
     >
-      <Select.Trigger className={`${styles.trigger} ${triggerClass}`}>
+      <Select.Trigger
+        aria-label="simple-select-trigger"
+        className={`${styles.trigger} ${triggerClass}`}
+      >
         {selected && optionRendering(selected)}
 
         {config?.useMarker && <Select.Icon />}

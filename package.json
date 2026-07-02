@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core",
-  "version": "2.0.0-rc17",
+  "version": "2.0.0-rc19",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -28,7 +28,9 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "release": "bumpp",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "sb": "storybook dev -p 6006",
+    "build-sb": "storybook build"
   },
   "files": [
     "dist"
@@ -41,6 +43,12 @@
     "react": ">= 19"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.2.1",
+    "@storybook/addon-a11y": "^10.4.6",
+    "@storybook/addon-docs": "^10.4.6",
+    "@storybook/addon-onboarding": "^10.4.6",
+    "@storybook/addon-vitest": "^10.4.6",
+    "@storybook/nextjs-vite": "^10.4.6",
     "@tsconfig/strictest": "^2.0.8",
     "@tsdown/css": "^0.22.3",
     "@types/node": "^25.6.2",
@@ -48,12 +56,15 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/coverage-v8": "4.1.9",
     "bumpp": "^11.1.0",
+    "playwright": "^1.61.1",
     "postcss-custom-media": "^12.0.1",
     "postcss-import": "^16.1.1",
     "postcss-load-config": "^6.0.1",
     "postcss-modules": "^6.0.1",
     "postcss-nested": "^7.0.2",
+    "storybook": "^10.4.6",
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
     "vite": "^8.0.11",
