@@ -5,7 +5,7 @@ type Props = {
 export default function SunIcon({ className }: Props) {
   return (
     <svg
-      className={`moon-icon ${className}`}
+      className={`moon-icon  ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       shapeRendering="geometricPrecision"
       textRendering="geometricPrecision"

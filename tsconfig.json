@@ -23,7 +23,8 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@sb/*": ["./.storybook/*"]
     }
   },
   "include": ["styled.d.ts", "**/*.ts", "**/*.tsx"]

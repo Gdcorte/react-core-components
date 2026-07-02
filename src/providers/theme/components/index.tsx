@@ -1,2 +1,2 @@
-export { default as ColorPicker } from "./Color";
-export { default as ThemePicker } from "./Theme";
+export { ColorPicker } from './Color';
+export { ThemePicker } from './Theme';

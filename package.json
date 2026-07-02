@@ -1,6 +1,6 @@
 {
   "name": "@gdcorte/react-core",
-  "version": "2.0.0-rc19",
+  "version": "2.0.0-rc21",
   "repository": "https://github.com/Gdcorte/react-core-components.git",
   "homepage": "https://github.com/Gdcorte/react-core-components#readme",
   "bugs": {
@@ -24,11 +24,12 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
+    "dev:pack": "pnpm build && pnpm pack",
     "play": "vite",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "release": "bumpp",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "pnpm build",
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build"
   },
@@ -68,6 +69,7 @@
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
     "vite": "^8.0.11",
+    "vite-plugin-svgr": "^5.2.0",
     "vitest": "^4.1.5",
     "vitest-browser-react": "^2.2.0"
   }

@@ -1,14 +1,18 @@
 @import "../../../../styles/media.css";
 
 .container {
+  box-sizing: border-box;
+  container-type: size;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: transparent;
   box-shadow: none;
   border: none;
   outline: none;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   aspect-ratio: 1 / 1;
 
@@ -17,7 +21,8 @@
 
   cursor: pointer;
 
-  svg {
+  & svg {
+    box-sizing: border-box;
     aspect-ratio: 1 / 1;
     padding: 10cqh;
 
