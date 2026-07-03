@@ -25,6 +25,8 @@
     box-sizing: border-box;
     aspect-ratio: 1 / 1;
     padding: 10cqh;
+    height: 100%;
+
 
     @media (--tablet) {
       padding: 0;
