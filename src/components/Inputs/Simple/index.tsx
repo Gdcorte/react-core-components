@@ -1,1 +1,1 @@
-export { default as SimpleInput, type SimpleInputProps } from './Simple';
+export { default as BaseInput, type BaseInputProps } from './Base';

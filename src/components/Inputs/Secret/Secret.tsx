@@ -1,5 +1,10 @@
-import { useState, type HTMLAttributes, type JSX } from 'react';
-import { SimpleInput, type SimpleInputProps } from '../Simple';
+import {
+  useState,
+  type HTMLAttributes,
+  type JSX,
+  type MouseEvent,
+} from 'react';
+import { BaseInput, type BaseInputProps } from '../Simple';
 import { InvisibleIcon, VisibleIcon } from './icons';
 import styles from './secret.module.css';
 
@@ -15,17 +20,14 @@ const IconMap: Record<
 
 type Props = {
   initialState?: InputState;
-  classMap?: {
-    root: string;
-    input: string;
-    icon: string;
-  };
-} & SimpleInputProps;
+  classNameSecret?: string;
+} & BaseInputProps;
 
 export default function SecretInput({
   initialState,
-  className,
-  classMap,
+  variant,
+  classNameSecret,
+  ...props
 }: Props) {
   const [state, setState] = useState<InputState>(initialState ?? 'closed');
 
@@ -33,17 +35,19 @@ export default function SecretInput({
     setState(state == 'closed' ? 'open' : 'closed');
   }
 
+  // Prevents temporary flicker when mouseDown event removes focus from input
+  function preventBlur(event: MouseEvent<HTMLOrSVGElement>) {
+    event.preventDefault();
+  }
+
   const Icon = IconMap[state];
   return (
-    <div className={`${classMap?.root} ${styles.root}`}>
-      <SimpleInput
-        className={`${className ?? ''} ${styles.input} ${classMap?.input}`}
-      />
-
+    <BaseInput {...props} type={state == 'closed' ? 'password' : 'text'}>
       <Icon
         onClick={handleStateToggle}
-        className={`${classMap?.icon} ${styles.icon}`}
+        onMouseDown={preventBlur}
+        className={`${classNameSecret ?? ''} ${styles.icon}`}
       />
-    </div>
+    </BaseInput>
   );
 }

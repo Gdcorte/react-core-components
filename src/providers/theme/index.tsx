@@ -1,6 +1,8 @@
 import './theme.css';
 
 export {
+  isColor,
+  isTheme,
   ThemeProvider,
   useTheme,
   type ColorType,

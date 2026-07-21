@@ -1,0 +1,96 @@
+@import "../../../styles/media.css";
+
+.label {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+
+    flex: 1;
+    gap: 4px;
+    padding: 2px;
+
+    background: transparent;
+    font-size: small;
+
+    fill: var(--variant-txt);
+    stroke: var(--variant-txt);
+
+    &:focus-within {
+        color: var(--variant-txt);
+        stroke: var(--variant-txt);
+        fill: var(--variant-txt);
+    }
+
+    &[data-orientation='row'] {
+        flex-direction: row;
+
+        align-items: center;
+        justify-content: flex-start;
+
+
+        & .title {
+            flex: unset;
+            padding: 0;
+
+        }
+    }
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+
+    & .title-text {
+        box-sizing: border-box;
+        display: flex;
+        flex: 1;
+        margin: 0;
+        padding: 0 4px;
+    }
+
+}
+
+.tooltip {
+    display: flex;
+    position: relative;
+
+    cursor: pointer;
+    z-index: 2;
+
+    & .tooltip-icon {
+        width: 1.2rem;
+        aspect-ratio: 1;
+    }
+
+    & .tooltip-text {
+        display: none;
+        position: absolute;
+        top: 0;
+        z-index: 3;
+
+
+        &[data-click="active"] {
+            display: flex;
+        }
+    }
+
+    @media (--mouse) {
+        &:hover {
+            fill: var(--variant-bg-hov);
+            stroke: var(--variant-bg-hov);
+
+            & .tooltip-text {
+                display: flex;
+            }
+        }
+    }
+
+}

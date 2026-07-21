@@ -3,7 +3,13 @@
 import { useLocalStorage } from '@/hooks';
 import { createContext, use, useEffect, useState } from 'react';
 import styles from './layout.module.css';
-export type ThemeType = 'light' | 'dark';
+
+export const baseThemes = ['light', 'dark'] as const;
+export type ThemeType = (typeof baseThemes)[number];
+
+export function isTheme(value: string): value is ThemeType {
+  return baseThemes.includes(value as ThemeType);
+}
 
 export const baseColors = ['green', 'blue', 'pink', 'yellow'] as const;
 export type ColorType = (typeof baseColors)[number];

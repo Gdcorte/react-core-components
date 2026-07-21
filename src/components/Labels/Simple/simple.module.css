@@ -7,6 +7,8 @@
     align-items: flex-start;
     justify-content: center;
 
+    width: 100%;
+
     flex: 1;
     gap: 4px;
     padding: 2px;
@@ -15,7 +17,7 @@
     font-size: small;
 
     &:focus-within {
-        color: var(--primary-txt);
+        color: var(--variant-txt);
     }
 
     &[data-orientation='row'] {

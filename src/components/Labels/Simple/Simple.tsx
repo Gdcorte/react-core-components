@@ -1,3 +1,4 @@
+import type { DataVariantProps } from '@/providers/theme/types';
 import type { LabelHTMLAttributes } from 'react';
 import styles from './simple.module.css';
 
@@ -9,6 +10,7 @@ type Props = {
   orientation?: 'row' | 'column';
   children: React.ReactNode;
   title: string;
+  variant?: DataVariantProps;
 } & LabelHTMLAttributes<HTMLLabelElement>;
 
 export default function SimpleLabel({
@@ -17,10 +19,13 @@ export default function SimpleLabel({
   children,
   className,
   classMap,
+  variant,
   ...props
 }: Props) {
   return (
     <label
+      data-type={variant?.dataType ?? 'color'}
+      data-variant={variant?.dataVariant ?? 'primary'}
       data-orientation={orientation}
       className={`${className} ${styles.label} ${classMap?.label}`}
       {...props}

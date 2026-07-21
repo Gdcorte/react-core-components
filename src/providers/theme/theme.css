@@ -1,36 +1,43 @@
-@import "./defs/light.css";
-@import "./defs/dark.css";
-@import "./colors/green.css";
-@import "./colors/blue.css";
-@import "./colors/pink.css";
-@import "./colors/yellow.css";
+@import './defs/light.css';
+@import './defs/dark.css';
+@import './colors/green.css';
+@import './colors/blue.css';
+@import './colors/pink.css';
+@import './colors/yellow.css';
 
 .theme-container {
   background: var(--background);
   color: var(--text);
 
   /* Colors */
-  /* color - primary is the default */
-  --variant-txt: var(--primary-txt);
-  --variant-bg: var(--primary-bg);
-  --variant-bg-hov: var(--primary-bg-hov);
-  --variant-bg-act: var(--primary-bg-act);
+  /* color - normal text/bg is the default */
+  --variant-txt: var(--text);
+  --variant-bg: var(--background);
+  --variant-bg-hov: var(--background);
+  --variant-bg-act: var(--background);
 
-  &[data-type="color"][data-variant="secondary"] {
+  [data-type='color'][data-variant='primary'] {
+    --variant-txt: var(--primary-txt);
+    --variant-bg: var(--primary-bg);
+    --variant-bg-hov: var(--primary-bg-hov);
+    --variant-bg-act: var(--primary-bg-act);
+  }
+
+  [data-type='color'][data-variant='secondary'] {
     --variant-txt: var(--secondary-txt);
     --variant-bg: var(--secondary-bg);
     --variant-bg-hov: var(--secondary-bg-hov);
     --variant-bg-act: var(--secondary-bg-act);
   }
 
-  &[data-type="color"][data-variant="tertiary"] {
+  [data-type='color'][data-variant='tertiary'] {
     --variant-txt: var(--tertiary-txt);
     --variant-bg: var(--tertiary-bg);
     --variant-bg-hov: var(--tertiary-bg-hov);
     --variant-bg-act: var(--tertiary-bg-act);
   }
 
-  &[data-type="color"][data-variant="extra"] {
+  [data-type='color'][data-variant='extra'] {
     --variant-txt: var(--extra-txt);
     --variant-bg: var(--extra-bg);
     --variant-bg-hov: var(--extra-bg-hov);
@@ -38,35 +45,35 @@
   }
 
   /* Alerts */
-  &[data-type="alert"][data-variant="success"] {
+  [data-type='alert'][data-variant='success'] {
     --variant-txt: var(--alert-yay-txt);
     --variant-bg: var(--alert-yay-bg);
     --variant-bg-hov: var(--alert-yay-bg-hov);
     --variant-bg-act: var(--alert-yay-bg-act);
   }
 
-  &[data-type="alert"][data-variant="danger"] {
+  &[data-type='alert'][data-variant='danger'] {
     --variant-txt: var(--alert-dg-txt);
     --variant-bg: var(--alert-dg-bg);
     --variant-bg-hov: var(--alert-dg-bg-hov);
     --variant-bg-act: var(--alert-dg-bg-act);
   }
 
-  &[data-type="alert"][data-variant="warning"] {
+  [data-type='alert'][data-variant='warning'] {
     --variant-txt: var(--alert-warn-txt);
     --variant-bg: var(--alert-warn-bg);
     --variant-bg-hov: var(--alert-warn-bg-hov);
     --variant-bg-act: var(--alert-warn-bg-act);
   }
 
-  &[data-type="alert"][data-variant="info"] {
+  [data-type='alert'][data-variant='info'] {
     --variant-txt: var(--alert-info-txt);
     --variant-bg: var(--alert-info-bg);
     --variant-bg-hov: var(--alert-info-bg-hov);
     --variant-bg-act: var(--alert-info-bg-act);
   }
 
-  &[data-type="alert"][data-variant="neutral"] {
+  [data-type='alert'][data-variant='neutral'] {
     --variant-txt: var(--alert-none-txt);
     --variant-bg: var(--alert-none-bg);
     --variant-bg-hov: var(--alert-none-bg-hov);

@@ -1,12 +1,11 @@
-import { SecretInput } from '@/components/Inputs';
 import { ThemedStory } from '@sb/decorators';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { SimpleLabel } from './index';
+import { BaseInput } from './index';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Labels/Simple',
-  component: SimpleLabel,
+  title: 'Inputs/Base',
+  component: BaseInput,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -21,33 +20,14 @@ const meta = {
   argTypes: {},
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: {},
-} satisfies Meta<typeof SimpleLabel>;
+} satisfies Meta<typeof BaseInput>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: 'Default',
-    children: <input />,
-    orientation: 'row',
-  },
-  decorators: [
-    (Story) => (
-      <div style={{ background: 'gray', width: '400px', height: '200px' }}>
-        <ThemedStory>
-          <Story />
-        </ThemedStory>
-      </div>
-    ),
-  ],
-};
-
-export const WithSecret: Story = {
-  args: {
-    title: 'Default',
-    children: <SecretInput />,
-    orientation: 'row',
+    'aria-label': 'myInpt',
   },
   decorators: [
     (Story) => (
