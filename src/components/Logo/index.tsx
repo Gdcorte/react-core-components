@@ -1,5 +1,5 @@
-import Link from "next/link";
-import RawLogo from "./RawLogo";
+import Link from 'next/link';
+import RawLogo from './RawLogo';
 
 // const LogoContainer = styled(Link)`
 //   display: flex;
@@ -15,7 +15,7 @@ type Props = {
   home: string;
   className?: string;
 };
-
+// TODO: Move outta here
 export default function AppLogo({ home, className }: Props) {
   return (
     <Link className={className} href={home}>

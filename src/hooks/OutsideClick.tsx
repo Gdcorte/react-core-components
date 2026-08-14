@@ -1,10 +1,10 @@
-import { RefObject, useEffect } from 'react';
+import { type RefObject, useEffect } from 'react';
 
 /**
  * Hook that alerts clicks outside of the passed ref
  */
 export default function OutsideClickHandler(
-  ref: RefObject<HTMLObjectElement>,
+  ref: RefObject<HTMLObjectElement | null>,
   handler: () => void | Promise<void>,
 ) {
   useEffect(() => {

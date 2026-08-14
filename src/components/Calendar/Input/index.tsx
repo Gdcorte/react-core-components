@@ -1,10 +1,10 @@
-import { Calendar } from "@/components/icons";
-import { useOutsideClick } from "@/hooks";
-import { Popover } from "radix-ui";
-import { useRef, useState } from "react";
-import SimpleCalendar, { SimpleCalendarProps } from "../Simple";
-import iconStyles from "./icon.module.css";
-import styles from "./input.module.css";
+import { Calendar } from '@/components/icons';
+import { useOutsideClick } from '@/hooks';
+import { Popover } from 'radix-ui';
+import { useRef, useState } from 'react';
+import SimpleCalendar, { type SimpleCalendarProps } from '../Simple';
+import iconStyles from './icon.module.css';
+import styles from './input.module.css';
 type Props = SimpleCalendarProps & {
   id?: string;
   initialValue?: Date | string;
@@ -12,13 +12,13 @@ type Props = SimpleCalendarProps & {
 };
 
 function parseToStr(targetValue: string | Date | undefined): string {
-  if (targetValue == undefined) return "";
+  if (targetValue == undefined) return '';
 
-  if (typeof targetValue === "string") return targetValue.replaceAll("/", "-");
+  if (typeof targetValue === 'string') return targetValue.replaceAll('/', '-');
 
   const year = targetValue.getFullYear();
-  const month = String(targetValue.getMonth() + 1).padStart(2, "0");
-  const day = String(targetValue.getDate()).padStart(2, "0");
+  const month = String(targetValue.getMonth() + 1).padStart(2, '0');
+  const day = String(targetValue.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 }
 
@@ -26,11 +26,11 @@ function parseToDate(targetValue: string | Date | undefined): Date | undefined {
   if (targetValue == undefined) return undefined;
 
   // TODO: Naively assuming YYYY-MM-DD date here
-  if (typeof targetValue === "string") {
+  if (typeof targetValue === 'string') {
     // Need date to be at least YYYY-MM-DD
     if (targetValue.length < 10) return undefined;
 
-    const parsed = Date.parse(`${targetValue.replaceAll("/", "-")}T00:00:00Z`);
+    const parsed = Date.parse(`${targetValue.replaceAll('/', '-')}T00:00:00Z`);
     return isNaN(parsed) ? undefined : new Date(parsed);
   }
 
@@ -46,9 +46,11 @@ export default function InputCalendar({
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const popoverRef = useRef<HTMLObjectElement>(null);
-
+  const [month, setMonth] = useState<Date | undefined>(
+    parseToDate(initialValue),
+  );
   const [localValue, setLocalValue] = useState<string>(
-    () => parseToStr(initialValue) ?? "",
+    () => parseToStr(initialValue) ?? '',
   );
 
   function handleCalendarIconClick() {
@@ -73,6 +75,7 @@ export default function InputCalendar({
     }
 
     setLocalValue(newValue);
+    setMonth(parseToDate(newValue));
   }
 
   function handleCalendarSelect(date: Date | undefined) {
@@ -90,17 +93,18 @@ export default function InputCalendar({
   }
 
   useOutsideClick(popoverRef, handleOutsideClick);
+
   return (
     <div ref={popoverRef}>
       <Popover.Root modal={false} open={isOpen}>
         <Popover.Anchor asChild>
           <div
             className={iconStyles.root}
-            data-state={isOpen ? "open" : "closed"}
+            data-state={isOpen ? 'open' : 'closed'}
           >
             <input
               ref={inputRef}
-              id={id ?? "generic-input"}
+              id={id ?? 'generic-input'}
               className={`${styles.input} ${iconStyles.input}`}
               onClick={handleInputClick}
               onChange={handleInputChange}
@@ -127,7 +131,8 @@ export default function InputCalendar({
             selected={parseToDate(localValue)}
             mode="single"
             onSelect={handleCalendarSelect}
-            month={parseToDate(localValue)}
+            month={month}
+            onMonthChange={setMonth}
             autoFocus={false}
           />
         </Popover.Content>
