@@ -1,0 +1,29 @@
+.item-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+
+  width: 30px;
+  height: 30px;
+
+  svg {
+    max-width: 30px;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+[data-radix-collection-item] .item-box {
+  width: 40px;
+}
+
+.item {
+  display: flex;
+  border-radius: 5px;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: 30px;
+  max-height: 30px;
+}
